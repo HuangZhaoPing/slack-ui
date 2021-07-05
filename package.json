@@ -18,6 +18,7 @@
     "vue-router": "^4.0.10"
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^8.2.1",
     "@types/node": "^15.12.4",
     "@vitejs/plugin-vue": "^1.2.3",
     "@vue/compiler-sfc": "^3.0.5",
@@ -25,6 +26,10 @@
     "markdown-it": "^12.0.6",
     "markdown-it-container": "^3.0.0",
     "rollup": "^2.52.7",
+    "rollup-plugin-scss": "^3.0.0",
+    "rollup-plugin-vue": "^6.0.0",
+    "sass": "^1.35.1",
+    "tslib": "^2.3.0",
     "typescript": "^4.3.2",
     "vite": "^2.3.8",
     "vite-plugin-md": "^0.6.7",
