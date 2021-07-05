@@ -54,7 +54,7 @@ export default defineComponent({
   box-shadow: 0 2px 7px rgb(0 0 0 / 15%);
 }
 .demo-layout__component, .demo-layout__desc, .demo-layout__button {
-  border: 1px solid #eee;
+  border: 1px solid rgb(229, 231, 235);
   padding: 15px;
 }
 .demo-layout__desc {

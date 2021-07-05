@@ -85,3 +85,17 @@ block
 ::: demo 通过 button-group 组件包裹 button，实现多个按钮组合。
 group
 :::
+
+## API
+
+### Attributes
+
+| Name | Description | Type | Default |
+| ---- | ----------- | ---- | ------- |
+| type | 按钮类型 | string | default |
+| disabled | 是否为禁用状态 | boolean | false |
+| loading | 是否为加载状态 | string | false |
+| size | 按钮大小 | string | medium |
+| icon | 图标 | string | - |
+| round | 是否为圆形按钮 | boolean | false |
+| block | 是否为块级按钮 | boolean | false |

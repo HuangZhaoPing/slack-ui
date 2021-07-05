@@ -1,4 +1,4 @@
-import { LangConfig, Route } from 'types/index'
+import { LangConfig, Route } from 'types/website'
 import { createRouter, createWebHistory } from 'vue-router'
 import { getLangMap, getLangName } from '../i18n'
 import pages from './routes/pages'

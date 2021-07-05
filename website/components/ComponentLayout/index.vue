@@ -29,7 +29,7 @@ export default defineComponent({
 }
 .component-layout__nav {
   flex-shrink: 0;
-  border-right: 1px solid #eee;
+  border-right: 1px solid rgb(229, 231, 235);
   width: 180px;
   padding: 20px;
 }

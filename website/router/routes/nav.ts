@@ -16,14 +16,15 @@ export default [
     children: [
       { title: lang[4], path: '/icon' },
       { title: lang[5], path: '/layout' },
-      { title: lang[6], path: '/button' }
+      { title: lang[6], path: '/grid' },
+      { title: lang[7], path: '/button' }
     ]
   },
   {
-    title: lang[7],
+    title: lang[8],
     path: '/form',
     children: [
-      { title: lang[8], path: '/input' }
+      { title: lang[9], path: '/input' }
     ]
   }
 ]

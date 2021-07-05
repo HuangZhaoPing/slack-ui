@@ -1,4 +1,4 @@
-import { LangConfig, LangMap } from 'types/index'
+import { LangConfig, LangMap } from 'types/website'
 import ZH_CN from './zh-CN'
 import EN_US from './en-US'
 

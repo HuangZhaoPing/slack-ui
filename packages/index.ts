@@ -1,12 +1,22 @@
 import { App } from 'vue'
-import Button from './button/index.vue'
-import ButtonGroup from './button-group/index.vue'
-import Input from './input/index.vue'
+import './styles/index.css'
+import Button from './button'
+import ButtonGroup from './button-group'
+
+const components = [
+  Button,
+  ButtonGroup
+]
 
 export default {
   install (app: App) {
-    app.component(Button.name, Button)
-    app.component(ButtonGroup.name, ButtonGroup)
-    app.component(Input.name, Input)
+    components.forEach(item => {
+      app.component(item.name, item)
+    })
   }
+}
+
+export {
+  Button,
+  ButtonGroup
 }

@@ -3,8 +3,9 @@
   "name": "slack-ui",
   "main": "dist/index.js",
   "scripts": {
-    "ws:dev": "vite --config scripts/website.ts",
-    "ws:build": "vite build --config scripts/website.ts"
+    "website:dev": "vite --config scripts/website.js",
+    "website:build": "vite build --config scripts/website.js",
+    "packages:build": "rollup --config scripts/packages.js"
   },
   "files": [
     "dist"
@@ -23,6 +24,7 @@
     "highlight.js": "^11.0.1",
     "markdown-it": "^12.0.6",
     "markdown-it-container": "^3.0.0",
+    "rollup": "^2.52.7",
     "typescript": "^4.3.2",
     "vite": "^2.3.8",
     "vite-plugin-md": "^0.6.7",

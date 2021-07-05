@@ -33,7 +33,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgb(229, 231, 235);
   height: 60px;
 }
 .app-layout__main {

@@ -11,10 +11,11 @@ export default {
     2: '安装',
     3: '基础组件',
     4: 'Icon 图标',
-    5: 'Button 按钮',
-    6: 'Layout 布局',
-    7: '表单组件',
-    8: 'Input 输入框'
+    5: 'Layout 布局',
+    6: 'Grid 栅格',
+    7: 'Button 按钮',
+    8: '表单组件',
+    9: 'Input 输入框'
   },
   components: {
     1: '显示代码',
