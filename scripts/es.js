@@ -42,18 +42,8 @@ function parseStyle (data) {
 }
 
 function parseVue (data) {
-  const { descriptor } = parse(data)
-  const { script, styles } = descriptor
-  if (script) {
-    console.log(script)
-    const scriptContent = script.content
-    const scriptResult = parseScript(scriptContent)
-    data = data.replace(/<(script)(\slang="ts")?>[\s\S]+<\/\1>/, `<script>\n${scriptResult}\n</script>`)
-  }
-  if (styles) {
-    console.log(styles)
-  }
-  return data
+  const script = parse(data).descriptor.script
+  return data.replace(/<script[\s\S]+>[\s\S]+<\/script>/, script && `<script>\n${parseScript(script.content)}\n</script>`)
 }
 
 startParse(path.resolve(__dirname, '../packages'), path.resolve(__dirname, '../lib'))
