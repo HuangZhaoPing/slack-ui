@@ -1,5 +1,9 @@
-import path from 'path'
+const path = require('path')
 
-export function resolve (...value) {
+function resolve (...value) {
   return path.resolve(__dirname, '..', ...value)
+}
+
+module.exports = {
+  resolve
 }

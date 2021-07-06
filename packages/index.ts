@@ -1,5 +1,5 @@
 import { App } from 'vue'
-import './styles/index.css'
+import './styles/index.scss'
 import Button from './button'
 import ButtonGroup from './button-group'
 

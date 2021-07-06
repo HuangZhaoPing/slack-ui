@@ -1,0 +1,29 @@
+:root {
+  /* bg-color-default */
+  --bg-color-default: rgb(255, 255, 255);
+  --bg-color-default-hover: rgb(249, 250, 251);
+  --bg-color-default-active: rgb(243, 244, 246);
+  --bg-color-default-disabled: rgb(209, 213, 219);
+  /* bg-color-primary */
+  --bg-color-primary-rgb: 96, 165, 250;
+  --bg-color-primary: rgb(var(--bg-color-primary-rgb));
+  --bg-color-primary-hover: rgba(var(--bg-color-primary-rgb), .8);
+  --bg-color-primary-active: rgba(var(--bg-color-primary-rgb), .9);
+  --bg-color-primary-disabled: rgba(var(--bg-color-primary-rgb), .6);
+  /* bg-color-success */
+  --bg-color-success-rgb: 52, 211, 153;
+  --bg-color-success: rgb(var(--bg-color-success-rgb));
+  --bg-color-success-hover: rgba(var(--bg-color-success-rgb), 0.8);
+  --bg-color-success-active: rgba(var(--bg-color-success-rgb), .9);
+  --bg-color-success-disabled: rgba(var(--bg-color-success-rgb), .6);
+  /* bg-color-danger */
+  --bg-color-danger-rgb: 248, 113, 113;
+  --bg-color-danger: rgb(var(--bg-color-danger-rgb));
+  --bg-color-danger-hover: rgba(var(--bg-color-danger-rgb), .8);
+  --bg-color-danger-active: rgba(var(--bg-color-danger-rgb), .9);
+  --bg-color-danger-disabled: rgba(var(--bg-color-danger-rgb), .6);
+  /* border-color-default */
+  --border-color-default: rgb(209, 213, 219);
+  /* text-color-default */
+  --text-color-default: rgb(75, 85, 99);
+}

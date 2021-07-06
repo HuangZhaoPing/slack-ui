@@ -5,7 +5,6 @@ import hljs from 'highlight.js'
 import container from 'markdown-it-container'
 import fs from 'fs'
 import path from 'path'
-import { resolve } from './utils'
 
 export default defineConfig({
   root: resolve('website'),
@@ -62,4 +61,8 @@ export default defineConfig({
 
 function highlightCode (code, language) {
   return `<pre v-pre class="hljs"><code>${hljs.highlight(code, { language }).value}</code></pre>`
+}
+
+function resolve (...value) {
+  return path.resolve(__dirname, '..', ...value)
 }

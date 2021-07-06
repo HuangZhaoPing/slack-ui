@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'SButtonGroup'
-}
+};
 </script>
 
 <style scoped lang="scss">
