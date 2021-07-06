@@ -1,17 +1,11 @@
 {
   "version": "0.0.1",
   "name": "slack-ui",
-  "main": "dist/index.js",
   "scripts": {
     "website:dev": "vite --config scripts/website.js",
     "website:build": "vite build --config scripts/website.js"
   },
-  "files": [
-    "dist"
-  ],
   "dependencies": {
-    "ex-tree": "^1.0.1",
-    "shared-js-api": "^0.2.5",
     "vue": "^3.0.5",
     "vue-router": "^4.0.10"
   },
