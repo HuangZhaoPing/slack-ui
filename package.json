@@ -4,8 +4,7 @@
   "main": "dist/index.js",
   "scripts": {
     "website:dev": "vite --config scripts/website.js",
-    "website:build": "vite build --config scripts/website.js",
-    "packages:build": "rollup --config scripts/packages.js"
+    "website:build": "vite build --config scripts/website.js"
   },
   "files": [
     "dist"
