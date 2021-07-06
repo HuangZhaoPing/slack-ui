@@ -10,7 +10,6 @@
     "vue-router": "^4.0.10"
   },
   "devDependencies": {
-    "@types/node": "^15.12.4",
     "@vitejs/plugin-vue": "^1.2.3",
     "@vue/compiler-sfc": "^3.0.5",
     "highlight.js": "^11.0.1",
