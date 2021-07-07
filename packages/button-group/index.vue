@@ -11,11 +11,3 @@ export default defineComponent({
   name: 'SButtonGroup'
 })
 </script>
-
-<style scoped lang="scss">
-$width: 10px;
-
-.red {
-  font-size: $width;
-}
-</style>

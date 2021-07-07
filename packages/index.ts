@@ -1,11 +1,12 @@
 import { App } from 'vue'
-import './styles/index.scss'
 import Button from './button'
 import ButtonGroup from './button-group'
+import Row from './row'
 
 const components = [
   Button,
-  ButtonGroup
+  ButtonGroup,
+  Row
 ]
 
 export default {
@@ -18,5 +19,6 @@ export default {
 
 export {
   Button,
-  ButtonGroup
+  ButtonGroup,
+  Row
 }
