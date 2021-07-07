@@ -4,21 +4,23 @@
   "scripts": {
     "website:dev": "vite --config scripts/website.js",
     "website:build": "vite build --config scripts/website.js",
-    "build:es": "node scripts/es.js"
+    "build:es": "node scripts/es.js",
+    "build:styles": "gulp --gulpfile scripts/styles.js"
   },
   "dependencies": {
     "vue": "^3.0.5",
     "vue-router": "^4.0.10"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.6",
-    "@babel/plugin-transform-typescript": "^7.14.6",
     "@vitejs/plugin-vue": "^1.2.3",
-    "@vue/compiler-sfc": "^3.1.4",
+    "@vue/compiler-sfc": "^3.0.5",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-sass": "^5.0.0",
     "highlight.js": "^11.0.1",
     "markdown-it": "^12.0.6",
     "markdown-it-container": "^3.0.0",
-    "mkdirp": "^1.0.4",
     "sass": "^1.35.1",
     "typescript": "^4.3.2",
     "vite": "^2.3.8",

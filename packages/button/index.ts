@@ -1,5 +1,4 @@
 import { App } from 'vue'
-import './index.scss'
 import Button from './index.vue'
 
 Button.install = (app: App) => {
