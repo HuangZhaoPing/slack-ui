@@ -1,0 +1,10 @@
+/* theme-color */
+$s-color-default-rgb: (255, 255, 255);
+$s-color-primary-rgb: (96, 165, 250);
+$s-color-success-rgb: (52, 211, 153);
+$s-color-danger-rgb: (248, 113, 113);
+
+$s-color-default: rgb($s-color-default-rgb);
+$s-color-primary: rgb($s-color-primary-rgb);
+$s-color-success: rgb($s-color-success-rgb);
+$s-color-danger: rgb($s-color-danger-rgb);

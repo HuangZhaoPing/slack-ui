@@ -1,3 +1,11 @@
+@function get($r, $g, $b, $opacity) {
+ @return rgba($r, $g, $b, $opacity)
+};
+
+.aa {
+  color: get(var(--test, 0,0,0),.5);
+}
+
 /* common */
 .s-button {
   outline: none;
