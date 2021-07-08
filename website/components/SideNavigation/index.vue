@@ -1,10 +1,10 @@
 <template>
-  <ul class="app-nav__list">
-    <li class="app-nav__item" v-for="group in nav" :key="group.path">
-      <h5 class="app-nav__title">{{ group.title }}</h5>
-      <ul class="app-nav__list">
-        <li class="app-nav__item" v-for="item in group.children" :key="item.key">
-          <a :class="`app-nav__link ${isActive(item.path) && 'active'}`" @click="pushRoute(group.path, item.path)">{{ item.title }}</a>
+  <ul class="side-navigation__list">
+    <li class="side-navigation__item" v-for="group in nav" :key="group.path">
+      <h4 class="side-navigation__title">{{ group.title }}</h4>
+      <ul class="side-navigation__list">
+        <li class="side-navigation__item" v-for="item in group.children" :key="item.key">
+          <a :class="`side-navigation__link ${isActive(item.path) && 'active'}`" @click="pushRoute(group.path, item.path)">{{ item.title }}</a>
         </li>
       </ul>
     </li>
@@ -38,20 +38,21 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.app-nav__list {
+.side-navigation__list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.app-nav__title {
+.side-navigation__title {
   margin: 20px 0;
+  color: #000;
 }
-.app-nav__link {
+.side-navigation__link {
   cursor: pointer;
   display: block;
   padding: 10px 0;
 }
-.app-nav__link:hover, .app-nav__link.active {
+.side-navigation__link:hover, .side-navigation__link.active {
   color: #3B82F6;
 }
 </style>

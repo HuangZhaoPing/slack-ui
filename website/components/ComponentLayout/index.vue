@@ -1,11 +1,11 @@
 <template>
   <div class="component-layout">
     <div class="component-layout__nav">
-      <app-nav />
+      <side-navigation />
     </div>
     <div ref="mainRef" class="component-layout__main">
       <router-view />
-      <navigation />
+      <indicator />
     </div>
   </div>
 </template>
@@ -13,14 +13,14 @@
 <script lang="ts">
 import { defineComponent, ref, Ref } from 'vue'
 import { onBeforeRouteUpdate } from 'vue-router'
-import AppNav from '../AppNav/index.vue'
-import Navigation from './Navigation.vue'
+import SideNavigation from '../SideNavigation/index.vue'
+import Indicator from './Indicator.vue'
 
 export default defineComponent({
   name: 'ComponentLayout',
   components: {
-    AppNav,
-    Navigation
+    SideNavigation,
+    Indicator
   },
   setup () {
     const mainRef: Ref = ref(null)
