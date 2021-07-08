@@ -4,7 +4,7 @@
       <h4 class="side-navigation__title">{{ group.title }}</h4>
       <ul class="side-navigation__list">
         <li class="side-navigation__item" v-for="item in group.children" :key="item.key">
-          <a :class="`side-navigation__link ${isActive(item.path) && 'active'}`" @click="pushRoute(group.path, item.path)">{{ item.title }}</a>
+          <a :class="`side-navigation__link ${isActive(item.path) && 'active'}`" @click="pushRoute(item.path)">{{ item.title }}</a>
         </li>
       </ul>
     </li>
@@ -12,20 +12,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch } from 'vue'
-import { useRouter } from 'vue-router'
+import { defineComponent } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import nav from '@/router/routes/nav'
-import { getLangName } from '@/i18n'
 
 export default defineComponent({
   name: 'AppNav',
   setup () {
     const router = useRouter()
+    const route = useRoute()
     function isActive (path: string) {
-      return router.currentRoute.value.fullPath.includes(path)
+      return route.path === path
     }
-    function pushRoute (groupPath: string, itemPath: string) {
-      router.push(`/${getLangName()}/component${groupPath}${itemPath}`)
+    function pushRoute (path: string) {
+      router.push(path)
     }
     return {
       nav,

@@ -30,41 +30,33 @@ import { getLangName, getLangConfig } from '@/i18n'
 import nav from '@/router/routes/nav'
 import { Route } from 'types/website'
 
-type ExtendsRoute = Route & { groupPath?: string }
-
 export default defineComponent({
   setup (props) {
     const lang = getLangConfig().components
     const router = useRouter()
     const route = useRoute()
-    const prevRoute = ref<ExtendsRoute | null>(null)
-    const nextRoute = ref<ExtendsRoute | null>(null)
+    const prevRoute = ref<Route | null>(null)
+    const nextRoute = ref<Route | null>(null)
     const data = flat()
 
-    watch(() => route.path, val => {
-      const path = val.slice(val.lastIndexOf('/'))
+    watch(() => route.path, path => {
       const index = data.findIndex(item => item.path === path)
       prevRoute.value = data[index - 1]
       nextRoute.value = data[index + 1]
     },{ immediate: true })
 
     function flat () {
-      const result: ExtendsRoute[] = []
-      nav.forEach(({ children, path }) => {
+      const result: Route[] = []
+      nav.forEach(({ children }) => {
         if (children) {
-          children.forEach(item => {
-            result.push({
-              groupPath: path,
-              ...item
-            })
-          })
+          result.push(...children)
         }
       })
       return result
     }
 
-    function pushRoute (route: ExtendsRoute) {
-      router.push(`/${getLangName()}/component${route.groupPath}${route.path}`)
+    function pushRoute (route: Route) {
+      router.push(route.path)
     }
 
     return {

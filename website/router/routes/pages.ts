@@ -5,6 +5,6 @@ const lang = getLangConfig().nav
 export default [
   {
     title: lang[1],
-    path: '/home'
+    path: `/home`
   }
 ]

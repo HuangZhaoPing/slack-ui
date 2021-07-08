@@ -23,7 +23,7 @@ function registerRoute () {
   Object.values(getLangMap()).forEach((item: LangConfig) => {
     addLangRoute(item)
     addPagesRoute(item)
-    addNavRoutes(nav, `/${item.lang}/component`, item.lang)
+    addNavRoutes(nav, item.lang)
   })
 }
 
@@ -44,19 +44,18 @@ function addPagesRoute (config: LangConfig) {
   })
 }
 
-function addNavRoutes (data: Route[], path: string, lang: string) {
+function addNavRoutes (data: Route[], lang: string) {
   data.forEach(item => {
-    const fullPath = path + item.path
     if (item.children) {
       router.addRoute('component', {
-        path: fullPath,
-        redirect: fullPath + item.children[0].path
+        path: item.path,
+        redirect: item.children[0].path
       })
-      addNavRoutes(item.children, fullPath, lang)
+      addNavRoutes(item.children, lang)
     } else {
       router.addRoute('component', {
-        path: fullPath,
-        component: () => import('../docs/'+ fullPath.replace(/\/component/, '') +'/index.md')
+        path: item.path,
+        component: () => import('../docs/'+ item.path.replace(/\/component/, '') +'/index.md')
       })
     }
   })

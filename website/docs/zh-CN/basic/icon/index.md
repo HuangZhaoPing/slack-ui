@@ -13,23 +13,23 @@ Slack 组件以 Font class 的方式使用图标，下面以 [iconfont](https://
 
 第一步：为了方便持续管理图标，先在 iconfont 中创建项目。
 
-![screenshot1](@/assets/images/screenshot1.jpg)
+![screenshot1](/assets/images/screenshot1.jpg)
 
 第二步：到图标库中选择要导入的图标，这里选择了 antd 的官方图标库。
 
-![screenshot2](@/assets/images/screenshot2.jpg)
+![screenshot2](/assets/images/screenshot2.jpg)
 
 第三步：将图标加入到购物车，这里为了方便测试，只选择了 3 个。
 
-![screenshot3](@/assets/images/screenshot3.jpg)
+![screenshot3](/assets/images/screenshot3.jpg)
 
 第四步：打开购物车，点击添加至项目，选择刚刚创建的项目。
 
-![screenshot4](@/assets/images/screenshot4.jpg)
+![screenshot4](/assets/images/screenshot4.jpg)
 
 第五步：选择 Font class，然后生成在线链接或者下载到本地，这里选择在线链接。
 
-![screenshot5](@/assets/images/screenshot5.jpg)
+![screenshot5](/assets/images/screenshot5.jpg)
 
 第六步：将链接添加到 index.html 中，如果采用下载到本地的方式，则引入本地 css 文件：
 

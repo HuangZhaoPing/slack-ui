@@ -7,7 +7,7 @@
       <slot name="desc" />
     </p>
     <div ref="inner" class="demo-layout__inner" >
-      <div ref="code">
+      <div ref="code" class="demo-layout__code">
         <slot name="code" />
       </div>
     </div>
@@ -44,7 +44,7 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .demo-layout {
   display: flex;
   flex-direction: column;
@@ -53,7 +53,7 @@ export default defineComponent({
 .demo-layout:hover {
   box-shadow: 0 2px 7px rgb(0 0 0 / 15%);
 }
-.demo-layout__component, .demo-layout__desc, .demo-layout__button {
+.demo-layout__component, .demo-layout__desc, .demo-layout__code, .demo-layout__button {
   border: 1px solid rgb(229, 231, 235);
   padding: 15px;
 }
@@ -62,9 +62,13 @@ export default defineComponent({
   margin: 0;
 }
 .demo-layout__inner {
+  background-color: rgb(250, 250, 250);
   height: 0px;
   overflow: hidden;
   transition: height .2s;
+}
+.demo-layout__code {
+  border-top: 0;
 }
 .demo-layout__button {
   border-top: 0;
