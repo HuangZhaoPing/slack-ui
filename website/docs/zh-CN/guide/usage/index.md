@@ -5,13 +5,11 @@
 ```js
 import { createApp } from 'vue'
 import App from './App.vue'
-import 'slack-ui/lib/styles/index.css'
-import SlackUI from 'slack-ui'
+import 'slack-ui/lib/styles/index.css' // 引入样式文件
+import SlackUI from 'slack-ui' // 引入 slack-ui 组件库
 
 const app = createApp(App)
-
 app.use(SlackUI)
-
 app.mount('#app')
 ```
 
@@ -31,9 +29,7 @@ plugins: [
     'import',
     {
       libraryName: 'slack-ui',
-      customStyleName: (name) => {
-        return `slack-ui/lib/styles/${name}.css`;
-      }
+      customStyleName: name => `slack-ui/lib/styles/${name}.css`
     }
   ]
 ]
@@ -47,9 +43,7 @@ import App from './App.vue'
 import { Button, Select } from 'slack-ui'
 
 const app = createApp(App)
-
 app.use(Button)
 app.use(Select)
-
 app.mount('#app')
 ```

@@ -5,6 +5,7 @@ html, body {
 
 body {
   font-size: 14px;
+  line-height: 1.8;
 }
 
 code {
@@ -15,13 +16,12 @@ img {
   max-width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6, p, ul, li {
   color: rgb(75, 85, 99);
 }
 
 .hljs {
   margin: 0;
-  line-height: 1.5;
   font-family: Menlo, Monaco, Consolas, Courier, monospace;
   overflow-x: auto;
   padding: 20px;

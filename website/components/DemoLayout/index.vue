@@ -69,6 +69,7 @@ export default defineComponent({
 }
 .demo-layout__code {
   border-top: 0;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
 }
 .demo-layout__button {
   border-top: 0;

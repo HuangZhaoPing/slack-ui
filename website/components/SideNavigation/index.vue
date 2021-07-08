@@ -53,6 +53,6 @@ export default defineComponent({
   padding: 10px 0;
 }
 .side-navigation__link:hover, .side-navigation__link.active {
-  color: #3B82F6;
+  color: rgb(96, 165, 250);
 }
 </style>

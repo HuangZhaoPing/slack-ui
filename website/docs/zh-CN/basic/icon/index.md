@@ -1,15 +1,23 @@
 # Icon 图标
 
-Slack 并不提供内置图标，推荐使用外部导入图标库的方式，这样做的原因是：
+Slack 并不提供内置图标，我们推荐使用外部导入图标库的方式，这样做的原因是：
 
-- 每个项目可能都有自己的图标库，众口难调，所以将主导权交给用户。
-- 很多时候，内置图标可能大部分都用不上，反而增加了代码体积。
+- 内置大量图标，有可能大部分都用不上，反而增加了代码体积。
+- 众口难调，内置的图标有可能大部分用户不喜欢，或者不符合项目的风格等等。
 
-基于上述两个问题考虑，所以不提供内置图标。
+基于上述问题考虑不提供内置图标，将主导权交给用户，现在有很多开源的图标库，如 [iconfont](https://www.iconfont.cn/)、[fontawesome](http://www.fontawesome.com.cn/) 等，用户可根据自己的喜好选择图标。
 
-## 导入图标
+## 如何使用图标
 
-Slack 组件以 Font class 的方式使用图标，下面以 [iconfont](https://www.iconfont.cn/) 为例引入图标库。
+Slack 组件以 Font class 的方式使用图标，比如：
+
+```html
+<i class="iconfont icon-check-circle"></i>
+<!-- 为 button 添加图标 -->
+<s-button icon="iconfont icon-check-circle">按钮</s-button>
+```
+
+下面以 [iconfont](https://www.iconfont.cn/) 为例引入图标库并使用图标。
 
 第一步：为了方便持续管理图标，先在 iconfont 中创建项目。
 
