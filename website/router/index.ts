@@ -56,7 +56,7 @@ function addNavRoutes (data: Route[], path: string, lang: string) {
     } else {
       router.addRoute('component', {
         path: fullPath,
-        component: () => import('../docs/'+ fullPath.replace(/\/component/, '') +'/README.md')
+        component: () => import('../docs/'+ fullPath.replace(/\/component/, '') +'/index.md')
       })
     }
   })

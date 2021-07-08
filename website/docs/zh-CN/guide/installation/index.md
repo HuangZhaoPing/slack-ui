@@ -16,5 +16,5 @@ npm i slack-ui -S
 <!-- 引入样式 -->
 <link rel="stylesheet" href="https://unpkg.com/slack-ui/lib/theme-chalk/index.css">
 <!-- 引入组件库 -->
-<script src="https://unpkg.com/slack/lib/index.full.js"></script>
+<script src="https://unpkg.com/slack/lib/index.umd.js"></script>
 ```

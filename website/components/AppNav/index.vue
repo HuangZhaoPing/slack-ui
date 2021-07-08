@@ -4,7 +4,7 @@
       <h5 class="app-nav__title">{{ group.title }}</h5>
       <ul class="app-nav__list">
         <li class="app-nav__item" v-for="item in group.children" :key="item.key">
-          <a class="app-nav__link">{{ item.title }}</a>
+          <a :class="`app-nav__link ${isActive(item.path) && 'active'}`" @click="pushRoute(group.path, item.path)">{{ item.title }}</a>
         </li>
       </ul>
     </li>
@@ -12,14 +12,26 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import nav from '@/router/routes/nav'
+import { getLangName } from '@/i18n'
 
 export default defineComponent({
   name: 'AppNav',
   setup () {
+    const router = useRouter()
+    function isActive (path: string) {
+      return router.currentRoute.value.fullPath.includes(path)
+    }
+    function pushRoute (groupPath: string, itemPath: string) {
+      router.push(`/${getLangName()}/component${groupPath}${itemPath}`)
+    }
     return {
-      nav
+      nav,
+      router,
+      isActive,
+      pushRoute
     }
   }
 })
@@ -37,9 +49,9 @@ export default defineComponent({
 .app-nav__link {
   cursor: pointer;
   display: block;
-  padding: 8px 0;
+  padding: 10px 0;
 }
-.app-nav__link:hover {
+.app-nav__link:hover, .app-nav__link.active {
   color: #3B82F6;
 }
 </style>

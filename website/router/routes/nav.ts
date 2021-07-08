@@ -4,27 +4,28 @@ const lang = getLangConfig().nav
 
 export default [
   {
-    title: lang[1],
+    title: lang.guide,
     path: '/guide',
     children: [
-      { title: lang[2], path: '/installation' }
+      { title: lang.installation, path: '/installation' },
+      { title: lang.usage, path: '/usage' }
     ]
   },
   {
-    title: lang[3],
+    title: lang.basic,
     path: '/basic',
     children: [
-      { title: lang[4], path: '/icon' },
-      { title: lang[5], path: '/layout' },
-      { title: lang[6], path: '/grid' },
-      { title: lang[7], path: '/button' }
+      { title: lang.icon, path: '/icon' },
+      { title: lang.layout, path: '/layout' },
+      { title: lang.grid, path: '/grid' },
+      { title: lang.button, path: '/button' }
     ]
   },
   {
-    title: lang[8],
+    title: lang.form,
     path: '/form',
     children: [
-      { title: lang[9], path: '/input' }
+      { title: lang.input, path: '/input' }
     ]
   }
 ]

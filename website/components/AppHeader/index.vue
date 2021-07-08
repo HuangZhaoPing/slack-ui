@@ -1,6 +1,13 @@
 <template>
   <div class="app-header">
-    <h1>Slack</h1>
+    <router-link :to="`/${selected}`">
+      <h1>Slack</h1>
+    </router-link>
+
+    <ul class="app-header__nav">
+      <li><router-link :to="`/${selected}`">首页</router-link></li>
+      <li><router-link :to="`/${selected}/component`">组件</router-link></li>
+    </ul>
     <!-- <select v-model="selected" @change="onChange">
       <option v-for="item in langData" :key="item.lang" :value="item.lang">{{ item.name }}</option>
     </select> -->
@@ -29,7 +36,7 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .app-header {
   display: flex;
   align-items: center;
@@ -41,5 +48,16 @@ export default defineComponent({
 .app-header__item {
   float: left;
   list-style: none;
+}
+.app-header__nav {
+  padding: 0;
+  margin: 0 40px;
+  display: flex;
+  align-items: center;
+  list-style: none;
+
+  li:not(:first-child) {
+    margin-left: 20px
+  }
 }
 </style>
