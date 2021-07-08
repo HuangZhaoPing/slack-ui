@@ -36,12 +36,6 @@ basic
 disabled
 :::
 
-## 加载效果
-
-::: demo 通过 loading 设置加载效果
-loading
-:::
-
 ## 按钮大小
 
 ::: demo 通过 size 属性设置按钮尺寸，尺寸有 small、medium（默认）、large 三种，默认为 medium。
@@ -78,6 +72,12 @@ round
 block
 :::
 
+## 加载效果
+
+::: demo 通过 loading 设置加载效果
+loading
+:::
+
 ## 按钮组
 
 按钮组用于多个按钮组合。
@@ -96,6 +96,6 @@ group
 | disabled | 是否为禁用状态 | boolean | false |
 | loading | 是否为加载状态 | string | false |
 | size | 按钮大小 | string | medium |
-| icon | 图标 | string | - |
+| icon | 图标，需要自行引入图标库 | string | - |
 | round | 是否为圆形按钮 | boolean | false |
 | block | 是否为块级按钮 | boolean | false |

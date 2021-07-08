@@ -6,11 +6,16 @@ const { resolve } = require('./utils')
 const exclude = ['styles']
 
 const config = fs.readdirSync(resolve('packages')).filter(name => !exclude.includes(name)).map(name => {
-  const isMain = name === 'index.ts'
+  let input = `packages/${name}/index.ts`
+  let file = `lib/${name}/index.js`
+  if (name === 'index.ts') {
+    input = 'packages/index.ts'
+    file = 'lib/index.es.js'
+  }
   return {
-    input: isMain ? 'packages/index.ts' : `packages/${name}/index.ts`,
+    input,
     output: {
-      file: isMain ? 'lib/index.es.js' : `lib/${name}/index.js`,
+      file,
       format: 'es',
       globals: {
         vue: 'Vue'

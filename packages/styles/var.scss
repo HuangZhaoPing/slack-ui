@@ -1,10 +1,11 @@
-/* theme-color */
-$s-color-default-rgb: (255, 255, 255);
-$s-color-primary-rgb: (96, 165, 250);
-$s-color-success-rgb: (52, 211, 153);
-$s-color-danger-rgb: (248, 113, 113);
+/* color */
+$s-color-default: rgba(255, 255, 255, 1);
+$s-color-primary: rgba(96, 165, 250, 1);
+$s-color-success: rgba(52, 211, 153, 1);
+$s-color-danger: rgba(248, 113, 113, 1);
 
-$s-color-default: rgb($s-color-default-rgb);
-$s-color-primary: rgb($s-color-primary-rgb);
-$s-color-success: rgb($s-color-success-rgb);
-$s-color-danger: rgb($s-color-danger-rgb);
+/* text-color */
+$s-text-color-normal: rgba(75, 85, 99, 1);
+
+/* border-color */
+$s-border-color-normal: rgba(229, 231, 235, 1);

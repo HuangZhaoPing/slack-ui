@@ -1,13 +1,9 @@
 <template>
   <div class="app-header">
     <h1>Slack</h1>
-    <!-- <ul class="app-header__list">
-      <li class="app-header__item">首页</li>
-      <li class="app-header__item">组件</li>
-    </ul> -->
-    <select v-model="selected" @change="onChange">
+    <!-- <select v-model="selected" @change="onChange">
       <option v-for="item in langData" :key="item.lang" :value="item.lang">{{ item.name }}</option>
-    </select>
+    </select> -->
   </div>
 </template>
 

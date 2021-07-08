@@ -1,5 +1,5 @@
 {
-  "version": "0.0.1",
+  "version": "0.0.3",
   "name": "slack-ui",
   "scripts": {
     "website:dev": "vite --config scripts/website.js",
@@ -33,5 +33,10 @@
     "vite": "^2.3.8",
     "vite-plugin-md": "^0.6.7",
     "vue-tsc": "^0.0.24"
-  }
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.es.js",
+  "module": "lib/index.es.js"
 }
