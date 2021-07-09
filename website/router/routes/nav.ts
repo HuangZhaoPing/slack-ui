@@ -26,7 +26,8 @@ export default [
     title: lang.form,
     path: `/${langName}/component/form`,
     children: [
-      { title: lang.input, path: `/${langName}/component/form/input` }
+      { title: lang.input, path: `/${langName}/component/form/input` },
+      { title: lang.menu, path: `/${langName}/component/form/menu` }
     ]
   }
 ]

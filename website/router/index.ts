@@ -63,4 +63,9 @@ function addNavRoutes (data: Route[], lang: string) {
 
 registerRoute()
 
+router.afterEach(() => {
+  const main = document.querySelector('.component-layout__main')
+  main && main.scrollTo(0, 0)
+})
+
 export default router

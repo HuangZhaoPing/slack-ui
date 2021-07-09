@@ -2,11 +2,17 @@ import { App } from 'vue'
 import Button from './button'
 import ButtonGroup from './button-group'
 import Row from './row'
+import Menu from './menu'
+import MenuItem from './menu-item'
+import SubMenu from './sub-menu'
 
 const components = [
   Button,
   ButtonGroup,
-  Row
+  Row,
+  Menu,
+  MenuItem,
+  SubMenu
 ]
 
 export default {
@@ -20,5 +26,8 @@ export default {
 export {
   Button,
   ButtonGroup,
-  Row
+  Row,
+  Menu,
+  MenuItem,
+  SubMenu
 }

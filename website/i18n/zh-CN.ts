@@ -16,7 +16,8 @@ export default {
     grid: 'Grid 栅格',
     button: 'Button 按钮',
     form: '表单组件',
-    input: 'Input 输入框'
+    input: 'Input 输入框',
+    menu: 'Menu 菜单'
   },
   components: {
     1: '显示代码',

@@ -3,7 +3,7 @@ import typescript from '@rollup/plugin-typescript'
 import vuePlugin from 'rollup-plugin-vue'
 const { resolve } = require('./utils')
 
-const exclude = ['styles']
+const exclude = ['styles', 'utils']
 
 const config = fs.readdirSync(resolve('packages')).filter(name => !exclude.includes(name)).map(name => {
   let input = `packages/${name}/index.ts`

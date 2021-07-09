@@ -10,6 +10,7 @@
     "build": "npm run build:styles && npm run build:es && npm run build:umd"
   },
   "dependencies": {
+    "@popperjs/core": "^2.9.2",
     "vue": "^3.0.5",
     "vue-router": "^4.0.10"
   },

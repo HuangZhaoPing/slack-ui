@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6, p, ul, li {
   margin: 0;
   font-family: Menlo, Monaco, Consolas, Courier, monospace;
   overflow-x: auto;
-  padding: 20px;
+  padding: 30px 25px;
   border-radius: 6px;
 }
 

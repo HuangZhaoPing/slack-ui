@@ -1,0 +1,28 @@
+@import "./var.scss";
+
+.s-menu {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  color: $s-text-color-normal;
+
+  &__horizontal {
+    height: 48px;
+    line-height: 48px;
+    flex-direction: row;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 1px;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: $s-border-color-normal;
+    }
+  }
+
+  &__vertical {}
+}

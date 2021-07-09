@@ -55,11 +55,14 @@ export default defineComponent({
 }
 .demo-layout__component, .demo-layout__desc, .demo-layout__code, .demo-layout__button {
   border: 1px solid rgb(229, 231, 235);
-  padding: 15px;
+}
+.demo-layout__component {
+  padding: 40px 25px;
 }
 .demo-layout__desc {
   border-top: 0;
   margin: 0;
+  padding: 10px 25px;
 }
 .demo-layout__inner {
   background-color: rgb(250, 250, 250);
@@ -73,7 +76,7 @@ export default defineComponent({
 }
 .demo-layout__button {
   border-top: 0;
-  padding: 10px 0;
+  padding: 8px 0;
   cursor: pointer;
   display: flex;
   justify-content: center;

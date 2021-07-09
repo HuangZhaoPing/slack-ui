@@ -3,7 +3,7 @@
     <div class="component-layout__nav">
       <side-navigation />
     </div>
-    <div ref="mainRef" class="component-layout__main">
+    <div class="component-layout__main">
       <router-view />
       <indicator />
     </div>
@@ -11,8 +11,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref } from 'vue'
-import { onBeforeRouteUpdate } from 'vue-router'
+import { defineComponent } from 'vue'
 import SideNavigation from '../SideNavigation/index.vue'
 import Indicator from './Indicator.vue'
 
@@ -23,13 +22,7 @@ export default defineComponent({
     Indicator
   },
   setup () {
-    const mainRef: Ref = ref(null)
-    onBeforeRouteUpdate(() => {
-      mainRef.value.scrollTo(0, 0)
-    })
-    return {
-      mainRef
-    }
+    return {}
   }
 })
 </script>
