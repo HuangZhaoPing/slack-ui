@@ -1,10 +1,15 @@
+import { Route } from 'types/website'
 import { getLangConfig } from '@/i18n'
 
-const lang = getLangConfig().nav
+const lang = getLangConfig().pages.home
+const glob = import.meta.glob('/pages/**/*.vue')
 
-export default [
-  {
-    title: lang[1],
-    path: `/home`
-  }
+const routes: Route[] = [
+  { title: lang.title, path: '/home' }
 ]
+
+routes.forEach(item => {
+  item.component = glob[`/pages${item.path}/index.vue`]
+})
+
+export default routes

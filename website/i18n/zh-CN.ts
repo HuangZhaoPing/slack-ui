@@ -3,6 +3,7 @@ export default {
   name: '中文',
   pages: {
     home: {
+      title: '首页',
       1: '我是中文'
     }
   },

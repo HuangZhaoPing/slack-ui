@@ -1,3 +1,4 @@
+import ComponentLayout from '@/components/ComponentLayout/index.vue'
 import { LangConfig, Route } from 'types/website'
 import { createRouter, createWebHistory } from 'vue-router'
 import { getLangMap, getLangName } from '../i18n'
@@ -9,49 +10,40 @@ const langName = getLangName()
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', redirect: `/${langName}/home` },
+    { path: '/', redirect: `/${langName}` },
+    { path: `/${langName}`, redirect: `/${langName}/home` },
     {
       path: `/${langName}/component`,
       name: 'component',
       redirect: `/${langName}/component/guide`,
-      component: () => import('../components/ComponentLayout/index.vue')
+      component: ComponentLayout
     }
   ]
 })
 
 function registerRoute () {
-  Object.values(getLangMap()).forEach((item: LangConfig) => {
-    addLangRoute(item)
-    addPagesRoute(item)
-    addNavRoutes(nav, item.lang)
-  })
+  addPagesRoute()
+  addNavRoutes(nav)
 }
 
-function addLangRoute (config: LangConfig) {
-  router.addRoute({
-    path: `/${config.lang}`,
-    redirect: `/${config.lang}/home`
-  })
-}
-
-function addPagesRoute (config: LangConfig) {
-  pages.forEach(item => {
+function addPagesRoute () {
+  pages.forEach(({ path, component, title }) => {
     router.addRoute({
-      path: `/${config.lang}${item.path}`,
-      component: () => import('../pages' + item.path + '/index.vue'),
-      meta: { title: item.title }
+      path: `/${langName}${path}`,
+      component,
+      meta: { title }
     })
   })
 }
 
-function addNavRoutes (data: Route[], lang: string) {
+function addNavRoutes (data: Route[]) {
   data.forEach(item => {
     if (item.children) {
       router.addRoute('component', {
         path: item.path,
         redirect: item.children[0].path
       })
-      addNavRoutes(item.children, lang)
+      addNavRoutes(item.children)
     } else {
       router.addRoute('component', {
         path: item.path,

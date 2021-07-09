@@ -14,5 +14,6 @@ export declare interface LangMap {
 export declare interface Route {
   title: string,
   path: string,
-  children?: Route[]
+  children?: Route[],
+  component?: any
 }
