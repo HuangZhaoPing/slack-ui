@@ -20,13 +20,14 @@ $large-size-padding: 0 14px;
   justify-content: center;
   line-height: 1;
   user-select: none;
+  margin-right: 10px;
 
   &[disabled] {
     cursor: not-allowed;
   }
 
-  &:not(:last-child) {
-    margin-right: 10px;
+  &:last-of-type {
+    margin-right: 0;
   }
 
   &:not(.s-button__text):active {

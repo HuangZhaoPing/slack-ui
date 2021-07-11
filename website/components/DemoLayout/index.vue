@@ -8,6 +8,7 @@
     </p>
     <div ref="inner" class="demo-layout__inner" >
       <div ref="code" class="demo-layout__code">
+        <s-button class="demo-layout__copy" type="text" @click="copyCode">复制代码</s-button>
         <slot name="code" />
       </div>
     </div>
@@ -33,11 +34,15 @@ export default defineComponent({
       collapse.value = !collapse.value
       inner.value.style.height = collapse.value ? `${code.value.offsetHeight}px` : '0px'
     }
+    function copyCode () {
+      console.log(code.value.querySelector('[code-source]').innerHTML)
+    }
     return {
       lang: getLangConfig().components,
       collapse,
       inner,
       code,
+      copyCode,
       toggleCollapse
     }
   }
@@ -73,8 +78,14 @@ export default defineComponent({
   transition: height .2s;
 }
 .demo-layout__code {
+  position: relative;
   border-top: 0;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+}
+.demo-layout__copy {
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 .demo-layout__button {
   border-top: 0;

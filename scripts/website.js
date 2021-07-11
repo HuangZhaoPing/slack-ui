@@ -24,7 +24,8 @@ export default defineConfig({
             const script = `import ${match} from './demos/${match}.vue'`
             if (!scripts.includes(script)) scripts.push(script)
             const filePath = path.resolve(id, `../demos/${match}.vue`)
-            return highlightCode(fs.readFileSync(`${filePath}`, 'utf-8'), 'html')
+            const content = fs.readFileSync(`${filePath}`, 'utf-8')
+            return `<div v-show="false" code-source><!--${content}--></div>\n${highlightCode(content, 'html')}`
           })
           if (scripts.length > 0) code = `${code}\n<script setup>\n${scripts.join('\n')}\n</script>\n`
           return code
