@@ -6,7 +6,7 @@
         type="text"
         icon="iconfont icon-left"
         @click="pushRoute(prevRoute)">
-        {{ lang[3] }}：{{ prevRoute.title }}
+        {{ lang[3] }}：{{ prevRoute.meta.title }}
       </s-button>
     </div>
 
@@ -17,7 +17,7 @@
         icon="iconfont icon-right"
         icon-position="right"
         @click="pushRoute(nextRoute)">
-        {{ lang[4] }}：{{ nextRoute.title }}
+        {{ lang[4] }}：{{ nextRoute.meta.title }}
       </s-button>
     </div>
   </div>
@@ -26,8 +26,8 @@
 <script lang="ts">
 import { defineComponent, watch, ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { getLangName, getLangConfig } from '@/i18n'
-import nav from '@/router/routes/nav'
+import { getLangConfig } from '@/i18n'
+import { formatRoutes as routes } from '@/router/navRoutes'
 import { Route } from 'types/website'
 
 export default defineComponent({
@@ -47,7 +47,7 @@ export default defineComponent({
 
     function flat () {
       const result: Route[] = []
-      nav.forEach(({ children }) => {
+      routes.forEach(({ children }) => {
         if (children) {
           result.push(...children)
         }

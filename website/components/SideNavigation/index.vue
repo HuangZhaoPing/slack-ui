@@ -1,10 +1,10 @@
 <template>
   <ul class="side-navigation__list">
-    <li class="side-navigation__item" v-for="group in nav" :key="group.path">
-      <h4 class="side-navigation__title">{{ group.title }}</h4>
+    <li class="side-navigation__item" v-for="group in routes" :key="group.path">
+      <h4 class="side-navigation__title">{{ group.meta && group.meta.title }}</h4>
       <ul class="side-navigation__list">
         <li class="side-navigation__item" v-for="item in group.children" :key="item.key">
-          <a :class="`side-navigation__link ${isActive(item.path) && 'active'}`" @click="pushRoute(item.path)">{{ item.title }}</a>
+          <a :class="`side-navigation__link ${isActive(item.path) && 'active'}`" @click="pushRoute(item.path)">{{ item.meta && item.meta.title }}</a>
         </li>
       </ul>
     </li>
@@ -14,7 +14,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import nav from '@/router/routes/nav'
+import { formatRoutes as routes } from '@/router/navRoutes'
 
 export default defineComponent({
   name: 'AppNav',
@@ -28,7 +28,7 @@ export default defineComponent({
       router.push(path)
     }
     return {
-      nav,
+      routes,
       router,
       isActive,
       pushRoute

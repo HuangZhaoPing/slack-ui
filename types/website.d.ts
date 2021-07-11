@@ -1,3 +1,5 @@
+import { RouteMeta } from 'vue-router'
+
 export declare interface LangConfig {
   lang: string,
   name: string,
@@ -12,8 +14,9 @@ export declare interface LangMap {
 }
 
 export declare interface Route {
-  title: string,
   path: string,
+  meta: RouteMeta,
   children?: Route[],
-  component?: any
+  component?: () => Promise<{[key: string]: any}>,
+  redirect?: string
 }

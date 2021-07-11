@@ -1,9 +1,8 @@
 import ComponentLayout from '@/components/ComponentLayout/index.vue'
-import { LangConfig, Route } from 'types/website'
-import { createRouter, createWebHistory } from 'vue-router'
-import { getLangMap, getLangName } from '../i18n'
-import pages from './routes/pages'
-import nav from './routes/nav'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { getLangName } from '../i18n'
+import { flatRoutes as pageRoutes } from './pageRoutes'
+import { flatRoutes as navRoutes } from './navRoutes'
 
 const langName = getLangName()
 
@@ -22,42 +21,29 @@ const router = createRouter({
 })
 
 function registerRoute () {
-  addPagesRoute()
-  addNavRoutes(nav)
+  addPagesRoutes()
+  addNavRoutes()
 }
 
-function addPagesRoute () {
-  pages.forEach(({ path, component, title }) => {
-    router.addRoute({
-      path: `/${langName}${path}`,
-      component,
-      meta: { title }
-    })
+function addPagesRoutes () {
+  pageRoutes.forEach(route => {
+    const { children, ...value } = route
+    router.addRoute(<RouteRecordRaw>value)
   })
 }
 
-function addNavRoutes (data: Route[]) {
-  data.forEach(item => {
-    if (item.children) {
-      router.addRoute('component', {
-        path: item.path,
-        redirect: item.children[0].path
-      })
-      addNavRoutes(item.children)
-    } else {
-      router.addRoute('component', {
-        path: item.path,
-        component: () => import('../docs/'+ item.path.replace(/\/component/, '') +'/index.md')
-      })
-    }
+function addNavRoutes () {
+  navRoutes.forEach(route => {
+    const { children, ...value } = route
+    router.addRoute('component', <RouteRecordRaw>value)
   })
 }
-
-registerRoute()
 
 router.afterEach(() => {
   const main = document.querySelector('.component-layout__main')
   main && main.scrollTo(0, 0)
 })
+
+registerRoute()
 
 export default router
