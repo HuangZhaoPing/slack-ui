@@ -26,11 +26,15 @@ app.use(ButtonGroup)
 
 ## 基础使用
 
-::: demo 按钮拥有默认按钮、主要按钮、成功按钮、危险按钮、文字按钮五种样式，通过 type 属性区分，默认为 default 则默认按钮。
+按钮拥有默认、主要、成功、危险、文字五种样式，可以通过换肤功能替换颜色。
+
+::: demo 通过 type 属性区分，默认为 default。
 basic
 :::
 
 ## 禁用状态
+
+禁用后，不可点击。
 
 ::: demo 通过 disabled 属性将按钮设置为禁用状态。
 disabled
@@ -38,7 +42,9 @@ disabled
 
 ## 按钮大小
 
-::: demo 通过 size 属性设置按钮尺寸，尺寸有 small、medium（默认）、large 三种，默认为 medium。
+按钮有小（small）、中（medium）、大（large）三种尺寸。
+
+::: demo 通过 size 属性设置按钮尺寸，默认为 medium。
 size
 :::
 
@@ -50,7 +56,7 @@ size
 icon
 :::
 
-可以设置 icon 的显示位置。
+设置 icon 的显示位置，左边或右边。
 
 ::: demo 通过 icon-position 属性设置 icon 的显示位置，默认为左边。
 icon2
@@ -73,6 +79,8 @@ block
 :::
 
 ## 加载效果
+
+加载效果，不可点击，防止多次提交。
 
 ::: demo 通过 loading 设置加载效果
 loading

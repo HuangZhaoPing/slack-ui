@@ -58,6 +58,8 @@ export default defineComponent({
 }
 .demo-layout__component {
   padding: 40px 25px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
 }
 .demo-layout__desc {
   border-top: 0;
@@ -80,6 +82,8 @@ export default defineComponent({
   cursor: pointer;
   display: flex;
   justify-content: center;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 .demo-layout__text {
   color: #4b5563;
