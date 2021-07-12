@@ -23,7 +23,7 @@ export default defineConfig({
       transforms: {
         after: (code, id) => {
           const scripts = []
-          code = code.replace(/<!--\$([\s\S]+?)\$-->/g, (source, match) => {
+          code = code.replace(/<!--\$([a-zA-Z0-9_-]+)\$-->/g, (source, match) => {
             const script = `import ${match} from './demos/${match}.vue'`
             if (!scripts.includes(script)) scripts.push(script)
             const filePath = path.resolve(id, `../demos/${match}.vue`)

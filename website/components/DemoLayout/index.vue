@@ -36,14 +36,14 @@ export default defineComponent({
       inner.value.style.height = collapse.value ? `${code.value.offsetHeight}px` : '0px'
     }
     function copyCode () {
-      const match = code.value.querySelector('[data-source]').innerHTML.match(/<!--([\s\S]+?)-->/)
-      if (match && match[1]) {
-        copyToClipboard(match[1]).then(() => {
-          console.log('复制成功')
-        }).catch(() => {
-          console.log('复制失败')
-        })
-      }
+      const target = code.value.querySelector('[data-source]')
+      const match = target.innerHTML.match(new RegExp('<!--([\\s\\S]+)-->'))
+      const text = match ? match[1] : ''
+      copyToClipboard(text).then(() => {
+        console.log('复制成功')
+      }).catch(() => {
+        console.log('复制失败')
+      })
     }
     return {
       lang: getLangConfig().components,
