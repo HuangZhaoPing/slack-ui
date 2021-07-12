@@ -12,6 +12,9 @@ export default defineConfig({
   resolve: {
     alias: { '@': resolve('website') }
   },
+  build: {
+    outDir: '../dist'
+  },
   plugins: [
     Vue({
       include: [/\.vue$/, /\.md$/]
