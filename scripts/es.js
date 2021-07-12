@@ -1,5 +1,5 @@
 import fs from 'fs'
-import typescript from '@rollup/plugin-typescript'
+import typescript from 'rollup-plugin-typescript2'
 import vuePlugin from 'rollup-plugin-vue'
 const { resolve } = require('./utils')
 
@@ -22,7 +22,7 @@ const config = fs.readdirSync(resolve('packages')).filter(name => !exclude.inclu
       }
     },
     plugins: [
-      typescript({ target: 'es5' }),
+      typescript(),
       vuePlugin()
     ],
     external: ['vue']

@@ -1,4 +1,4 @@
-import typescript from '@rollup/plugin-typescript'
+import typescript from 'rollup-plugin-typescript2'
 import vuePlugin from 'rollup-plugin-vue'
 import { terser } from 'rollup-plugin-terser'
 import { name, version } from '../package.json'
@@ -34,7 +34,7 @@ export default {
     })
   ],
   plugins:  [
-    typescript({ target: 'es5' }),
+    typescript(),
     vuePlugin()
   ],
   external: ['vue']
