@@ -22,6 +22,7 @@
 <script lang="ts">
 import { ref, Ref, defineComponent } from 'vue'
 import { getLangConfig } from '@/i18n'
+import { copyToClipboard } from '@/utils'
 
 export default defineComponent({
   name: 'DemoLayout',
@@ -35,7 +36,14 @@ export default defineComponent({
       inner.value.style.height = collapse.value ? `${code.value.offsetHeight}px` : '0px'
     }
     function copyCode () {
-      console.log(code.value.querySelector('[code-source]').innerHTML)
+      const match = code.value.querySelector('[data-source]').innerHTML.match(/<!--\$([\s\S]+?)\$-->/)
+      if (match && match[1]) {
+        copyToClipboard(match[1]).then(() => {
+          console.log('复制成功')
+        }).catch(() => {
+          console.log('复制失败')
+        })
+      }
     }
     return {
       lang: getLangConfig().components,
@@ -54,33 +62,31 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   transition: box-shadow .2s;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgb(229, 231, 235);
 }
 .demo-layout:hover {
   box-shadow: 0 2px 7px rgb(0 0 0 / 15%);
 }
 .demo-layout__component, .demo-layout__desc, .demo-layout__code, .demo-layout__button {
-  border: 1px solid rgb(229, 231, 235);
+  border-bottom: 1px solid rgb(229, 231, 235);
 }
 .demo-layout__component {
   padding: 40px 25px;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
 }
 .demo-layout__desc {
-  border-top: 0;
   margin: 0;
   padding: 10px 25px;
 }
 .demo-layout__inner {
-  background-color: rgb(250, 250, 250);
   height: 0px;
   overflow: hidden;
   transition: height .2s;
 }
 .demo-layout__code {
+  background-color: rgb(250, 250, 250);
   position: relative;
-  border-top: 0;
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
 }
 .demo-layout__copy {
   position: absolute;
@@ -88,13 +94,11 @@ export default defineComponent({
   top: 10px;
 }
 .demo-layout__button {
-  border-top: 0;
+  border-bottom: 0;
   padding: 8px 0;
   cursor: pointer;
   display: flex;
   justify-content: center;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
 }
 .demo-layout__text {
   color: #4b5563;
