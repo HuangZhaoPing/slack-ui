@@ -36,7 +36,7 @@ export default defineComponent({
       inner.value.style.height = collapse.value ? `${code.value.offsetHeight}px` : '0px'
     }
     function copyCode () {
-      const match = code.value.querySelector('[data-source]').innerHTML.match(/<!--\$([\s\S]+?)\$-->/)
+      const match = code.value.querySelector('[data-source]').innerHTML.match(/<!--([\s\S]+?)-->/)
       if (match && match[1]) {
         copyToClipboard(match[1]).then(() => {
           console.log('复制成功')
