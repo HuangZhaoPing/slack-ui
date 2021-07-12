@@ -15,9 +15,7 @@ export function copyToClipboard (val: string) {
       reject(e)
     })
     span.click()
-    // setTimeout(() => {
-      document.body.removeChild(span)
-      clipboard.destroy()
-    // })
+    document.body.removeChild(span)
+    clipboard.destroy()
   })
 }
