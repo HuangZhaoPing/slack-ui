@@ -9,7 +9,14 @@
 </template>
 
 <script>
-export default {
+import { ref } from 'vue'
 
+export default {
+  setup () {
+    const active = ref('1')
+    return {
+      active
+    }
+  }
 }
 </script>

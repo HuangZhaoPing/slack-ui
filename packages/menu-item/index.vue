@@ -4,6 +4,9 @@
 
 <script>
 export default {
-  name: 'SMenuItem'
+  name: 'SMenuItem',
+  props: {
+    index: String
+  }
 }
 </script>
