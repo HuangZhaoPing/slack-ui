@@ -1,7 +1,7 @@
 <template>
   <li
     :class="itemClass"
-    :data-slack-menu-item-value="value">
+    :data-menu-item-value="value">
     <slot />
   </li>
 </template>

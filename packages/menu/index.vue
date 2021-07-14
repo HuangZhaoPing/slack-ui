@@ -36,7 +36,7 @@ export default defineComponent({
       emit('update:modelValue', value)
     }
     function onClick ({ target }: { target: EventTarget }) {
-      const index = findDatasetValue(target, 'slackMenuItemValue')
+      const index = findDatasetValue(target, 'menuItemValue')
       index && updateActive(index)
     }
     return {
