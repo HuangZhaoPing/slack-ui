@@ -1,10 +1,14 @@
 <template>
-  <ul ref="menuRef" :class="`s-menu s-menu__${mode}`" @click="onClick"><slot /></ul>
+  <ul
+    :class="menuClass"
+    @click="onClick">
+    <slot />
+  </ul>
 </template>
 
 <script lang="ts">
-import { watch, defineComponent, onMounted, ref, Ref } from 'vue'
-import { findParentNodeByClassName } from '../utils'
+import { computed, defineComponent, provide, reactive } from 'vue'
+import { findDatasetValue } from '../utils'
 
 export default defineComponent({
   name: 'SMenu',
@@ -15,33 +19,29 @@ export default defineComponent({
     },
     modelValue: String
   },
-  setup (props, { slots, emit }) {
-    const menuRef: Ref = ref(null)
-    let currentNode: Element | null = null
-    const defaultSlots = slots.default ? slots.default() : []
-
-    onMounted(() => {
-      watch(() => props.modelValue, val => {
-        currentNode && currentNode.classList.remove('s-menu-item__active')
-        const index = defaultSlots.findIndex(item => item.props?.index === val)
-        const items = Array.from(menuRef.value.querySelectorAll(':scope > .s-menu-item')) as Element[]
-        const target = items[index]
-        target && target.classList.add('s-menu-item__active')
-        currentNode = target
-      }, {
-        immediate: true
-      })
+  setup (props, { emit }) {
+    const menuClass = computed(() => {
+      return {
+        's-menu': true,
+        [`s-menu__${props.mode}`]: true
+      }
     })
-    
+    const menuProvider = reactive({
+      active: props.modelValue,
+      updateActive
+    })
+    provide('menuProvider', menuProvider)
+    function updateActive (value: string) {
+      menuProvider.active = value
+      emit('update:modelValue', value)
+    }
     function onClick ({ target }: { target: EventTarget }) {
-      const node = findParentNodeByClassName(target, 's-menu-item')
-      const items = Array.from(menuRef.value.querySelectorAll('.s-menu-item')) as Element[]
-      const index = items.findIndex(item => item === node)
-      emit('update:modelValue', defaultSlots[index].props?.index)
+      const index = findDatasetValue(target, 'slackMenuItemValue')
+      index && updateActive(index)
     }
     return {
-      onClick,
-      menuRef
+      menuClass,
+      onClick
     }
   }
 })

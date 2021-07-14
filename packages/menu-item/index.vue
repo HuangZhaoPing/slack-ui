@@ -1,12 +1,31 @@
 <template>
-  <li class="s-menu-item"><slot /></li>
+  <li
+    :class="itemClass"
+    :data-slack-menu-item-value="value">
+    <slot />
+  </li>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { computed, defineComponent, inject } from 'vue'
+import { MenuProvider } from 'types/packages'
+
+export default defineComponent({
   name: 'SMenuItem',
   props: {
-    index: String
+    value: String
+  },
+  setup (props) {
+    const menuProvider = inject<MenuProvider>('menuProvider')
+    const itemClass = computed(() => {
+      return {
+        's-menu-item': true,
+        's-menu-item__active': menuProvider!.active === props.value
+      }
+    })
+    return {
+      itemClass
+    }
   }
-}
+})
 </script>

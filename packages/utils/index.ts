@@ -1,5 +1,8 @@
-export function findParentNodeByClassName (node: Node | EventTarget | Element, className: string): Element | null {
-  if ((<Element>node).classList.contains(className)) return <Element>node
-  if ((<Node>node).parentNode) return findParentNodeByClassName((<Node>node).parentNode!, className)
-  return null
+export function findDatasetValue (target: Node | EventTarget, key: string): string | undefined {
+  let ele = <HTMLElement>target
+  while (ele && ele.dataset && !ele.dataset[key]) {
+    const parentNode = (<Node>ele).parentNode
+    ele = <HTMLElement>parentNode || null
+  }
+  return ele && ele.dataset ? ele.dataset[key] : undefined
 }

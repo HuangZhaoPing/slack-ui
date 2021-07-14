@@ -1,9 +1,10 @@
 <template>
   <div>
+    xxx: {{ active }}
     <s-menu v-model="active">
-      <s-menu-item index="1">菜单一</s-menu-item>
-      <s-menu-item index="2">菜单二</s-menu-item>
-      <s-menu-item index="3">菜单三</s-menu-item>
+      <s-menu-item value="1"><div>菜单一</div></s-menu-item>
+      <s-menu-item value="2">菜单二</s-menu-item>
+      <s-menu-item value="3">菜单三</s-menu-item>
     </s-menu>
   </div>
 </template>
