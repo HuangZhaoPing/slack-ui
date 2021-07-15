@@ -1,17 +1,17 @@
 @import "./var.scss";
 
 .s-menu {
+  position: relative;
   display: flex;
+  flex-wrap: wrap;
   padding: 0;
   margin: 0;
   list-style: none;
   color: $s-text-color-normal;
 
   &__horizontal {
-    height: 48px;
     line-height: 48px;
     flex-direction: row;
-    position: relative;
 
     &::after {
       content: "";
@@ -24,5 +24,17 @@
     }
   }
 
-  &__vertical {}
+  &__vertical {
+    flex-direction: column;
+    height: 100%;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      width: 1px;
+      right: 0;
+      height: 100%;
+      background-color: $s-border-color-normal;
+    }
+  }
 }

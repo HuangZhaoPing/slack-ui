@@ -38,6 +38,7 @@ export default defineComponent({
   border-right: 1px solid rgb(229, 231, 235);
   width: 180px;
   padding: 20px 35px;
+  overflow-y: auto;
 }
 .component-layout__main {
   flex-grow: 1;

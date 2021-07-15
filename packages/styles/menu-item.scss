@@ -1,20 +1,37 @@
 @import "./var.scss";
 
 .s-menu-item {
-  padding: 0 24px;
   position: relative;
-  z-index: 1;
   transition: border-color .2s;
-  border-bottom: 2px solid transparent;
   cursor: pointer;
   display: flex;
   align-items: center;
 
-  &__active, &:hover {
-    border-bottom: 2px solid var(--s-color-primary, $s-color-primary);
-  }
-
   &__active {
     color: var(--s-color-primary, $s-color-primary);
+  }
+}
+
+.s-menu__horizontal {
+  .s-menu-item {
+    padding: 0 24px;
+    z-index: 1;
+    border-bottom: 2px solid transparent;
+
+    &__active, &:hover {
+      border-bottom: 2px solid var(--s-color-primary, $s-color-primary);
+    }
+  }
+}
+
+.s-menu__vertical {
+  .s-menu-item {
+    padding: 8px 24px;
+    z-index: 1;
+    border-right: 2px solid transparent;
+
+    &__active, &:hover {
+      border-right: 2px solid var(--s-color-primary, $s-color-primary);
+    }
   }
 }
