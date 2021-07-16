@@ -8,12 +8,8 @@ export function copyToClipboard (val: string) {
     span.setAttribute('data-clipboard-text', val)
     document.body.append(span)
     const clipboard = new Clipboard(`#${id}`)
-    clipboard.on('success', e => {
-      resolve(e)
-    })
-    clipboard.on('error', e => {
-      reject(e)
-    })
+    clipboard.on('success', e => (resolve(e)))
+    clipboard.on('error', e => (reject(e)))
     span.click()
     document.body.removeChild(span)
     clipboard.destroy()

@@ -6,6 +6,8 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  font-size: 14px;
+  color: $s-text-color-normal;
 
   &__active {
     color: var(--s-color-primary, $s-color-primary);
@@ -17,6 +19,7 @@
     padding: 0 24px;
     z-index: 1;
     border-bottom: 2px solid transparent;
+    line-height: 48px;
 
     &__active, &:hover {
       border-bottom: 2px solid var(--s-color-primary, $s-color-primary);
@@ -26,12 +29,17 @@
 
 .s-menu__vertical {
   .s-menu-item {
-    padding: 8px 24px;
+    padding-right: 24px;
+    line-height: 46px;
     z-index: 1;
     border-right: 2px solid transparent;
 
     &__active, &:hover {
-      border-right: 2px solid var(--s-color-primary, $s-color-primary);
+      background-color: rgba(0, 0, 0, .03);
     }
+
+    // &__active {
+    //   border-right: 2px solid var(--s-color-primary, $s-color-primary);
+    // }
   }
 }

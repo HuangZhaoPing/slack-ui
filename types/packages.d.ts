@@ -1,4 +1,4 @@
 export declare interface MenuProvider {
-  active: string
+  defaultActive: string
   updateActive (value: string): void
 }

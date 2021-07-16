@@ -1,0 +1,17 @@
+@import "./var.scss";
+
+.s-menu-group {
+  &__title {
+    color: $s-text-color-xx;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    padding-right: 24px;
+    margin: 8px 0;
+  }
+  & ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}

@@ -64,13 +64,13 @@ export default defineComponent({
   transition: box-shadow .2s;
   border-radius: 6px;
   overflow: hidden;
-  border: 1px solid rgb(229, 231, 235);
+  border: 1px solid rgb(243, 244, 246);
 }
 .demo-layout:hover {
   box-shadow: 0 2px 7px rgb(0 0 0 / 15%);
 }
 .demo-layout__component, .demo-layout__desc, .demo-layout__code, .demo-layout__button {
-  border-bottom: 1px solid rgb(229, 231, 235);
+  border-bottom: 1px solid rgb(243, 244, 246);
 }
 .demo-layout__component {
   padding: 40px 25px;

@@ -27,17 +27,17 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .component-layout {
   display: flex;
   height: 100%;
   overflow: hidden;
 }
 .component-layout__nav {
+  padding: 40px 0;
   flex-shrink: 0;
-  border-right: 1px solid rgb(229, 231, 235);
-  width: 180px;
-  padding: 20px 35px;
+  width: 220px;
+  border-right: 1px solid rgb(243, 244, 246);
   overflow-y: auto;
 }
 .component-layout__main {

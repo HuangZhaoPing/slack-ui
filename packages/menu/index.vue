@@ -1,13 +1,11 @@
 <template>
-  <ul
-    :class="menuClass"
-    @click="onClick">
+  <ul :class="menuClass" @click="onClick">
     <slot />
   </ul>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, provide, reactive } from 'vue'
+import { computed, defineComponent, provide, reactive, watch } from 'vue'
 import { findDatasetValue } from '../utils'
 
 export default defineComponent({
@@ -15,10 +13,11 @@ export default defineComponent({
   props: {
     mode: {
       type: String,
-      default: 'horizontal'
+      default: 'vertical'
     },
-    modelValue: String
+    defaultActive: String
   },
+  emits: ['change'],
   setup (props, { emit }) {
     const menuClass = computed(() => {
       return {
@@ -26,14 +25,15 @@ export default defineComponent({
         [`s-menu__${props.mode}`]: true
       }
     })
+    watch(() => props.defaultActive, val => (menuProvider.defaultActive = val))
     const menuProvider = reactive({
-      active: props.modelValue,
+      defaultActive: props.defaultActive,
       updateActive
     })
     provide('menuProvider', menuProvider)
     function updateActive (value: string) {
-      menuProvider.active = value
-      emit('update:modelValue', value)
+      menuProvider.defaultActive = value
+      emit('change', value)
     }
     function onClick ({ target }: { target: EventTarget }) {
       const index = findDatasetValue(target, 'menuItemValue')

@@ -34,13 +34,13 @@ h1, h2, h3, h4, h5, h6, p, ul, li {
 }
 
 ::-webkit-scrollbar-thumb {
-  /* box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); */
-  background: rgb(209, 213, 219);
+  background-color: rgb(243, 244, 246);
+  border-radius: 4px;
 }
 
-::-webkit-scrollbar-track {
-  /* background: #eee; */
-}
+/* ::-webkit-scrollbar-track {
+  background: #eee;
+} */
 
 table {
   width: 100%;

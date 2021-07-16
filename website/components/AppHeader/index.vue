@@ -1,63 +1,77 @@
 <template>
   <div class="app-header">
-    <router-link :to="`/${selected}`">
-      <h1>Slack</h1>
-    </router-link>
-
-    <ul class="app-header__nav">
-      <li><router-link :to="`/${selected}`">首页</router-link></li>
-      <li><router-link :to="`/${selected}/component`">组件</router-link></li>
-    </ul>
+    <div style="flex: 1 1 auto">
+      <router-link :to="`/${langName}`">
+        <h1>Slack</h1>
+      </router-link>
+    </div>
+    <s-menu
+      class="app-header__menu"
+      mode="horizontal"
+      :default-active="defaultActive"
+      @change="onMenuChange">
+      <s-menu-item
+        v-for="item in menus"
+        :key="item.value"
+        :value="item.value">
+        {{ item.label }}
+      </s-menu-item>
+    </s-menu>
+  </div>
     <!-- <select v-model="selected" @change="onChange">
       <option v-for="item in langData" :key="item.lang" :value="item.lang">{{ item.name }}</option>
     </select> -->
-  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { useRouter } from 'vue-router'
+import { defineComponent, computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { getLangName, getLangMap } from '@/i18n'
 
 export default defineComponent({
   setup () {
     const router = useRouter()
+    const route = useRoute()
+    const langName = getLangName()
+    const menus = [
+      { label: '组件', value: `/${langName}/component` }
+    ]
+    const defaultActive = computed(() => {
+      const match = route.path.match(new RegExp(`\\/${langName}\\/[^/]+`))
+      return match && match[0]
+    })
     const onChange = ({ target }: { target: HTMLInputElement }) => {
-      const value = target.value
-      const fullPath = router.currentRoute.value.fullPath
-      location.href = `${location.origin}${fullPath.replace(/\/[^/]+/, `/${value}`)}`
+      location.href = `${location.origin}${route.fullPath.replace(/\/[^/]+/, `/${target.value}`)}`
+    }
+    function onMenuChange (value: string) {
+      router.push(value)
     }
     return {
       langData: Object.values(getLangMap()),
-      selected: getLangName(),
-      onChange
+      onChange,
+      onMenuChange,
+      defaultActive,
+      menus,
+      langName
     }
   }
 })
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .app-header {
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, .1);
+  padding: 0 20px;
   display: flex;
+  height: 60px;
   align-items: center;
-}
-.app-header__list {
-  margin: 0;
-  padding: 0;
-}
-.app-header__item {
-  float: left;
-  list-style: none;
-}
-.app-header__nav {
-  padding: 0;
-  margin: 0 40px;
-  display: flex;
-  align-items: center;
-  list-style: none;
 
-  li:not(:first-child) {
-    margin-left: 20px
+  &__menu {
+    margin: 0 30px;
+    height: 100%;
+    &::after {
+      display: none;
+    }
   }
 }
 </style>

@@ -1,13 +1,15 @@
 <template>
   <li
+    ref="menuItem"
     :class="itemClass"
-    :data-menu-item-value="value">
+    :data-menu-item-value="value"
+    :style="{ paddingLeft }">
     <slot />
   </li>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject } from 'vue'
+import { computed, defineComponent, inject, ref, Ref } from 'vue'
 import { MenuProvider } from 'types/packages'
 
 export default defineComponent({
@@ -16,15 +18,20 @@ export default defineComponent({
     value: String
   },
   setup (props) {
+    const menuItem: Ref = ref(null)
     const menuProvider = inject<MenuProvider>('menuProvider')
+    const paddingLeft = ref('24px')
+
     const itemClass = computed(() => {
       return {
         's-menu-item': true,
-        's-menu-item__active': menuProvider!.active === props.value
+        's-menu-item__active': menuProvider!.defaultActive === props.value
       }
     })
     return {
-      itemClass
+      menuItem,
+      itemClass,
+      paddingLeft
     }
   }
 })

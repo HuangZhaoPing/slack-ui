@@ -29,12 +29,7 @@ export default defineComponent({
   height: 100vh;
 }
 .app-layout__header {
-  padding: 0 15px;
-  display: flex;
-  align-items: center;
   flex-shrink: 0;
-  border-bottom: 1px solid rgb(229, 231, 235);
-  height: 60px;
 }
 .app-layout__main {
   flex-grow: 1;

@@ -5,6 +5,7 @@ import Row from './row'
 import Menu from './menu'
 import MenuItem from './menu-item'
 import SubMenu from './sub-menu'
+import MenuGroup from './menu-group'
 
 const components = [
   Button,
@@ -12,12 +13,14 @@ const components = [
   Row,
   Menu,
   MenuItem,
-  SubMenu
+  SubMenu,
+  MenuGroup
 ]
 
 export default {
   install (app: App) {
     components.forEach(item => {
+      console.log('xxx', item)
       app.component(item.name, item)
     })
   }
@@ -29,5 +32,6 @@ export {
   Row,
   Menu,
   MenuItem,
-  SubMenu
+  SubMenu,
+  MenuGroup
 }
