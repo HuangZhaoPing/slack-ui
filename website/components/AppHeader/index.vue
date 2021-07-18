@@ -8,7 +8,7 @@
     <s-menu
       class="app-header__menu"
       mode="horizontal"
-      :default-active="defaultActive"
+      :active="defaultActive"
       @change="onMenuChange">
       <s-menu-item
         v-for="item in menus"

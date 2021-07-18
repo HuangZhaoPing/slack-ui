@@ -1,5 +1,5 @@
 <template>
-  <s-menu default-active="1-1" mode="vertical">
+  <s-menu active="1-1" mode="vertical">
     <s-menu-group>
       <template #title>group1</template>
       <s-menu-item value="1-1">item1</s-menu-item>

@@ -1,7 +1,7 @@
 <template>
   <s-menu
     class="side-navigation"
-    :default-active="route.fullPath"
+    :active="route.fullPath"
     @change="onChange">
     <s-menu-group v-for="group in routes" :key="group.path">
       <template #title>

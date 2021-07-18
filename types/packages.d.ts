@@ -1,4 +1,8 @@
 export declare interface MenuProvider {
-  defaultActive: string
+  mode: string
+  active: string
+  activeBackgroundColor: string
+  textColor: string
+  activeTextColor: string
   updateActive (value: string): void
 }

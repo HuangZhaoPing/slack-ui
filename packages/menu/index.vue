@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, provide, reactive, watch, onMounted, ref, Ref } from 'vue'
+import { computed, defineComponent, provide, reactive, watch, ref, Ref } from 'vue'
 import { findParentNodeByDataset } from '../utils'
 
 export default defineComponent({
@@ -20,7 +20,7 @@ export default defineComponent({
       type: String,
       default: 'vertical'
     },
-    defaultActive: String,
+    active: String,
     backgroundColor: String,
     activeBackgroundColor: String,
     textColor: String,
@@ -40,26 +40,22 @@ export default defineComponent({
       props.backgroundColor && (style.backgroundColor = props.backgroundColor)
       return style
     })
-    watch(() => props.defaultActive, val => (menuProvider.defaultActive = val))
-    onMounted(() => {
-      Array.from(menuRef.value.querySelectorAll('.s-menu-item')).forEach((item: any) => {
-        if (props.textColor) {
-          item.style.color = props.textColor
-        }
-      })
-    })
+    watch(() => props.active, val => (menuProvider.active = val))
     const menuProvider = reactive({
-      defaultActive: props.defaultActive,
+      mode: props.mode,
+      active: props.active,
+      activeBackgroundColor: props.activeBackgroundColor,
+      textColor: props.textColor,
+      activeTextColor: props.activeTextColor,
       updateActive
     })
     provide('menuProvider', menuProvider)
     function updateActive (value: string) {
-      menuProvider.defaultActive = value
+      menuProvider.active = value
       emit('change', value)
     }
     function onClick ({ target }: { target: EventTarget }) {
       const node = findParentNodeByDataset(target, 'menuItemValue')
-      node && (node.style.backgroundColor = props.activeTextColor!)
       node && updateActive(node.dataset.menuItemValue!)
     }
     function onMouseover ({ target }: { target: EventTarget }) {
