@@ -30,16 +30,7 @@ export default defineComponent({
     const itemStyle = computed(() => {
       const style: Record<string, string> = {}
       if (menuProvider) {
-        const { active, mode, textColor, activeBackgroundColor, activeTextColor } = menuProvider
-        if (mode === 'vertical') style.paddingLeft = '24px'
-        if (textColor) style.color = textColor
-        if (active === props.value) {
-          if (activeBackgroundColor) style.backgroundColor = activeBackgroundColor
-          if (activeTextColor) {
-            style.color = activeTextColor
-            style.borderBottomColor = activeTextColor
-          }
-        }
+        if (menuProvider.mode === 'vertical') style.paddingLeft = '24px'
       }
       return style
     })

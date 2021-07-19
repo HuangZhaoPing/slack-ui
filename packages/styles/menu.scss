@@ -6,34 +6,41 @@
   padding: 0;
   margin: 0;
   list-style: none;
-  color: $s-text-color-normal;
+  
+  &__light {
+    background-color: #FFFFFF;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: $slack-border-color-normal;
+    }
+  }
+
+  &__dark {
+    background-color: #4B5563;
+  }
 
   &__horizontal {
     flex-direction: row;
     flex-wrap: wrap;
 
-    // &::after {
-    //   content: "";
-    //   position: absolute;
-    //   height: 1px;
-    //   left: 0;
-    //   bottom: 0;
-    //   width: 100%;
-    //   background-color: $s-border-color-normal;
-    // }
+    &.s-menu__light::after {
+      height: 1px;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+    }
   }
 
   &__vertical {
     flex-direction: column;
-    // height: 100%;
     
-    // &::after {
-    //   content: "";
-    //   position: absolute;
-    //   width: 1px;
-    //   right: 0;
-    //   height: 100%;
-    //   background-color: $s-border-color-normal;
-    // }
+    &.s-menu__light::after {
+      width: 1px;
+      right: 0;
+      top: 0;
+      height: 100%;
+    }
   }
 }

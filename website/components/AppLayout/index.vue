@@ -23,16 +23,25 @@ export default defineComponent({
 
 <style scoped>
 .app-layout {
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
   height: 100vh;
+  position: relative;
 }
 .app-layout__header {
-  flex-shrink: 0;
+  height: 60px;
+  position: absolute;
+  z-index: 1;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, .1);
+  top: 0;
+  left: 0;
+  right: 0;
 }
 .app-layout__main {
-  flex-grow: 1;
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  right: 0;
   overflow-x: hidden;
   overflow-y: auto;
 }

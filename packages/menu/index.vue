@@ -2,9 +2,7 @@
   <ul
     ref="menuRef"
     :class="menuClass"
-    :style="menuStyle"
-    @click="onClick"
-    @mouseover="onMouseover">
+    @click="onClick">
     <slot />
   </ul>
 </template>
@@ -20,11 +18,11 @@ export default defineComponent({
       type: String,
       default: 'vertical'
     },
-    active: String,
-    backgroundColor: String,
-    activeBackgroundColor: String,
-    textColor: String,
-    activeTextColor: String
+    theme: {
+      type: String,
+      default: 'light'
+    },
+    active: String
   },
   emits: ['change'],
   setup (props, { emit }) {
@@ -32,21 +30,15 @@ export default defineComponent({
     const menuClass = computed(() => {
       return {
         's-menu': true,
-        [`s-menu__${props.mode}`]: true
+        [`s-menu__${props.mode}`]: true,
+        [`s-menu__${props.theme}`]: true
       }
-    })
-    const menuStyle = computed(() => {
-      const style: { backgroundColor?: string } = {}
-      props.backgroundColor && (style.backgroundColor = props.backgroundColor)
-      return style
     })
     watch(() => props.active, val => (menuProvider.active = val))
     const menuProvider = reactive({
       mode: props.mode,
       active: props.active,
-      activeBackgroundColor: props.activeBackgroundColor,
-      textColor: props.textColor,
-      activeTextColor: props.activeTextColor,
+      theme: props.theme,
       updateActive
     })
     provide('menuProvider', menuProvider)
@@ -56,19 +48,14 @@ export default defineComponent({
     }
     function onClick ({ target }: { target: EventTarget }) {
       const node = findParentNodeByDataset(target, 'menuItemValue')
-      node && updateActive(node.dataset.menuItemValue!)
-    }
-    function onMouseover ({ target }: { target: EventTarget }) {
-      // const node = findParentNodeByDataset(target, 'menuItemValue')
-      // node && (node.style.color = props.activeTextColor!)
-      // node && (node.style.borderBottom = `1px solid ${props.activeTextColor}`)
+      if (node && node.dataset) {
+        updateActive(node.dataset.menuItemValue!)
+      }
     }
     return {
       menuRef,
       menuClass,
-      menuStyle,
-      onClick,
-      onMouseover
+      onClick
     }
   }
 })

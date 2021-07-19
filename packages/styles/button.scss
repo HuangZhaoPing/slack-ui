@@ -36,7 +36,7 @@ $large-size-padding: 0 14px;
   }
 
   &:not(.s-button__default):not(.s-button__text) {
-    color: $s-color-default;
+    color: $slack-color-default;
   }
 
   > * {
@@ -45,9 +45,9 @@ $large-size-padding: 0 14px;
 
   /* default */
   &__default {
-    color: $s-text-color-normal;
-    background-color: $s-color-default;
-    border: 1px solid $s-border-color-normal;
+    color: $slack-text-color-normal;
+    background-color: $slack-color-default;
+    border: 1px solid $slack-border-color-normal;
 
     &:hover {
       background-color: rgb(249, 250, 251);
@@ -65,69 +65,69 @@ $large-size-padding: 0 14px;
 
   /* primary */
   &__primary {
-    background-color: var(--s-color-primary, transparentize($s-color-primary, 0));
+    background-color: var(--slack-color-primary, transparentize($slack-color-primary, 0));
 
     &:hover {
-      background-color: var(--s-color-primary-hover, transparentize($s-color-primary, 0.2));
+      background-color: var(--slack-color-primary-hover, transparentize($slack-color-primary, 0.2));
     }
 
     &:active {
-      background-color: var(--s-color-primary-active, transparentize($s-color-primary, 0.1));
+      background-color: var(--slack-color-primary-active, transparentize($slack-color-primary, 0.1));
     }
 
     &.s-button__loading, &[disabled] {
-      background-color: var(--s-color-primary-disabled, transparentize($s-color-primary, 0.4));
+      background-color: var(--slack-color-primary-disabled, transparentize($slack-color-primary, 0.4));
     }
   }
 
   /* success */
   &__success {
-    background-color: var(--s-color-success, transparentize($s-color-success, 0));
+    background-color: var(--slack-color-success, transparentize($slack-color-success, 0));
 
     &:hover {
-      background-color: var(--s-color-success-hover, transparentize($s-color-success, 0.2));
+      background-color: var(--slack-color-success-hover, transparentize($slack-color-success, 0.2));
     }
 
     &:active {
-      background-color: var(--s-color-success-active, transparentize($s-color-success, 0.1));
+      background-color: var(--slack-color-success-active, transparentize($slack-color-success, 0.1));
     }
 
     &.s-button__loading, &[disabled] {
-      background-color: var(--s-color-success-disabled, transparentize($s-color-success, 0.4));
+      background-color: var(--slack-color-success-disabled, transparentize($slack-color-success, 0.4));
     }
   }
 
   /* danger */
   &__danger {
-    background-color: var(--s-color-danger, transparentize($s-color-danger, 0));
+    background-color: var(--slack-color-danger, transparentize($slack-color-danger, 0));
 
     &:hover {
-      background-color: var(--s-color-danger-hover, transparentize($s-color-danger, 0.2));
+      background-color: var(--slack-color-danger-hover, transparentize($slack-color-danger, 0.2));
     }
 
     &:active {
-      background-color: var(--s-color-danger-active, transparentize($s-color-danger, 0.1));
+      background-color: var(--slack-color-danger-active, transparentize($slack-color-danger, 0.1));
     }
 
     &.s-button__loading, &[disabled] {
-      background-color: var(--s-color-danger-disabled, transparentize($s-color-danger, 0.4));
+      background-color: var(--slack-color-danger-disabled, transparentize($slack-color-danger, 0.4));
     }
   }
 
   /* text */
   &__text {
-    color: var(--s-color-primary, transparentize($s-color-primary, 0));
+    color: var(--slack-color-primary, transparentize($slack-color-primary, 0));
 
     &:hover {
-      color: var(--s-color-primary-hover, transparentize($s-color-primary, 0.2));
+      color: var(--slack-color-primary-hover, transparentize($slack-color-primary, 0.2));
     }
 
     &:active {
-      color: var(--s-color-primary-hover, transparentize($s-color-primary, 0.1));
+      color: var(--slack-color-primary-hover, transparentize($slack-color-primary, 0.1));
     }
 
     &.s-button__loading, &[disabled] {
-      color: var(--s-color-primary-hover, transparentize($s-color-primary, 0.4));
+      color: var(--slack-color-primary-hover, transparentize($slack-color-primary, 0.4));
     }
   }
 

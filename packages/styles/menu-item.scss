@@ -1,45 +1,68 @@
 @import "./var.scss";
 
 .s-menu-item {
+  z-index: 1;
   position: relative;
-  transition: all .2s;
+  transition: all 0.4s;
   cursor: pointer;
   display: flex;
   align-items: center;
   font-size: 14px;
-  color: $s-text-color-normal;
-
-  &__active {
-    color: var(--s-color-primary, $s-color-primary);
-  }
+  user-select: none;
 }
 
-.s-menu__horizontal {
-  .s-menu-item {
-    padding: 0 24px;
-    z-index: 1;
-    border-bottom: 2px solid transparent;
-    line-height: 48px;
-
-    &__active, &:hover {
-      border-bottom: 2px solid var(--s-color-primary, $s-color-primary);
-    }
-  }
+.s-menu__light .s-menu-item {
+  color: $slack-text-color-normal;
 }
 
-.s-menu__vertical {
-  .s-menu-item {
-    padding-right: 24px;
-    line-height: 46px;
-    z-index: 1;
-    border-right: 2px solid transparent;
+.s-menu__light .s-menu-item__active,
+.s-menu__light .s-menu-item:hover {
+  color: $slack-color-primary;
+}
 
-    &__active, &:hover {
-      background-color: rgba(0, 0, 0, .03);
-    }
+.s-menu__light.s-menu__horizontal .s-menu-item {
+  border-bottom: 2px solid transparent;
+}
 
-    // &__active {
-    //   border-right: 2px solid var(--s-color-primary, $s-color-primary);
-    // }
-  }
+.s-menu__light.s-menu__horizontal .s-menu-item__active,
+.s-menu__light.s-menu__horizontal .s-menu-item:hover {
+  border-bottom: 2px solid $slack-color-primary;
+}
+
+.s-menu__light.s-menu__vertical .s-menu-item {
+  border-right: 2px solid transparent;
+}
+
+.s-menu__light.s-menu__vertical .s-menu-item__active {
+  background-color: #EFF6FF;
+}
+
+.s-menu__light.s-menu__vertical .s-menu-item__active,
+.s-menu__light.s-menu__vertical .s-menu-item:hover {
+  border-right: 2px solid $slack-color-primary;
+}
+
+.s-menu__dark .s-menu-item {
+  color: #F3F4F6;
+}
+
+.s-menu__dark .s-menu-item__active {
+  color: $slack-color-primary;
+  background-color: #374151;
+}
+
+.s-menu__dark .s-menu-item:hover {
+  color: $slack-color-primary;
+}
+
+.s-menu__horizontal .s-menu-item {
+  padding: 0 24px;
+  line-height: 48px;
+  border-bottom: 2px solid transparent;
+}
+
+.s-menu__vertical .s-menu-item {
+  padding-right: 24px;
+  line-height: 46px;
+  border-right: 2px solid transparent;
 }

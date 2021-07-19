@@ -60,10 +60,9 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .app-header {
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, .1);
   padding: 0 20px;
+  height: 100%;
   display: flex;
-  height: 60px;
   align-items: center;
 
   &__menu {
