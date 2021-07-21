@@ -6,6 +6,7 @@ import Menu from './menu'
 import MenuItem from './menu-item'
 import SubMenu from './sub-menu'
 import MenuGroup from './menu-group'
+import Popper from './popper'
 
 const components = [
   Button,
@@ -14,7 +15,8 @@ const components = [
   Menu,
   MenuItem,
   SubMenu,
-  MenuGroup
+  MenuGroup,
+  Popper
 ]
 
 export default {
@@ -33,5 +35,6 @@ export {
   Menu,
   MenuItem,
   SubMenu,
-  MenuGroup
+  MenuGroup,
+  Popper
 }
