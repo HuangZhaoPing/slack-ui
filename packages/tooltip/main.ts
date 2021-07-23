@@ -1,17 +1,25 @@
-import { defineComponent, h, nextTick, Fragment, onMounted } from 'vue'
+import { defineComponent, h, nextTick, Fragment, onMounted, ref, Ref } from 'vue'
 
 export default defineComponent({
   name: 'STooltip',
-  setup () {
+  setup (props, { slots }) {
+    const xxx: Ref = ref(null)
+    const zzz: Ref = ref(null)
     onMounted(() => {
-
+      console.log('xxx', xxx.value)
+      console.log('zzz', zzz.value)
     })
+    return {
+      xxx,
+      zzz
+    }
   },
   render () {
     if (this.$slots.default) {
-      const xx = this.$slots.default!()
-      const vnode = h(Fragment, null, [xx])
-      return vnode
+      return h(Fragment, null, [
+        h(this.$slots.default, { ref: 'xxx' }),
+        h('div', { ref: 'zzz' })
+      ])
     }
   }
 })

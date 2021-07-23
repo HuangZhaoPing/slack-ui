@@ -1,8 +1,7 @@
 <template>
   <div>
     <s-tooltip>
-      <div>sadfxx</div>
-      <div>cccccc</div>
+      <s-button>按钮</s-button>
     </s-tooltip>
 
     <s-tooltip>
