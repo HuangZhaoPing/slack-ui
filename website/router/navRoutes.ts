@@ -69,6 +69,12 @@ const routes: Route[] = [
         meta: {
           title: lang.menu
         }
+      },
+      {
+        path: '/tooltip',
+        meta: {
+          title: lang.tooltip
+        }
       }
     ]
   }

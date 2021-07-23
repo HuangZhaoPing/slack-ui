@@ -6,7 +6,7 @@ import Menu from './menu'
 import MenuItem from './menu-item'
 import SubMenu from './sub-menu'
 import MenuGroup from './menu-group'
-import Popper from './popper'
+import Tooltip from './tooltip'
 
 const components = [
   Button,
@@ -16,15 +16,12 @@ const components = [
   MenuItem,
   SubMenu,
   MenuGroup,
-  Popper
+  Tooltip
 ]
 
 export default {
   install (app: App) {
-    components.forEach(item => {
-      console.log('xxx', item)
-      app.component(item.name, item)
-    })
+    components.forEach(item => (app.component(item.name, item)))
   }
 }
 
@@ -36,5 +33,5 @@ export {
   MenuItem,
   SubMenu,
   MenuGroup,
-  Popper
+  Tooltip
 }

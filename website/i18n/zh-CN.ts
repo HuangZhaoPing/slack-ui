@@ -18,7 +18,8 @@ export default {
     button: 'Button 按钮',
     form: '表单组件',
     input: 'Input 输入框',
-    menu: 'Menu 菜单'
+    menu: 'Menu 菜单',
+    tooltip: 'Tooltip'
   },
   components: {
     1: '显示代码',
