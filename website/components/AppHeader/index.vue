@@ -1,12 +1,12 @@
 <template>
   <div class="app-header">
-    <div style="flex: 1 1 auto">
+    <div style="flex: 1 1 auto;">
       <router-link :to="`/${langName}`">
         <h1>Slack</h1>
       </router-link>
     </div>
     <s-menu
-      class="app-header__menu"
+      class="app-header--menu"
       mode="horizontal"
       :active="defaultActive"
       @change="onMenuChange">
@@ -60,17 +60,18 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .app-header {
-  padding: 0 20px;
-  height: 100%;
-  display: flex;
   align-items: center;
+  display: flex;
+  height: 100%;
+  padding: 0 20px;
+}
 
-  &__menu {
-    margin: 0 30px;
-    height: 100%;
-    &::after {
-      display: none;
-    }
+.app-header--menu {
+  height: 100%;
+  margin: 0 30px;
+
+  &::after {
+    display: none;
   }
 }
 </style>

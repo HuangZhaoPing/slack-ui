@@ -1,4 +1,4 @@
-@import "./var.scss";
+@import './var';
 
 $samll-size: 28px;
 $samll-size-padding: 0 10px;
@@ -9,19 +9,19 @@ $large-size-padding: 0 14px;
 
 /* common */
 .s-button {
-  outline: none;
-  border: none;
-  border-radius: .25rem;
-  cursor: pointer;
-  background-color: transparent;
-  border: 1px solid transparent;
-  display: inline-flex;
   align-items: center;
+  background-color: transparent;
+  border: 0;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 14px;
   justify-content: center;
   line-height: 1;
-  user-select: none;
   margin-right: 10px;
-  font-size: 14px;
+  outline: none;
+  user-select: none;
 
   &[disabled] {
     cursor: not-allowed;
@@ -45,9 +45,9 @@ $large-size-padding: 0 14px;
 
   /* default */
   &__default {
-    color: $slack-text-color-normal;
     background-color: $slack-color-default;
     border: 1px solid $slack-border-color-normal;
+    color: $slack-text-color-normal;
 
     &:hover {
       background-color: rgb(249, 250, 251);
@@ -57,9 +57,10 @@ $large-size-padding: 0 14px;
       background-color: rgb(243, 244, 246);
     }
 
-    &.s-button__loading, &[disabled] {
-      color: rgb(209, 213, 219);
+    &.s-button__loading,
+    &[disabled] {
       background-color: transparent;
+      color: rgb(209, 213, 219);
     }
   }
 
@@ -75,7 +76,8 @@ $large-size-padding: 0 14px;
       background-color: var(--slack-color-primary-active, transparentize($slack-color-primary, 0.1));
     }
 
-    &.s-button__loading, &[disabled] {
+    &.s-button__loading,
+    &[disabled] {
       background-color: var(--slack-color-primary-disabled, transparentize($slack-color-primary, 0.4));
     }
   }
@@ -92,7 +94,8 @@ $large-size-padding: 0 14px;
       background-color: var(--slack-color-success-active, transparentize($slack-color-success, 0.1));
     }
 
-    &.s-button__loading, &[disabled] {
+    &.s-button__loading,
+    &[disabled] {
       background-color: var(--slack-color-success-disabled, transparentize($slack-color-success, 0.4));
     }
   }
@@ -109,7 +112,8 @@ $large-size-padding: 0 14px;
       background-color: var(--slack-color-danger-active, transparentize($slack-color-danger, 0.1));
     }
 
-    &.s-button__loading, &[disabled] {
+    &.s-button__loading,
+    &[disabled] {
       background-color: var(--slack-color-danger-disabled, transparentize($slack-color-danger, 0.4));
     }
   }
@@ -126,16 +130,17 @@ $large-size-padding: 0 14px;
       color: var(--slack-color-primary-hover, transparentize($slack-color-primary, 0.1));
     }
 
-    &.s-button__loading, &[disabled] {
+    &.s-button__loading,
+    &[disabled] {
       color: var(--slack-color-primary-hover, transparentize($slack-color-primary, 0.4));
     }
   }
 
   /* samll size */
   &__small {
+    font-size: 12px;
     height: $samll-size;
     padding: $samll-size-padding;
-    font-size: 12px;
   }
 
   /* medium size */
@@ -195,12 +200,15 @@ $large-size-padding: 0 14px;
     .s-button__icon {
       order: 1;
     }
+
     &.s-button__small .s-button__icon {
       margin-left: 4px;
     }
+
     &.s-button__medium .s-button__icon {
       margin-left: 6px;
     }
+
     &.s-button__large .s-button__icon {
       margin-left: 8px;
     }
@@ -209,8 +217,8 @@ $large-size-padding: 0 14px;
   /* block */
   &__block {
     display: flex;
-    width: 100%;
     margin: 0;
+    width: 100%;
 
     &:not(:last-child) {
       margin-bottom: 10px;
@@ -219,20 +227,20 @@ $large-size-padding: 0 14px;
 
   /* loading */
   &__loading {
+    overflow: hidden;
     pointer-events: none;
     position: relative;
-    overflow: hidden;
 
     &:not(.s-button__text)::before {
-      content: "";
-      position: absolute;
+      animation: s-button__loading__animation 1s ease infinite;
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 50%;
+      content: '';
       padding-top: 100%;
-      width: 100%;
-      background-color: rgba(0, 0, 0, .2);
+      position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      animation: s-button__loading__animation 1s ease infinite;
-      border-radius: 50%;
+      width: 100%;
     }
   }
 }
@@ -242,6 +250,7 @@ $large-size-padding: 0 14px;
     opacity: 1;
     transform: translateY(-50%) scale(0);
   }
+
   100% {
     opacity: 0;
     transform: translateY(-50%) scale(1);
