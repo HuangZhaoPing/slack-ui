@@ -1,11 +1,12 @@
 <template>
-  <template ref="tooltip"><slot /></template>
-  <teleport to="body" :disabled="!appendToBody">
+  <div></div>
+  <!-- <template ref="tooltip"><slot /></template> -->
+  <!-- <teleport to="body" :disabled="!appendToBody">
     <div ref="content" :class="`s-tooltip__content s-tooltip__${theme}`">
       <slot name="content" />
       <div ref="arrow" class="s-tooltip__arrow"></div>
     </div>
-  </teleport>
+  </teleport> -->
 </template>
 
 <script lang="ts">

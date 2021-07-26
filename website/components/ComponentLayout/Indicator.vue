@@ -43,7 +43,7 @@ export default defineComponent({
       const index = data.findIndex(item => item.path === path)
       prevRoute.value = data[index - 1]
       nextRoute.value = data[index + 1]
-    },{ immediate: true })
+    }, { immediate: true })
 
     function flat () {
       const result: Route[] = []

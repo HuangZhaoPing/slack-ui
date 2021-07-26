@@ -37,7 +37,7 @@ export default defineComponent({
     }
     function copyCode () {
       const target = code.value.querySelector('[data-source]')
-      const match = target.innerHTML.match(new RegExp('<!--([\\s\\S]+)-->'))
+      const match = target.innerHTML.match(/<!--([\\s\\S]+)-->/)
       const text = match ? match[1] : ''
       copyToClipboard(text).then(() => {
         console.log('复制成功')

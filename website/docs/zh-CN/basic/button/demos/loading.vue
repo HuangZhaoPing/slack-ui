@@ -43,7 +43,7 @@
 import { reactive } from 'vue'
 
 export default {
-  setup() {
+  setup () {
     const loading = reactive({
       instance1: false,
       instance2: false,
@@ -56,7 +56,7 @@ export default {
         loading[key] = false
       }, 3000)
     }
-    
+
     return {
       loading,
       onClick

@@ -1,4 +1,4 @@
-import { defineComponent, h, nextTick, Fragment, onMounted, ref, Ref } from 'vue'
+import { defineComponent, h, Fragment, onMounted, ref, Ref } from 'vue'
 
 export default defineComponent({
   name: 'STooltip',
@@ -21,5 +21,6 @@ export default defineComponent({
         h('div', { ref: 'zzz' })
       ])
     }
+    return h('div')
   }
 })

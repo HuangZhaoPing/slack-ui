@@ -33,10 +33,9 @@ export default {
       ]
     })
   ],
-  plugins:  [
+  plugins: [
     typescript(),
     vuePlugin()
   ],
   external: ['vue']
 }
-

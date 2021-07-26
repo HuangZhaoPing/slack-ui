@@ -1,4 +1,4 @@
-import { Route } from "types/website"
+import { Route } from 'types/website'
 
 export function format (data: Route[], formatter: (route: Route, parentRoute?: Route) => any, parentRoute?: Route): Route[] {
   data.forEach(route => {

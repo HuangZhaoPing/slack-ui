@@ -1,0 +1,3 @@
+types/**/*.ts
+lib/**/*.js
+dist/**/*.js

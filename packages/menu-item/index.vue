@@ -34,7 +34,7 @@ export default defineComponent({
       }
       return style
     })
-    
+
     return {
       menuItem,
       itemClass,

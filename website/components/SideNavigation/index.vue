@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { formatRoutes as routes } from '@/router/navRoutes'
 

@@ -19,8 +19,7 @@ const routes: Route[] = [
       },
       {
         path: '/usage',
-        meta: {
-        title: lang.usage }
+        meta: { title: lang.usage }
       }
     ]
   },

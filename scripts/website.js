@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Markdown from 'vite-plugin-md'
+import EslintPlugin from 'vite-plugin-eslint'
 import hljs from 'highlight.js'
 import container from 'markdown-it-container'
 import fs from 'fs'
@@ -55,11 +56,19 @@ export default defineConfig({
               const tagName = target.type === 'inline' ? target.content : ''
               return `<demo-layout><template #component><${tagName} /></template><template #desc>${desc}</template><template #code><!--$${tagName}$--></template>`
             } else {
-              return `</demo-layout>`
+              return '</demo-layout>'
             }
           }
         })
       }
+    }),
+    EslintPlugin({
+      include: [
+        'website/**/*.ts',
+        'website/**/*.vue',
+        'packages/**/*.ts',
+        'packages/**/*.vue'
+      ]
     })
   ]
 })
