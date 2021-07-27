@@ -40,7 +40,7 @@ function addNavRoutes () {
 }
 
 router.afterEach(() => {
-  const main = document.querySelector('.component-layout__main')
+  const main = document.querySelector('.component-layout--main')
   main && main.scrollTo(0, 0)
 })
 

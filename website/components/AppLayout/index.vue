@@ -1,9 +1,9 @@
 <template>
   <div class="app-layout">
-    <div class="app-layout__header">
+    <div class="app-layout--header">
       <app-header />
     </div>
-    <div class="app-layout__main">
+    <div class="app-layout--main">
       <router-view />
     </div>
   </div>
@@ -23,26 +23,28 @@ export default defineComponent({
 
 <style scoped>
 .app-layout {
-  overflow: hidden;
   height: 100vh;
+  overflow: hidden;
   position: relative;
 }
-.app-layout__header {
+
+.app-layout--header {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
   height: 60px;
-  position: absolute;
-  z-index: 1;
-  box-shadow: 0px 1px 6px rgba(0, 0, 0, .1);
-  top: 0;
   left: 0;
-  right: 0;
-}
-.app-layout__main {
   position: absolute;
-  top: 60px;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.app-layout--main {
   bottom: 0;
   left: 0;
-  right: 0;
   overflow-x: hidden;
   overflow-y: auto;
+  position: absolute;
+  right: 0;
+  top: 60px;
 }
 </style>

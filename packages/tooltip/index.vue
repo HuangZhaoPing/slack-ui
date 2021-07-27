@@ -2,9 +2,9 @@
   <div></div>
   <!-- <template ref="tooltip"><slot /></template> -->
   <!-- <teleport to="body" :disabled="!appendToBody">
-    <div ref="content" :class="`s-tooltip__content s-tooltip__${theme}`">
+    <div ref="content" :class="`s-tooltip--content s-tooltip--${theme}`">
       <slot name="content" />
-      <div ref="arrow" class="s-tooltip__arrow"></div>
+      <div ref="arrow" class="s-tooltip--arrow"></div>
     </div>
   </teleport> -->
 </template>
@@ -61,11 +61,11 @@ export default defineComponent({
       instance = createPopper(tooltip.value, content.value, options)
     })
     function onMouseenter () {
-      content.value.classList.add('s-tooltip__block')
+      content.value.classList.add('s-tooltip--block')
       instance.update()
     }
     function onMouseleave () {
-      content.value.classList.remove('s-tooltip__block')
+      content.value.classList.remove('s-tooltip--block')
     }
     return {
       arrow,

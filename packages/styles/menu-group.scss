@@ -1,17 +1,16 @@
-@import "./var.scss";
+@import './var';
 
-.s-menu-group {
-  &__title {
-    color: $slack-text-color-light;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    padding-right: 24px;
-    margin: 8px 0;
-  }
-  & ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
+.s-menu-group--title {
+  align-items: center;
+  color: $slack-text-color-light;
+  display: flex;
+  font-size: 12px;
+  margin: 8px 0;
+  padding-right: 24px;
+}
+
+.s-menu-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }

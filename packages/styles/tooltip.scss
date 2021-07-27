@@ -1,84 +1,84 @@
-@import "./var.scss";
+@import './var';
 
 .s-tooltip {
   display: inline-block;
 }
 
-.s-tooltip__content {
-  padding: 4px 10px;
-  font-size: 14px;
-  border-radius: 4px;
+.s-tooltip--content {
   border: 1px solid transparent;
+  border-radius: 4px;
   display: none;
+  font-size: 14px;
+  padding: 4px 10px;
 }
 
-.s-tooltip__block {
+.s-tooltip--block {
   display: block;
 }
 
-.s-tooltip__light {
-  background-color: #FFFFFF;
-  color: $slack-text-color-normal;
+.s-tooltip--light {
+  background-color: #fff;
   border-color: $slack-border-color-normal;
+  color: $slack-text-color-normal;
 }
 
-.s-tooltip__dark {
+.s-tooltip--dark {
   background-color: #374151;
-  color: #FFFFFF;
   border-color: #374151;
+  color: #fff;
 }
 
-.s-tooltip__arrow,
-.s-tooltip__arrow::before {
+.s-tooltip--arrow,
+.s-tooltip--arrow::before {
+  background-color: inherit;
+  height: 8px;
   position: absolute;
   width: 8px;
-  height: 8px;
-  background-color: inherit;
 }
 
-.s-tooltip__arrow {
+.s-tooltip--arrow {
   visibility: hidden;
 }
 
-.s-tooltip__arrow::before {
-  visibility: visible;
+.s-tooltip--arrow::before {
+  border: 1px solid transparent;
   content: '';
   transform: rotate(45deg);
-  border: 1px solid transparent;
+  visibility: visible;
 }
 
-.s-tooltip__content[data-popper-placement^='top'] > .s-tooltip__arrow {
+.s-tooltip--content[data-popper-placement^='top'] > .s-tooltip--arrow {
   bottom: -3px;
 }
 
-.s-tooltip__content[data-popper-placement^='bottom'] > .s-tooltip__arrow {
+.s-tooltip--content[data-popper-placement^='bottom'] > .s-tooltip--arrow {
   top: -5px;
 }
 
-.s-tooltip__content[data-popper-placement^='left'] > .s-tooltip__arrow {
+.s-tooltip--content[data-popper-placement^='left'] > .s-tooltip--arrow {
   right: -3px;
 }
 
-.s-tooltip__content[data-popper-placement^='right'] > .s-tooltip__arrow {
+.s-tooltip--content[data-popper-placement^='right'] > .s-tooltip--arrow {
   left: -5px;
 }
 
-.s-tooltip__light[data-popper-placement^='top'] > .s-tooltip__arrow::before {
-  border-right-color: $slack-border-color-normal;
+.s-tooltip--light[data-popper-placement^='top'] > .s-tooltip--arrow::before {
   border-bottom-color: $slack-border-color-normal;
+  border-right-color: $slack-border-color-normal;
 }
 
-.s-tooltip__light[data-popper-placement^='bottom'] > .s-tooltip__arrow::before {
+.s-tooltip--light[data-popper-placement^='bottom'] > .s-tooltip--arrow::before {
   border-left-color: $slack-border-color-normal;
   border-top-color: $slack-border-color-normal;
 }
 
-.s-tooltip__light[data-popper-placement^='left'] > .s-tooltip__arrow::before {
+.s-tooltip--light[data-popper-placement^='left'] > .s-tooltip--arrow::before {
   border-right-color: $slack-border-color-normal;
   border-top-color: $slack-border-color-normal;
 }
 
-.s-tooltip__light[data-popper-placement^='right'] > .s-tooltip__arrow::before {
-  border-left-color: $slack-border-color-normal;
+.s-tooltip--light[data-popper-placement^='right'] > .s-tooltip--arrow::before {
   border-bottom-color: $slack-border-color-normal;
+  border-left-color: $slack-border-color-normal;
 }

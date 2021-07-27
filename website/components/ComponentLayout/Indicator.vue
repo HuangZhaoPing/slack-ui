@@ -1,6 +1,6 @@
 <template>
   <div class="indicator">
-    <div class="indicator__prev">
+    <div class="indicator--prev">
       <s-button
         v-if="prevRoute"
         type="text"
@@ -10,7 +10,7 @@
       </s-button>
     </div>
 
-    <div class="indicator__next">
+    <div class="indicator--next">
       <s-button
         v-if="nextRoute"
         type="text"
@@ -72,11 +72,11 @@ export default defineComponent({
 
 <style scoped>
 .indicator {
-  margin-top: 40px;
   display: flex;
+  margin-top: 40px;
 }
 
-.indicator__prev {
+.indicator--prev {
   flex: 1;
 }
 </style>

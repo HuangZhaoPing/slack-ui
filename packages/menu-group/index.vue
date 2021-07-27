@@ -1,6 +1,6 @@
 <template>
   <li class="s-menu-group">
-    <div class="s-menu-group__title" :style="{ paddingLeft }">
+    <div class="s-menu-group--title" :style="{ paddingLeft }">
       <slot name="title" />
     </div>
     <ul><slot /></ul>

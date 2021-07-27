@@ -22,230 +22,226 @@ $large-size-padding: 0 14px;
   margin-right: 10px;
   outline: none;
   user-select: none;
-
-  &[disabled] {
-    cursor: not-allowed;
-  }
-
-  &:last-of-type {
-    margin-right: 0;
-  }
-
-  &:not(.s-button__text):active {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-  }
-
-  &:not(.s-button__default):not(.s-button__text) {
-    color: $slack-color-default;
-  }
-
-  > * {
-    pointer-events: none;
-  }
-
-  /* default */
-  &__default {
-    background-color: $slack-color-default;
-    border: 1px solid $slack-border-color-normal;
-    color: $slack-text-color-normal;
-
-    &:hover {
-      background-color: rgb(249, 250, 251);
-    }
-
-    &:active {
-      background-color: rgb(243, 244, 246);
-    }
-
-    &.s-button__loading,
-    &[disabled] {
-      background-color: transparent;
-      color: rgb(209, 213, 219);
-    }
-  }
-
-  /* primary */
-  &__primary {
-    background-color: var(--slack-color-primary, transparentize($slack-color-primary, 0));
-
-    &:hover {
-      background-color: var(--slack-color-primary-hover, transparentize($slack-color-primary, 0.2));
-    }
-
-    &:active {
-      background-color: var(--slack-color-primary-active, transparentize($slack-color-primary, 0.1));
-    }
-
-    &.s-button__loading,
-    &[disabled] {
-      background-color: var(--slack-color-primary-disabled, transparentize($slack-color-primary, 0.4));
-    }
-  }
-
-  /* success */
-  &__success {
-    background-color: var(--slack-color-success, transparentize($slack-color-success, 0));
-
-    &:hover {
-      background-color: var(--slack-color-success-hover, transparentize($slack-color-success, 0.2));
-    }
-
-    &:active {
-      background-color: var(--slack-color-success-active, transparentize($slack-color-success, 0.1));
-    }
-
-    &.s-button__loading,
-    &[disabled] {
-      background-color: var(--slack-color-success-disabled, transparentize($slack-color-success, 0.4));
-    }
-  }
-
-  /* danger */
-  &__danger {
-    background-color: var(--slack-color-danger, transparentize($slack-color-danger, 0));
-
-    &:hover {
-      background-color: var(--slack-color-danger-hover, transparentize($slack-color-danger, 0.2));
-    }
-
-    &:active {
-      background-color: var(--slack-color-danger-active, transparentize($slack-color-danger, 0.1));
-    }
-
-    &.s-button__loading,
-    &[disabled] {
-      background-color: var(--slack-color-danger-disabled, transparentize($slack-color-danger, 0.4));
-    }
-  }
-
-  /* text */
-  &__text {
-    color: var(--slack-color-primary, transparentize($slack-color-primary, 0));
-
-    &:hover {
-      color: var(--slack-color-primary-hover, transparentize($slack-color-primary, 0.2));
-    }
-
-    &:active {
-      color: var(--slack-color-primary-hover, transparentize($slack-color-primary, 0.1));
-    }
-
-    &.s-button__loading,
-    &[disabled] {
-      color: var(--slack-color-primary-hover, transparentize($slack-color-primary, 0.4));
-    }
-  }
-
-  /* samll size */
-  &__small {
-    font-size: 12px;
-    height: $samll-size;
-    padding: $samll-size-padding;
-  }
-
-  /* medium size */
-  &__medium {
-    height: $medium-size;
-    padding: $medium-size-padding;
-  }
-
-  /* large size */
-  &__large {
-    height: $large-size;
-    padding: $large-size-padding;
-  }
-
-  /* round */
-  &__round {
-    border-radius: 50%;
-    padding: 0;
-
-    &.s-button__small {
-      width: $samll-size;
-    }
-
-    &.s-button__medium {
-      width: $medium-size;
-    }
-
-    &.s-button__large {
-      width: $large-size;
-    }
-  }
-
-  /* icon */
-  &__icon {
-    font-size: inherit;
-  }
-
-  &__icon__left {
-    .s-button__icon {
-      order: 0;
-    }
-
-    &.s-button__small .s-button__icon {
-      margin-right: 4px;
-    }
-
-    &.s-button__medium .s-button__icon {
-      margin-right: 6px;
-    }
-
-    &.s-button__large .s-button__icon {
-      margin-right: 8px;
-    }
-  }
-
-  &__icon__right {
-    .s-button__icon {
-      order: 1;
-    }
-
-    &.s-button__small .s-button__icon {
-      margin-left: 4px;
-    }
-
-    &.s-button__medium .s-button__icon {
-      margin-left: 6px;
-    }
-
-    &.s-button__large .s-button__icon {
-      margin-left: 8px;
-    }
-  }
-
-  /* block */
-  &__block {
-    display: flex;
-    margin: 0;
-    width: 100%;
-
-    &:not(:last-child) {
-      margin-bottom: 10px;
-    }
-  }
-
-  /* loading */
-  &__loading {
-    overflow: hidden;
-    pointer-events: none;
-    position: relative;
-
-    &:not(.s-button__text)::before {
-      animation: s-button__loading__animation 1s ease infinite;
-      background-color: rgba(0, 0, 0, 0.2);
-      border-radius: 50%;
-      content: '';
-      padding-top: 100%;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 100%;
-    }
-  }
 }
 
-@keyframes s-button__loading__animation {
+.s-button[disabled] {
+  cursor: not-allowed;
+}
+
+.s-button:last-of-type {
+  margin-right: 0;
+}
+
+.s-button:not(.s-button--text):active {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.s-button:not(.s-button--default):not(.s-button--text) {
+  color: $slack-color-default;
+}
+
+.s-button > * {
+  pointer-events: none;
+}
+
+/* default */
+.s-button--default {
+  background-color: $slack-color-default;
+  border: 1px solid $slack-border-color-normal;
+  color: $slack-text-color-normal;
+}
+
+.s-button--default:hover {
+  background-color: rgb(249, 250, 251);
+}
+
+.s-button--default:active {
+  background-color: rgb(243, 244, 246);
+}
+
+.s-button--default.s-button--loading,
+.s-button--default[disabled] {
+  background-color: transparent;
+  color: rgb(209, 213, 219);
+}
+
+/* primary */
+.s-button--primary {
+  background-color: var(--slack-color-primary, transparentize($slack-color-primary, 0));
+}
+
+.s-button--primary:hover {
+  background-color: var(--slack-color-primary-hover, transparentize($slack-color-primary, 0.2));
+}
+
+.s-button--primary:active {
+  background-color: var(--slack-color-primary-active, transparentize($slack-color-primary, 0.1));
+}
+
+.s-button--primary.s-button--loading,
+.s-button--primary[disabled] {
+  background-color: var(--slack-color-primary-disabled, transparentize($slack-color-primary, 0.4));
+}
+
+/* success */
+.s-button--success {
+  background-color: var(--slack-color-success, transparentize($slack-color-success, 0));
+}
+
+.s-button--success:hover {
+  background-color: var(--slack-color-success-hover, transparentize($slack-color-success, 0.2));
+}
+
+.s-button--success:active {
+  background-color: var(--slack-color-success-active, transparentize($slack-color-success, 0.1));
+}
+
+.s-button--success.s-button--loading,
+.s-button--success[disabled] {
+  background-color: var(--slack-color-success-disabled, transparentize($slack-color-success, 0.4));
+}
+
+/* danger */
+.s-button--danger {
+  background-color: var(--slack-color-danger, transparentize($slack-color-danger, 0));
+}
+
+.s-button--danger:hover {
+  background-color: var(--slack-color-danger-hover, transparentize($slack-color-danger, 0.2));
+}
+
+.s-button--danger:active {
+  background-color: var(--slack-color-danger-active, transparentize($slack-color-danger, 0.1));
+}
+
+.s-button--danger.s-button--loading,
+.s-button--danger[disabled] {
+  background-color: var(--slack-color-danger-disabled, transparentize($slack-color-danger, 0.4));
+}
+
+/* text */
+.s-button--text {
+  color: var(--slack-color-primary, transparentize($slack-color-primary, 0));
+}
+
+.s-button--text:hover {
+  color: var(--slack-color-primary-hover, transparentize($slack-color-primary, 0.2));
+}
+
+.s-button--text:active {
+  color: var(--slack-color-primary-hover, transparentize($slack-color-primary, 0.1));
+}
+
+.s-button--text.s-button--loading,
+.s-button--text[disabled] {
+  color: var(--slack-color-primary-hover, transparentize($slack-color-primary, 0.4));
+}
+
+/* samll size */
+.s-button--small {
+  font-size: 12px;
+  height: $samll-size;
+  padding: $samll-size-padding;
+}
+
+/* medium size */
+.s-button--medium {
+  height: $medium-size;
+  padding: $medium-size-padding;
+}
+
+/* large size */
+.s-button--large {
+  height: $large-size;
+  padding: $large-size-padding;
+}
+
+/* round */
+.s-button--round {
+  border-radius: 50%;
+  padding: 0;
+}
+
+.s-button--round.s-button--small {
+  width: $samll-size;
+}
+
+.s-button--round.s-button--medium {
+  width: $medium-size;
+}
+
+.s-button--round.s-button--large {
+  width: $large-size;
+}
+
+/* icon */
+.s-button--icon {
+  font-size: inherit;
+}
+
+.s-button--icon--left .s-button--icon {
+  order: 0;
+}
+
+.s-button--icon--left.s-button--small .s-button--icon {
+  margin-right: 4px;
+}
+
+.s-button--icon--left.s-button--medium .s-button--icon {
+  margin-right: 6px;
+}
+
+.s-button--icon--left.s-button--large .s-button--icon {
+  margin-right: 8px;
+}
+
+.s-button--icon--right .s-button--icon {
+  order: 1;
+}
+
+.s-button--icon--right.s-button--small .s-button--icon {
+  margin-left: 4px;
+}
+
+.s-button--icon--right.s-button--medium .s-button--icon {
+  margin-left: 6px;
+}
+
+.s-button--icon--right.s-button--large .s-button--icon {
+  margin-left: 8px;
+}
+
+/* block */
+.s-button--block {
+  display: flex;
+  margin: 0;
+  width: 100%;
+}
+
+.s-button--block:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+/* loading */
+.s-button--loading {
+  overflow: hidden;
+  pointer-events: none;
+  position: relative;
+}
+
+.s-button--loading:not(.s-button--text)::before {
+  animation: s-button--loading--animation 1s ease infinite;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  content: '';
+  padding-top: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+@keyframes s-button--loading--animation {
   0% {
     opacity: 1;
     transform: translateY(-50%) scale(0);

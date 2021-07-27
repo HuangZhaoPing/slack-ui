@@ -30,8 +30,8 @@ export default defineComponent({
     const menuClass = computed(() => {
       return {
         's-menu': true,
-        [`s-menu__${props.mode}`]: true,
-        [`s-menu__${props.theme}`]: true
+        [`s-menu--${props.mode}`]: true,
+        [`s-menu--${props.theme}`]: true
       }
     })
     watch(() => props.active, val => (menuProvider.active = val))

@@ -24,7 +24,7 @@ export default defineComponent({
     const itemClass = computed(() => {
       return {
         's-menu-item': true,
-        's-menu-item__active': menuProvider && (menuProvider.active === props.value)
+        's-menu-item--active': menuProvider && (menuProvider.active === props.value)
       }
     })
     const itemStyle = computed(() => {

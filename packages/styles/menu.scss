@@ -1,46 +1,46 @@
-@import "./var.scss";
+@import './var';
 
 .s-menu {
-  position: relative;
   display: flex;
-  padding: 0;
-  margin: 0;
   list-style: none;
-  
-  &__light {
-    background-color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
 
-    &::after {
-      content: "";
-      position: absolute;
-      background-color: $slack-border-color-normal;
-    }
-  }
+.s-menu--light {
+  background-color: #fff;
+}
 
-  &__dark {
-    background-color: #4B5563;
-  }
+.s-menu--light::after {
+  background-color: $slack-border-color-normal;
+  content: '';
+  position: absolute;
+}
 
-  &__horizontal {
-    flex-direction: row;
-    flex-wrap: wrap;
+.s-menu--dark {
+  background-color: #4b5563;
+}
 
-    &.s-menu__light::after {
-      height: 1px;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-    }
-  }
+.s-menu--horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
-  &__vertical {
-    flex-direction: column;
-    
-    &.s-menu__light::after {
-      width: 1px;
-      right: 0;
-      top: 0;
-      height: 100%;
-    }
-  }
+.s-menu--horizontal.s-menu--light::after {
+  bottom: 0;
+  height: 1px;
+  left: 0;
+  width: 100%;
+}
+
+.s-menu--vertical {
+  flex-direction: column;
+}
+
+.s-menu--vertical.s-menu--light::after {
+  height: 100%;
+  right: 0;
+  top: 0;
+  width: 1px;
 }

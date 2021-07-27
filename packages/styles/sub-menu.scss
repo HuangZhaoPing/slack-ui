@@ -1,29 +1,29 @@
-.s-menu__horizontal .s-sub-menu {
-  padding: 0 24px;
-  line-height: 48px;
+.s-menu--horizontal .s-sub-menu {
   border-bottom: 2px solid transparent;
   cursor: pointer;
+  line-height: 48px;
+  padding: 0 24px;
 }
 
-.s-menu__horizontal .s-sub-menu__arrow {
-  transition: all .2s;
+.s-menu--horizontal .s-sub-menu--arrow {
   margin-left: 4px;
   transform: rotate(90deg);
+  transition: all 0.2s;
 }
 
-.s-menu__horizontal .s-sub-menu:hover .s-sub-menu__arrow {
+.s-menu--horizontal .s-sub-menu:hover .s-sub-menu--arrow {
   transform: rotate(270deg);
 }
 
-.s-menu__horizontal .s-sub-menu__title {
-  display: flex;
+.s-menu--horizontal .s-sub-menu--title {
   align-items: center;
+  display: flex;
 }
 
-.s-menu__light .s-sub-menu__title {
+.s-menu--light .s-sub-menu--title {
   color: $slack-text-color-normal;
 }
 
-.s-menu__light .s-sub-menu__arrow {
+.s-menu--light .s-sub-menu--arrow {
   fill: $slack-text-color-normal;
 }

@@ -1,10 +1,10 @@
 <template>
   <li class="s-sub-menu">
-    <div class="s-sub-menu__title">
+    <div class="s-sub-menu--title">
       <slot name="title" />
-      <arrow class="s-sub-menu__arrow" />
+      <arrow class="s-sub-menu--arrow" />
     </div>
-    <div v-show="false" class="s-sub-menu__content">
+    <div v-show="false" class="s-sub-menu--content">
       <slot />
     </div>
   </li>

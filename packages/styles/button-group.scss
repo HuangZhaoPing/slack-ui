@@ -1,26 +1,26 @@
 .s-button-group {
   display: inline-flex;
+}
 
-  &:not(:last-child) {
-    margin-right: 10px;
-  }
+.s-button-group:not(:last-child) {
+  margin-right: 10px;
+}
 
-  & > button.s-button {
-    margin: 0;
+.s-button-group > .s-button {
+  margin: 0;
+}
 
-    &:not(:last-child) {
-      border-right: none;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
+.s-button-group > .s-button:not(:last-child) {
+  border-bottom-right-radius: 0;
+  border-right: 0;
+  border-top-right-radius: 0;
+}
 
-    &:not(:first-child) {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+.s-button-group > .s-button:not(:first-child) {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
 
-      &:not(.s-button__default) {
-        border-left-color: rgba(255, 255, 255, .4);
-      }
-    }
-  }
+.s-button-group > .s-button:not(:first-child):not(.s-button--default) {
+  border-left-color: rgba(255, 255, 255, 0.4);
 }

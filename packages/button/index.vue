@@ -3,15 +3,15 @@
     :disabled="disabled"
     :class="[
       's-button',
-      `s-button__${type}`,
-      `s-button__${size}`,
-      (icon && $slots.default) && `s-button__icon__${iconPosition}`,
-      round && 's-button__round',
-      loading && 's-button__loading',
-      block && 's-button__block'
+      `s-button--${type}`,
+      `s-button--${size}`,
+      (icon && $slots.default) && `s-button--icon--${iconPosition}`,
+      round && 's-button--round',
+      loading && 's-button--loading',
+      block && 's-button--block'
     ]">
-    <i v-if="icon" :class="`s-button__icon ${icon}`"></i>
-    <span v-if="$slots.default" class="s-button__content">
+    <i v-if="icon" :class="`s-button--icon ${icon}`"></i>
+    <span v-if="$slots.default" class="s-button--content">
       <slot />
     </span>
   </button>

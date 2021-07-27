@@ -1,68 +1,68 @@
-@import "./var.scss";
+@import './var';
 
 .s-menu-item {
-  z-index: 1;
-  position: relative;
-  transition: all 0.4s;
+  align-items: center;
   cursor: pointer;
   display: flex;
-  align-items: center;
   font-size: 14px;
+  position: relative;
+  transition: all 0.4s;
   user-select: none;
+  z-index: 1;
 }
 
-.s-menu__light .s-menu-item {
+.s-menu--light .s-menu-item {
   color: $slack-text-color-normal;
 }
 
-.s-menu__light .s-menu-item__active,
-.s-menu__light .s-menu-item:hover {
+.s-menu--light .s-menu-item--active,
+.s-menu--light .s-menu-item:hover {
   color: $slack-color-primary;
 }
 
-.s-menu__light.s-menu__horizontal .s-menu-item {
+.s-menu--light.s-menu--horizontal .s-menu-item {
   border-bottom: 2px solid transparent;
 }
 
-.s-menu__light.s-menu__horizontal .s-menu-item__active,
-.s-menu__light.s-menu__horizontal .s-menu-item:hover {
+.s-menu--light.s-menu--horizontal .s-menu-item--active,
+.s-menu--light.s-menu--horizontal .s-menu-item:hover {
   border-bottom: 2px solid $slack-color-primary;
 }
 
-.s-menu__light.s-menu__vertical .s-menu-item {
+.s-menu--light.s-menu--vertical .s-menu-item {
   border-right: 2px solid transparent;
 }
 
-.s-menu__light.s-menu__vertical .s-menu-item__active {
-  background-color: #EFF6FF;
+.s-menu--light.s-menu--vertical .s-menu-item--active {
+  background-color: #eff6ff;
 }
 
-.s-menu__light.s-menu__vertical .s-menu-item__active,
-.s-menu__light.s-menu__vertical .s-menu-item:hover {
+.s-menu--light.s-menu--vertical .s-menu-item--active,
+.s-menu--light.s-menu--vertical .s-menu-item:hover {
   border-right: 2px solid $slack-color-primary;
 }
 
-.s-menu__dark .s-menu-item {
-  color: #F3F4F6;
+.s-menu--dark .s-menu-item {
+  color: #f3f4f6;
 }
 
-.s-menu__dark .s-menu-item__active {
-  color: $slack-color-primary;
+.s-menu--dark .s-menu-item--active {
   background-color: #374151;
-}
-
-.s-menu__dark .s-menu-item:hover {
   color: $slack-color-primary;
 }
 
-.s-menu__horizontal .s-menu-item {
-  padding: 0 24px;
-  line-height: 48px;
-  border-bottom: 2px solid transparent;
+.s-menu--dark .s-menu-item:hover {
+  color: $slack-color-primary;
 }
 
-.s-menu__vertical .s-menu-item {
-  padding-right: 24px;
-  line-height: 46px;
+.s-menu--horizontal .s-menu-item {
+  border-bottom: 2px solid transparent;
+  line-height: 48px;
+  padding: 0 24px;
+}
+
+.s-menu--vertical .s-menu-item {
   border-right: 2px solid transparent;
+  line-height: 46px;
+  padding-right: 24px;
 }

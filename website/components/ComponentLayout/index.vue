@@ -1,9 +1,9 @@
 <template>
   <div class="component-layout">
-    <div class="component-layout__nav">
+    <div class="component-layout--nav">
       <side-navigation />
     </div>
-    <div class="component-layout__main">
+    <div class="component-layout--main">
       <router-view />
       <indicator />
     </div>
@@ -33,17 +33,19 @@ export default defineComponent({
   height: 100%;
   overflow: hidden;
 }
-.component-layout__nav {
-  padding: 40px 0;
-  flex-shrink: 0;
-  width: 220px;
+
+.component-layout--nav {
   border-right: 1px solid rgb(243, 244, 246);
+  flex-shrink: 0;
   overflow-y: auto;
+  padding: 40px 0;
+  width: 220px;
 }
-.component-layout__main {
+
+.component-layout--main {
   flex-grow: 1;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: 20px 35px 60px 35px;
+  padding: 20px 35px 60px;
 }
 </style>
