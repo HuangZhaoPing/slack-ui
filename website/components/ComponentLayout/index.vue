@@ -3,15 +3,20 @@
     <div class="component-layout--nav">
       <side-navigation />
     </div>
-    <div class="component-layout--main">
-      <router-view />
-      <indicator />
+    <div ref="main" class="component-layout--main">
+      <div class="component-layout--content">
+        <router-view />
+        <indicator />
+      </div>
+      <div class="component-layout--anchor">
+
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref, Ref, onMounted } from 'vue'
 import SideNavigation from '../SideNavigation/index.vue'
 import Indicator from './Indicator.vue'
 
@@ -22,7 +27,15 @@ export default defineComponent({
     Indicator
   },
   setup () {
-    return {}
+    const main: Ref = ref('main')
+    onMounted(() => {
+      Array.from(main.value.querySelectorAll('[id]')).forEach((item: any) => {
+        console.log(decodeURIComponent(item.id))
+      })
+    })
+    return {
+      main
+    }
   }
 })
 </script>
@@ -46,6 +59,15 @@ export default defineComponent({
   flex-grow: 1;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+.component-layout--content {
+  border-right: 1px solid #f3f4f6;
+  margin-right: 200px;
   padding: 20px 35px 60px;
+}
+
+.component-layout--anchor {
+  width: 200px;
 }
 </style>

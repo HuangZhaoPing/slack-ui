@@ -3,6 +3,7 @@ import Vue from '@vitejs/plugin-vue'
 import Markdown from 'vite-plugin-md'
 import hljs from 'highlight.js'
 import container from 'markdown-it-container'
+import anchor from 'markdown-it-anchor'
 import fs from 'fs'
 import path from 'path'
 const { resolve } = require('./utils')
@@ -59,6 +60,8 @@ export default defineConfig({
             }
           }
         })
+
+        md.use(anchor)
       }
     })
   ]
