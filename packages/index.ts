@@ -7,6 +7,7 @@ import MenuItem from './menu-item'
 import SubMenu from './sub-menu'
 import MenuGroup from './menu-group'
 import Tooltip from './tooltip'
+import Icon from './icon'
 
 const components = [
   Button,
@@ -16,7 +17,8 @@ const components = [
   MenuItem,
   SubMenu,
   MenuGroup,
-  Tooltip
+  Tooltip,
+  Icon
 ]
 
 export default {
@@ -33,5 +35,6 @@ export {
   MenuItem,
   SubMenu,
   MenuGroup,
-  Tooltip
+  Tooltip,
+  Icon
 }

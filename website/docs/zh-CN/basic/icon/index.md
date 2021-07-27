@@ -9,46 +9,56 @@ Slack 并不提供内置图标，我们推荐使用外部导入图标库的方�
 
 ## 如何使用图标
 
-Slack 组件以 Font class 的方式使用图标，比如：
+Slack 组件以 Font class 的方式使用图标，下面以 [iconfont](https://www.iconfont.cn/) 为例引入图标库并使用图标。
 
-```html
-<i class="iconfont icon-check-circle"></i>
-<!-- 为 button 添加图标 -->
-<s-button icon="iconfont icon-check-circle">按钮</s-button>
-```
+第一步：为了方便持续管理图标，先在 iconfont 中创建项目，并添加自己喜欢的图标。
 
-下面以 [iconfont](https://www.iconfont.cn/) 为例引入图标库并使用图标。
+第二步：选择 Font class，引入线上图标样式文件，或者下载图标文件到项目中引入。
 
-第一步：为了方便持续管理图标，先在 iconfont 中创建项目。
+![screenshot1](/assets/images/screenshot1.png)
 
-![screenshot1](/assets/images/screenshot1.jpg)
-
-第二步：到图标库中选择要导入的图标，这里选择了 antd 的官方图标库。
-
-![screenshot2](/assets/images/screenshot2.jpg)
-
-第三步：将图标加入到购物车，这里为了方便测试，只选择了 3 个。
-
-![screenshot3](/assets/images/screenshot3.jpg)
-
-第四步：打开购物车，点击添加至项目，选择刚刚创建的项目。
-
-![screenshot4](/assets/images/screenshot4.jpg)
-
-第五步：选择 Font class，然后生成在线链接或者下载到本地，这里选择在线链接。
-
-![screenshot5](/assets/images/screenshot5.jpg)
-
-第六步：将链接添加到 index.html 中，如果采用下载到本地的方式，则引入本地 css 文件：
+方式一：引入线上图标样式文件：
 
 ```html
 <link rel="stylesheet" href="//at.alicdn.com/t/font_2644981_t6ri3ds8wm.css">
 ```
 
-第七步：使用图标。
+方式二：引用本地 css 文件（html 方式）：
 
 ```html
-<i class="iconfont icon-check-circle"></i>
-
-<s-button icon="iconfont icon-check-circle">按钮</s-button>
+<link rel="stylesheet" href="./iconfont.css">
 ```
+
+方式三：引用本地 css 文件（js 方式）：
+
+```js
+import './iconfont.css'
+```
+
+第三步：使用。
+
+```html
+<!-- 原始方式 -->
+<i class="iconfont icon-user">
+<!-- 使用 icon 组件 -->
+<s-icon class="iconfont icon-user" />
+<!-- 按钮组件 -->
+<s-button icon="iconfont icon-user">按钮</s-button>
+```
+
+## 基本使用
+
+:::demo 可以设置大小，颜色，旋转等属性。
+basic
+:::
+
+## API
+
+### Attributes
+
+| Name | Description | Type | Default |
+| ---- | ----------- | ---- | ------- |
+| class | icon 的类名 | string | - |
+| size | icon 的大小，使用 css 单位 | string | inherit |
+| color | icon 的颜色，使用 css 单位 | string | inherit |
+| spin | 开启旋转动画 | boolean | false |
