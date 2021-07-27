@@ -5,7 +5,7 @@
       's-button',
       `s-button--${type}`,
       `s-button--${size}`,
-      (icon && $slots.default) && `s-button--icon--${iconPosition}`,
+      (icon && $slots.default) && `s-button--${iconPosition}`,
       round && 's-button--round',
       loading && 's-button--loading',
       block && 's-button--block'

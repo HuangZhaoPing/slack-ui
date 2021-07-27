@@ -80,7 +80,7 @@ export default defineComponent({
 }
 
 .demo-layout--component {
-  padding: 40px 25px;
+  padding: 30px 25px;
 }
 
 .demo-layout--desc {
