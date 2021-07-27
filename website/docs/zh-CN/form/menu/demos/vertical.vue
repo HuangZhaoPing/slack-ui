@@ -19,8 +19,8 @@
 
 <style scoped>
 .container {
-  width: 200px;
   display: inline-block;
   margin-right: 60px;
+  width: 200px;
 }
 </style>

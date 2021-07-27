@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 300px">
+  <div style="width: 300px;">
     <s-button block type="primary" icon="iconfont icon-login">登录</s-button>
     <s-button block type="success" icon="iconfont icon-user">注册</s-button>
     <s-button block type="text" icon="iconfont icon-search">找回密码</s-button>

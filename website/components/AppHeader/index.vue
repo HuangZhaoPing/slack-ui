@@ -1,9 +1,9 @@
 <template>
   <div class="app-header">
     <div style="flex: 1 1 auto;">
-      <router-link :to="`/${langName}`">
-        <h1>Slack</h1>
-      </router-link>
+      <a :href="`/${langName}`">
+        <img class="app-header--logo" src="/assets/images/logo.jpg" alt="">
+      </a>
     </div>
     <s-menu
       class="app-header--menu"
@@ -69,9 +69,13 @@ export default defineComponent({
 .app-header--menu {
   height: 100%;
   margin: 0 30px;
+}
 
-  &::after {
-    display: none;
-  }
+.app-header--menu::after {
+  display: none;
+}
+
+.app-header--logo {
+  height: 40px;
 }
 </style>
