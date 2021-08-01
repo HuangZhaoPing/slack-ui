@@ -1,9 +1,9 @@
 <template>
   <div class="app-header">
     <div style="flex: 1 1 auto;">
-      <a :href="`/${langName}`">
+      <router-link :to="`/${langName}`">
         <img class="app-header--logo" src="/assets/images/logo.jpg" alt="">
-      </a>
+      </router-link>
     </div>
     <s-menu
       class="app-header--menu"
