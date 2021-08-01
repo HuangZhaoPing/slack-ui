@@ -98,12 +98,12 @@ group
 
 ### Attributes
 
-| Name | Description | Type | Default |
-| ---- | ----------- | ---- | ------- |
-| type | 按钮类型 | string | default |
-| disabled | 是否为禁用状态 | boolean | false |
-| loading | 是否为加载状态 | string | false |
-| size | 按钮大小 | string | medium |
-| icon | 图标，需要自行引入图标库 | string | - |
-| round | 是否为圆形按钮 | boolean | false |
-| block | 是否为块级按钮 | boolean | false |
+| 属性 | 描述 | 类型 | 可选值 | 默认值 |
+| ---- | --- | --- | ----- | ----- |
+| type | 按钮类型 | string | default/primary/success/danger/text | default |
+| disabled | 是否为禁用状态 | boolean | - | false |
+| loading | 是否为加载状态 | string | - | false |
+| size | 按钮大小 | string | small/medium/large | medium |
+| icon | 图标，需要自行引入图标库 | string | - | - |
+| round | 是否为圆形按钮 | boolean | - | false |
+| block | 是否为块级按钮 | boolean | - | false |

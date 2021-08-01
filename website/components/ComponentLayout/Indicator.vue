@@ -73,7 +73,7 @@ export default defineComponent({
 <style scoped>
 .indicator {
   display: flex;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .indicator--prev {

@@ -65,7 +65,7 @@ export default defineComponent({
         const nextDom = anchorDoms.value[index + 1]
         return (scrollTop >= item.offsetTop) && (nextDom ? scrollTop < nextDom.offsetTop : true)
       })
-      dom && (selected.value = dom.id)
+      dom ? (selected.value = dom.id) : (selected.value = '')
     }
 
     function generateAnchorData () {
@@ -115,7 +115,7 @@ export default defineComponent({
 
 .component-layout--content {
   margin-right: 150px;
-  padding: 20px 35px 60px;
+  padding: 20px 20px 100px;
 }
 
 .component-layout--anchor {
