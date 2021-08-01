@@ -6,6 +6,7 @@ import container from 'markdown-it-container'
 import anchor from 'markdown-it-anchor'
 import fs from 'fs'
 import path from 'path'
+import uslug from 'uslug'
 const { resolve } = require('./utils')
 
 export default defineConfig({
@@ -61,7 +62,10 @@ export default defineConfig({
           }
         })
 
-        md.use(anchor)
+        md.use(anchor, {
+          level: 2,
+          slugify: s => uslug(s)
+        })
       }
     })
   ]

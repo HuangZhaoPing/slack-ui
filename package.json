@@ -44,6 +44,7 @@
     "stylelint": "^13.13.1",
     "stylelint-config-sass-guidelines": "^8.0.0",
     "typescript": "^4.3.2",
+    "uslug": "^1.0.4",
     "vite": "^2.3.8",
     "vite-plugin-md": "^0.6.7",
     "vue-tsc": "^0.0.24"

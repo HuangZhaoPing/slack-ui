@@ -20,3 +20,9 @@ export declare interface Route {
   component?: () => Promise<{[key: string]: any}>,
   redirect?: string
 }
+
+export declare interface AnchorItem {
+  title: string
+  id: string
+  level: number
+}
