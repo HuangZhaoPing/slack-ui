@@ -19,6 +19,7 @@ export default {
     form: '表单组件',
     input: 'Input 输入框',
     menu: 'Menu 菜单',
+    popper: 'Popper',
     tooltip: 'Tooltip'
   },
   components: {

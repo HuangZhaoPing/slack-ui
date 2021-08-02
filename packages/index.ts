@@ -6,6 +6,7 @@ import Menu from './menu'
 import MenuItem from './menu-item'
 import SubMenu from './sub-menu'
 import MenuGroup from './menu-group'
+import Popper from './popper'
 import Tooltip from './tooltip'
 import Icon from './icon'
 
@@ -17,6 +18,7 @@ const components = [
   MenuItem,
   SubMenu,
   MenuGroup,
+  Popper,
   Tooltip,
   Icon
 ]
@@ -35,6 +37,7 @@ export {
   MenuItem,
   SubMenu,
   MenuGroup,
+  Popper,
   Tooltip,
   Icon
 }
