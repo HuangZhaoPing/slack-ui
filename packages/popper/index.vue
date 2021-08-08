@@ -1,14 +1,22 @@
+<template>
+  <slot ref="reference" />
+  <teleport to="body">
+    <transition name="fade">
+    <div ref="popper" v-show="visible2" :class="getPopperClass()">
+      <slot name="popper" />
+      <div ref="arrow" class="s-popper--arrow"></div>
+    </div>
+    </transition>
+  </teleport>
+</template>
+
+<script lang="ts">
 import {
   defineComponent,
-  h,
-  Fragment,
-  Teleport,
-  Transition,
   onMounted,
   ref,
   Ref,
   PropType,
-  Slot,
   nextTick
 } from 'vue'
 import {
@@ -40,7 +48,7 @@ export default defineComponent({
     },
     popperClass: String
   },
-  setup (props) {
+  setup (props, { slots }) {
     let instance: Instance
     const visible = ref(false)
     const visible2 = ref(false)
@@ -49,20 +57,19 @@ export default defineComponent({
     const arrow: Ref = ref(null)
 
     onMounted(() => {
-      if (reference.value) {
-        reference.value.addEventListener('mouseenter', async () => {
-          if (!visible.value) {
-            visible.value = true
-            await nextTick()
-            createInstance()
-          }
-          show()
-        })
+      reference.value = slots.default!()[0].el
+      reference.value.addEventListener('mouseenter', async () => {
+        if (!visible.value) {
+          visible.value = true
+          await nextTick()
+          createInstance()
+        }
+        show()
+      })
 
-        reference.value.addEventListener('mouseleave', () => {
-          hide()
-        })
-      }
+      reference.value.addEventListener('mouseleave', () => {
+        hide()
+      })
     })
 
     function createInstance () {
@@ -84,13 +91,9 @@ export default defineComponent({
         ]
       })
     }
-
     function show () {
-      visible.value = true
       visible2.value = true
-      nextTick(() => {
-        instance.update()
-      })
+      instance.update()
     }
 
     function hide () {
@@ -98,44 +101,16 @@ export default defineComponent({
     }
 
     function getPopperClass () {
-      const a = props.popperClass ? `s-popper ${props.popperClass}` : 's-popper'
-      return visible2.value ? a + ' s-popper--show' : a
+      return props.popperClass ? `s-popper ${props.popperClass}` : 's-popper'
     }
 
     return {
-      visible,
       visible2,
       reference,
       popper,
       arrow,
       getPopperClass
     }
-  },
-  render () {
-    const referenceVNode = getFirstVNode(this.$slots.default)
-    let reference = null
-    let popper = null
-    if (referenceVNode && typeof referenceVNode.type !== 'symbol') {
-      reference = h(referenceVNode, { ref: 'reference' })
-    }
-    if (this.visible && this.$slots.popper) {
-      popper = h(
-        Teleport,
-        { to: 'body' },
-        h(
-          Transition,
-          { name: 'fade' },
-          h('div', { ref: 'popper', class: this.getPopperClass() }, [
-            h(this.$slots.popper),
-            h('div', { ref: 'arrow', class: 's-popper--arrow' })
-          ])
-        )
-      )
-    }
-    return h(Fragment, null, [reference, popper])
   }
 })
-
-function getFirstVNode (slot: Slot | undefined) {
-  return slot ? slot()[0] : null
-}
+</script>

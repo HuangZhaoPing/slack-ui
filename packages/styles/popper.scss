@@ -4,12 +4,17 @@
   background-color: #fff;
   border: 1px solid $slack-border-color-normal;
   border-radius: 4px;
-  display: inline-block;
   line-height: 1;
 }
 
-.s-popper--show {
-  transform: scaleY(100%);
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  transform: scaleY(50%);
 }
 
 .s-popper--arrow,
