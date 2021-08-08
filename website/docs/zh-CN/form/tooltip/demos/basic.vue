@@ -2,11 +2,9 @@
   <div>
     <s-tooltip>
       <s-button>按钮</s-button>
-    </s-tooltip>
-
-    <s-tooltip>
-      <div>cccc</div>
-      <div>1111</div>
+      <template #content>
+        内容内容
+      </template>
     </s-tooltip>
   </div>
 </template>

@@ -70,6 +70,12 @@ const routes: Route[] = [
         }
       },
       {
+        path: '/popper',
+        meta: {
+          title: lang.popper
+        }
+      },
+      {
         path: '/tooltip',
         meta: {
           title: lang.tooltip

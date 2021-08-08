@@ -1,4 +1,4 @@
 module.exports = {
-  'packages/**/*': 'eslint --fix',
-  'website/**/*': 'eslint --fix'
+  '*.{js,ts,vue}': 'eslint --cache --fix',
+  '*.{css,scss,vue}': 'stylelint --fix'
 }
