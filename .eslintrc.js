@@ -17,6 +17,7 @@ module.exports = {
     'vue',
     '@typescript-eslint'
   ],
+  globals: { NodeJS: 'readonly' },
   rules: {
   }
 }
