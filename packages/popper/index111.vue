@@ -14,7 +14,8 @@ import {
   Ref,
   nextTick,
   PropType,
-  onMounted
+  onMounted,
+  h
 } from 'vue'
 import {
   createPopper,
@@ -48,7 +49,7 @@ export default defineComponent({
     const popper: Ref = ref(null)
 
     onMounted(() => {
-      console.log(slots.default!())
+      console.log(h(slots.default!()[0]))
     })
 
     async function createInstance () {

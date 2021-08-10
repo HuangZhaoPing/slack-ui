@@ -3,13 +3,14 @@ import {
   h,
   Fragment,
   Teleport,
-  Transition,
-  onMounted,
   ref,
   Ref,
   PropType,
   Slot,
-  nextTick
+  nextTick,
+  VNode,
+  RendererNode,
+  RendererElement
 } from 'vue'
 import {
   createPopper,
@@ -27,45 +28,23 @@ export default defineComponent({
     offset: {
       type: Array,
       default: () => {
-        return [0, 6]
+        return [0, 0]
       }
     },
     appendToBody: {
       type: Boolean,
       default: true
     },
-    trigger: {
-      type: String,
-      default: 'hover'
-    },
     popperClass: String
   },
   setup (props) {
     let instance: Instance
     const visible = ref(false)
-    const visible2 = ref(false)
     const reference: Ref = ref(null)
     const popper: Ref = ref(null)
-    const arrow: Ref = ref(null)
 
-    onMounted(() => {
-      if (reference.value) {
-        reference.value.addEventListener('mouseenter', async () => {
-          if (!visible.value) {
-            visible.value = true
-            await nextTick()
-            createInstance()
-          }
-          show()
-        })
-
-        reference.value.addEventListener('mouseleave', () => {
-          hide()
-        })
-      }
-    })
-
-    function createInstance () {
+    async function createInstance () {
+      await nextTick()
       instance = createPopper(reference.value, popper.value, {
         placement: props.placement,
         modifiers: [
@@ -74,62 +53,53 @@ export default defineComponent({
             options: {
               offset: props.offset
             }
-          },
-          {
-            name: 'arrow',
-            options: {
-              element: arrow.value
-            }
           }
         ]
       })
     }
 
-    function show () {
-      visible.value = true
-      visible2.value = true
-      nextTick(() => {
-        instance.update()
-      })
-    }
-
-    function hide () {
-      visible2.value = false
+    function getInstance () {
+      return instance
     }
 
     function getPopperClass () {
-      const a = props.popperClass ? `s-popper ${props.popperClass}` : 's-popper'
-      return visible2.value ? a + ' s-popper--show' : a
+      return props.popperClass ? `s-popper ${props.popperClass}` : 's-popper'
+    }
+
+    async function show () {
+      if (!visible.value) {
+        visible.value = true
+        await nextTick()
+        await createInstance()
+      }
+      popper.value.style.setProperty('display', 'block')
+      instance.update()
+    }
+
+    function hide () {
+      popper.value.style.setProperty('display', 'none')
     }
 
     return {
       visible,
-      visible2,
       reference,
       popper,
-      arrow,
-      getPopperClass
+      getInstance,
+      getPopperClass,
+      show,
+      hide
     }
   },
   render () {
     const referenceVNode = getFirstVNode(this.$slots.default)
     let reference = null
     let popper = null
-    if (referenceVNode && typeof referenceVNode.type !== 'symbol') {
-      reference = h(referenceVNode, { ref: 'reference' })
-    }
+    if (referenceVNode && typeof referenceVNode.type !== 'symbol') reference = h(referenceVNode, { ref: 'reference' })
     if (this.visible && this.$slots.popper) {
       popper = h(
         Teleport,
-        { to: 'body' },
-        h(
-          Transition,
-          { name: 'fade' },
-          h('div', { ref: 'popper', class: this.getPopperClass() }, [
-            h(this.$slots.popper),
-            h('div', { ref: 'arrow', class: 's-popper--arrow' })
-          ])
-        )
+        { to: 'body', disabled: !this.appendToBody },
+        h('div', { ref: 'popper', class: this.getPopperClass() }, h(this.$slots.popper))
       )
     }
     return h(Fragment, null, [reference, popper])
@@ -137,5 +107,12 @@ export default defineComponent({
 })
 
 function getFirstVNode (slot: Slot | undefined) {
-  return slot ? slot()[0] : null
+  if (slot) {
+    let vnode = slot()[0]
+    while (vnode.children && vnode.props && vnode.props.key === '_default') {
+      vnode = (<VNode<RendererNode, RendererElement, { [key: string]: any}>[]>vnode.children)[0]
+    }
+    return vnode
+  }
+  return null
 }
