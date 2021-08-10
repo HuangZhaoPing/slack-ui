@@ -10,7 +10,8 @@ import {
   nextTick,
   VNode,
   RendererNode,
-  RendererElement
+  RendererElement,
+  computed
 } from 'vue'
 import {
   createPopper,
@@ -43,6 +44,14 @@ export default defineComponent({
     const reference: Ref = ref(null)
     const popper: Ref = ref(null)
 
+    const popperClass_ = computed(() => {
+      const popperClass = props.popperClass
+      return {
+        's-popper': true,
+        [<string>popperClass]: !!popperClass
+      }
+    })
+
     async function createInstance () {
       await nextTick()
       instance = createPopper(reference.value, popper.value, {
@@ -60,10 +69,6 @@ export default defineComponent({
 
     function getInstance () {
       return instance
-    }
-
-    function getPopperClass () {
-      return props.popperClass ? `s-popper ${props.popperClass}` : 's-popper'
     }
 
     async function show () {
@@ -85,7 +90,7 @@ export default defineComponent({
       reference,
       popper,
       getInstance,
-      getPopperClass,
+      popperClass_,
       show,
       hide
     }
@@ -94,12 +99,12 @@ export default defineComponent({
     const referenceVNode = getFirstVNode(this.$slots.default)
     let reference = null
     let popper = null
-    if (referenceVNode && typeof referenceVNode.type !== 'symbol') reference = h(referenceVNode, { ref: 'reference' })
+    if (referenceVNode) reference = h(referenceVNode, { ref: 'reference' })
     if (this.visible && this.$slots.popper) {
       popper = h(
         Teleport,
         { to: 'body', disabled: !this.appendToBody },
-        h('div', { ref: 'popper', class: this.getPopperClass() }, h(this.$slots.popper))
+        h('div', { ref: 'popper', class: this.popperClass_ }, h(this.$slots.popper))
       )
     }
     return h(Fragment, null, [reference, popper])
