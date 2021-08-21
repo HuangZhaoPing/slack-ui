@@ -1,19 +1,16 @@
 @import './var';
 
 .s-tooltip {
-  display: inline-block;
-}
-
-.s-tooltip--content {
   border: 1px solid transparent;
   border-radius: 4px;
-  display: none;
-  font-size: 14px;
-  padding: 4px 10px;
+  display: inline-block;
+  line-height: 1;
+  opacity: 0;
+  transition: opacity 1s;
 }
 
-.s-tooltip--block {
-  display: block;
+.s-tooltip--wrap {
+  padding: 6px 8px;
 }
 
 .s-tooltip--light {
@@ -47,19 +44,19 @@
   visibility: visible;
 }
 
-.s-tooltip--content[data-popper-placement^='top'] > .s-tooltip--arrow {
+.s-tooltip[data-popper-placement^='top'] > .s-tooltip--arrow {
   bottom: -3px;
 }
 
-.s-tooltip--content[data-popper-placement^='bottom'] > .s-tooltip--arrow {
+.s-tooltip[data-popper-placement^='bottom'] > .s-tooltip--arrow {
   top: -5px;
 }
 
-.s-tooltip--content[data-popper-placement^='left'] > .s-tooltip--arrow {
+.s-tooltip[data-popper-placement^='left'] > .s-tooltip--arrow {
   right: -3px;
 }
 
-.s-tooltip--content[data-popper-placement^='right'] > .s-tooltip--arrow {
+.s-tooltip[data-popper-placement^='right'] > .s-tooltip--arrow {
   left: -5px;
 }
 

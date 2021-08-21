@@ -6,11 +6,7 @@ import {
   ref,
   Ref,
   PropType,
-  Slot,
   nextTick,
-  VNode,
-  RendererNode,
-  RendererElement,
   computed
 } from 'vue'
 import {
@@ -18,6 +14,7 @@ import {
   Instance,
   Placement
 } from '@popperjs/core'
+import { getFirstVNode } from '../utils'
 
 export default defineComponent({
   name: 'SPopper',
@@ -38,7 +35,7 @@ export default defineComponent({
     },
     popperClass: String
   },
-  setup (props) {
+  setup (props, { emit }) {
     let instance: Instance
     const visible = ref(false)
     const reference: Ref = ref(null)
@@ -53,8 +50,8 @@ export default defineComponent({
     })
 
     async function createInstance () {
-      await nextTick()
-      instance = createPopper(reference.value, popper.value, {
+      const el = reference.value.$el || reference.value
+      instance = createPopper(el, popper.value, {
         placement: props.placement,
         modifiers: [
           {
@@ -110,14 +107,3 @@ export default defineComponent({
     return h(Fragment, null, [reference, popper])
   }
 })
-
-function getFirstVNode (slot: Slot | undefined) {
-  if (slot) {
-    let vnode = slot()[0]
-    while (vnode.children && vnode.props && vnode.props.key === '_default') {
-      vnode = (<VNode<RendererNode, RendererElement, { [key: string]: any}>[]>vnode.children)[0]
-    }
-    return vnode
-  }
-  return null
-}

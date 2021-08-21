@@ -1,9 +1,13 @@
 <template>
   <div>
-    <s-tooltip>
+    <s-tooltip content="编辑">
       <s-button>按钮</s-button>
-      <template #popper>
-        内容内容
+    </s-tooltip>
+
+    <s-tooltip theme="light" placement="top">
+      <s-button>按钮</s-button>
+      <template #content>
+        删除
       </template>
     </s-tooltip>
   </div>
