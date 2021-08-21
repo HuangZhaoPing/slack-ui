@@ -16,17 +16,19 @@ export default defineComponent({
     },
     showDelay: {
       type: Number,
-      default: 200
+      default: 0
     },
     hideDelay: {
       type: Number,
-      default: 200
+      default: 300
     }
   },
   setup (props, { attrs }) {
     const instance: Ref = ref(null)
+    const animationDuration = 200
     let showTimeout: NodeJS.Timeout
     let hideTimeout: NodeJS.Timeout
+    let visibleTimeout: NodeJS.Timeout
 
     const instanceProps = {
       ref: 'instance',
@@ -35,27 +37,13 @@ export default defineComponent({
       ...attrs
     }
     const referenceProps = {
-      onMouseenter: async () => {
-        await instance.value.show()
-        clearTimeout(hideTimeout)
-        showTimeout = setTimeout(() => {
-          getPopperEl().style.opacity = 1
-        }, props.showDelay)
-      },
-      onMouseleave: () => {
-        hideTimeout = setTimeout(() => {
-          getPopperEl().style.opacity = 0
-          setTimeout(() => {
-            instance.value.hide()
-          }, 1000)
-        }, props.hideDelay)
-      }
+      onMouseenter: () => (show()),
+      onMouseleave: () => (hide())
     }
     const popperProps = {
       class: 's-tooltip--wrap',
-      onMouseenter: () => {
-
-      }
+      onMouseenter: () => (show()),
+      onMouseleave: () => (hide())
     }
 
     function getPopperEl () {
@@ -64,8 +52,24 @@ export default defineComponent({
     function getArrow () {
       return props.arrow ? h('div', { class: 's-tooltip--arrow', 'data-popper-arrow': true }) : null
     }
+    async function show () {
+      await instance.value.show()
+      clearTimeout(hideTimeout)
+      clearTimeout(visibleTimeout)
+      showTimeout = setTimeout(() => {
+        getPopperEl().style.opacity = 1
+      }, props.showDelay)
+    }
+    function hide () {
+      clearTimeout(showTimeout)
+      hideTimeout = setTimeout(() => {
+        getPopperEl().style.opacity = 0
+        visibleTimeout = setTimeout(() => {
+          instance.value.hide()
+        }, animationDuration)
+      }, props.hideDelay)
+    }
 
-    console.log(showTimeout)
     return {
       instance,
       instanceProps,
