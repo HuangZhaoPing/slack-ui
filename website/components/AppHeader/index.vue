@@ -5,6 +5,7 @@
         <img class="app-header--logo" src="/assets/images/logo.jpg" alt="">
       </router-link>
     </div>
+    <github-icon></github-icon>
     <s-menu
       class="app-header--menu"
       mode="horizontal"
@@ -27,8 +28,12 @@
 import { defineComponent, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { getLangName, getLangMap } from '@/i18n'
+import GithubIcon from './GithubIcon.vue'
 
 export default defineComponent({
+  components: {
+    GithubIcon
+  },
   setup () {
     const router = useRouter()
     const route = useRoute()
