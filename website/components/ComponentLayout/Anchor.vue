@@ -53,7 +53,7 @@ export default defineComponent({
   font-size: 12px;
   padding: 0 20px;
   position: relative;
-  transition: all 0.2s;
+  transition: border-color 0.2s, color 0.2s;
 }
 
 .anchor--item:hover,
