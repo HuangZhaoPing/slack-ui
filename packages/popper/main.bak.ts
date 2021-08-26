@@ -1,27 +1,20 @@
-<template>
-  <slot />
-  <teleport to="body" :disabled="!appendToBody">
-    <div v-if="visible" ref="popper" :class="getPopperClass()">
-      <slot name="popper" />
-    </div>
-  </teleport>
-</template>
-
-<script lang="ts">
 import {
   defineComponent,
+  h,
+  Fragment,
+  Teleport,
   ref,
   Ref,
-  nextTick,
   PropType,
-  onMounted,
-  h
+  nextTick,
+  computed
 } from 'vue'
 import {
   createPopper,
   Instance,
   Placement
 } from '@popperjs/core'
+import { getFirstVNode } from '../utils'
 
 export default defineComponent({
   name: 'SPopper',
@@ -42,20 +35,23 @@ export default defineComponent({
     },
     popperClass: String
   },
-  setup (props, { slots }) {
+  setup (props, { emit }) {
     let instance: Instance
     const visible = ref(false)
     const reference: Ref = ref(null)
     const popper: Ref = ref(null)
 
-    onMounted(() => {
-      console.log(h(slots.default!()[0]))
+    const popperClass_ = computed(() => {
+      const popperClass = props.popperClass
+      return {
+        's-popper': true,
+        [<string>popperClass]: !!popperClass
+      }
     })
 
     async function createInstance () {
-      await nextTick()
-      reference.value = slots.default ? slots.default()[0].el : null
-      instance = createPopper(reference.value, popper.value, {
+      const el = reference.value.$el || reference.value
+      instance = createPopper(el, popper.value, {
         placement: props.placement,
         modifiers: [
           {
@@ -72,15 +68,11 @@ export default defineComponent({
       return instance
     }
 
-    function getPopperClass () {
-      return props.popperClass ? `s-popper ${props.popperClass}` : 's-popper'
-    }
-
     async function show () {
       if (!visible.value) {
         visible.value = true
         await nextTick()
-        createInstance()
+        await createInstance()
       }
       popper.value.style.setProperty('display', 'block')
       instance.update()
@@ -95,10 +87,23 @@ export default defineComponent({
       reference,
       popper,
       getInstance,
-      getPopperClass,
+      popperClass_,
       show,
       hide
     }
+  },
+  render () {
+    const referenceVNode = getFirstVNode(this.$slots.default)
+    let reference = null
+    let popper = null
+    if (referenceVNode) reference = h(referenceVNode, { ref: 'reference' })
+    if (this.visible && this.$slots.popper) {
+      popper = h(
+        Teleport,
+        { to: 'body', disabled: !this.appendToBody },
+        h('div', { ref: 'popper', class: this.popperClass_ }, h(this.$slots.popper))
+      )
+    }
+    return h(Fragment, null, [reference, popper])
   }
 })
-</script>

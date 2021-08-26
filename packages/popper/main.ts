@@ -7,7 +7,9 @@ import {
   Ref,
   PropType,
   nextTick,
-  computed
+  withDirectives,
+  vShow,
+  Transition
 } from 'vue'
 import {
   createPopper,
@@ -33,21 +35,44 @@ export default defineComponent({
       type: Boolean,
       default: true
     },
-    popperClass: String
+    popperClass: String,
+    showDelay: {
+      type: Number,
+      default: 0
+    },
+    hideDelay: {
+      type: Number,
+      default: 300
+    }
   },
-  setup (props, { emit }) {
+  setup (props) {
     let instance: Instance
+    const created = ref(false)
     const visible = ref(false)
     const reference: Ref = ref(null)
     const popper: Ref = ref(null)
+    let showTimeout: NodeJS.Timeout
+    let hideTimeout: NodeJS.Timeout
 
-    const popperClass_ = computed(() => {
-      const popperClass = props.popperClass
-      return {
-        's-popper': true,
-        [<string>popperClass]: !!popperClass
-      }
-    })
+    const referenceProps = {
+      ref: 'reference',
+      onMouseenter: show,
+      onMouseleave: hide
+    }
+    const transitionProps = {
+      name: 'fade',
+      onBeforeEnter: update
+    }
+    const popperProps = {
+      ref: 'popper',
+      class: props.popperClass ? `s-popper ${props.popperClass}` : 's-popper',
+      onMouseenter: () => clearTimeout(hideTimeout),
+      onMouseleave: hide
+    }
+    const teleportProps = {
+      to: 'body',
+      disabled: !props.appendToBody
+    }
 
     async function createInstance () {
       const el = reference.value.$el || reference.value
@@ -63,46 +88,57 @@ export default defineComponent({
         ]
       })
     }
-
     function getInstance () {
       return instance
     }
-
     async function show () {
-      if (!visible.value) {
-        visible.value = true
+      clearTimeout(hideTimeout)
+      if (!created.value) {
+        created.value = true
         await nextTick()
         await createInstance()
       }
-      popper.value.style.setProperty('display', 'block')
+      showTimeout = setTimeout(() => (visible.value = true), props.showDelay)
+    }
+    function hide () {
+      clearTimeout(showTimeout)
+      hideTimeout = setTimeout(() => (visible.value = false), props.hideDelay)
+    }
+    function update () {
       instance.update()
     }
 
-    function hide () {
-      popper.value.style.setProperty('display', 'none')
-    }
-
     return {
+      created,
       visible,
       reference,
       popper,
       getInstance,
-      popperClass_,
       show,
-      hide
+      hide,
+      referenceProps,
+      transitionProps,
+      popperProps,
+      teleportProps
     }
   },
   render () {
-    const referenceVNode = getFirstVNode(this.$slots.default)
     let reference = null
     let popper = null
-    if (referenceVNode) reference = h(referenceVNode, { ref: 'reference' })
-    if (this.visible && this.$slots.popper) {
-      popper = h(
-        Teleport,
-        { to: 'body', disabled: !this.appendToBody },
-        h('div', { ref: 'popper', class: this.popperClass_ }, h(this.$slots.popper))
+    const referenceVNode = getFirstVNode(this.$slots.default)
+    if (referenceVNode) reference = h(referenceVNode, this.referenceProps)
+    if (this.created && this.$slots.popper) {
+      const transition = h(
+        Transition,
+        this.transitionProps,
+        {
+          default: () => withDirectives(
+            h('div', this.popperProps, h(this.$slots.popper!)),
+            [[vShow, this.visible]]
+          )
+        }
       )
+      popper = h(Teleport, this.teleportProps, transition)
     }
     return h(Fragment, null, [reference, popper])
   }
