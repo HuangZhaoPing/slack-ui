@@ -1,5 +1,5 @@
 import { App } from 'vue'
-import Tooltip from './main'
+import Tooltip from './index.vue'
 
 Tooltip.install = (app: App) => {
   app.component(Tooltip.name, Tooltip)

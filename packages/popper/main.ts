@@ -25,15 +25,18 @@ export default defineComponent({
       type: String as PropType<Placement>,
       default: 'bottom'
     },
-    offset: {
-      type: Array,
-      default: () => {
-        return [0, 0]
-      }
-    },
+    offset: Number,
     appendToBody: {
       type: Boolean,
       default: true
+    },
+    arrow: {
+      type: Boolean,
+      default: true
+    },
+    trigger: {
+      type: String,
+      default: 'hover'
     },
     popperClass: String,
     showDelay: {
@@ -82,7 +85,7 @@ export default defineComponent({
           {
             name: 'offset',
             options: {
-              offset: props.offset
+              offset: [0, props.offset || (props.arrow ? 6 : 0)]
             }
           }
         ]
@@ -128,12 +131,13 @@ export default defineComponent({
     const referenceVNode = getFirstVNode(this.$slots.default)
     if (referenceVNode) reference = h(referenceVNode, this.referenceProps)
     if (this.created && this.$slots.popper) {
+      const arrow = this.arrow ? h('div', { class: 's-popper--arrow', 'data-popper-arrow': true }) : null
       const transition = h(
         Transition,
         this.transitionProps,
         {
           default: () => withDirectives(
-            h('div', this.popperProps, h(this.$slots.popper!)),
+            h('div', this.popperProps, [h(this.$slots.popper!), arrow]),
             [[vShow, this.visible]]
           )
         }
