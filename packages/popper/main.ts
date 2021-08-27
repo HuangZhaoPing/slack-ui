@@ -85,7 +85,7 @@ export default defineComponent({
           {
             name: 'offset',
             options: {
-              offset: [0, props.offset || (props.arrow ? 6 : 0)]
+              offset: [0, props.offset || 6]
             }
           }
         ]
