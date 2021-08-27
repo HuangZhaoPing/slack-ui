@@ -19,3 +19,13 @@ export function getFirstVNode (slot: Slot | undefined) {
   }
   return null
 }
+
+export function getZIndex () {
+  const global = window as any
+  if (!global.$zIndex) global.$zIndex = 2000
+  return global.$zIndex
+}
+
+export function incrementZIndex () {
+  (window as any).$zIndex++
+}

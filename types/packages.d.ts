@@ -6,3 +6,7 @@ export declare interface MenuProvider {
   activeTextColor: string
   updateActive (value: string): void
 }
+
+declare interface Window {
+  $zIndex: number
+}

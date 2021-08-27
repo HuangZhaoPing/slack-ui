@@ -16,7 +16,13 @@ import {
   Instance,
   Placement
 } from '@popperjs/core'
-import { getFirstVNode } from '../utils'
+import { getFirstVNode, getZIndex, incrementZIndex } from '../utils'
+
+let currentHide: (() => void) | null = null
+
+document.body.addEventListener('click', () => {
+  currentHide && currentHide()
+})
 
 export default defineComponent({
   name: 'SPopper',
@@ -45,7 +51,7 @@ export default defineComponent({
     },
     hideDelay: {
       type: Number,
-      default: 300
+      default: 200
     }
   },
   setup (props) {
@@ -56,11 +62,24 @@ export default defineComponent({
     const popper: Ref = ref(null)
     let showTimeout: NodeJS.Timeout
     let hideTimeout: NodeJS.Timeout
+    const isHover = props.trigger === 'hover'
 
     const referenceProps = {
       ref: 'reference',
-      onMouseenter: show,
-      onMouseleave: hide
+      onMouseenter: isHover ? show : null,
+      onMouseleave: isHover ? hide : null,
+      onClick: !isHover
+        ? (event: Event) => {
+            if (!visible.value) {
+              currentHide && currentHide()
+              show()
+              currentHide = hide
+            } else {
+              hide()
+            }
+            event.stopPropagation()
+          }
+        : null
     }
     const transitionProps = {
       name: 'fade',
@@ -69,8 +88,9 @@ export default defineComponent({
     const popperProps = {
       ref: 'popper',
       class: props.popperClass ? `s-popper ${props.popperClass}` : 's-popper',
-      onMouseenter: () => clearTimeout(hideTimeout),
-      onMouseleave: hide
+      onMouseenter: isHover ? () => clearTimeout(hideTimeout) : null,
+      onMouseleave: isHover ? hide : null,
+      onClick: !isHover ? (event: Event) => event.stopPropagation() : null
     }
     const teleportProps = {
       to: 'body',
@@ -101,6 +121,8 @@ export default defineComponent({
         await nextTick()
         await createInstance()
       }
+      incrementZIndex()
+      popper.value.style.setProperty('z-index', getZIndex())
       showTimeout = setTimeout(() => (visible.value = true), props.showDelay)
     }
     function hide () {
