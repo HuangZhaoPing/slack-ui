@@ -1,17 +1,16 @@
 <template>
   <div>
     <s-popper>
-      <s-button>hello</s-button>
+      <s-button>hover</s-button>
       <template #popper>
-        <h2>我是标题</h2>
-        <s-button type="primary">新增</s-button>
+        hover 方式
       </template>
     </s-popper>
 
-    <s-popper :arrow="false">
-      <span>hello</span>
+    <s-popper :arrow="false" trigger="click">
+      <s-button>click</s-button>
       <template #popper>
-        asdf
+        click 方式
       </template>
     </s-popper>
   </div>
