@@ -4,6 +4,7 @@ const autoprefixer = require('gulp-autoprefixer')
 const del = require('del')
 const { resolve } = require('./utils')
 
+// 清除 lib/styles
 function clean (cb) {
   del.sync([resolve('lib/styles')], { force: true })
   cb()
