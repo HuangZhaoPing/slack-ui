@@ -1,7 +1,7 @@
 <template>
   <div class="component-layout">
     <div class="component-layout--nav">
-      <side-navigation />
+      <side-menu />
     </div>
     <div ref="main" class="component-layout--main">
       <div ref="content" class="component-layout--content">
@@ -18,7 +18,7 @@
 <script lang="ts">
 import { defineComponent, ref, Ref, watch, nextTick, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute } from 'vue-router'
-import SideNavigation from '../SideNavigation/index.vue'
+import SideMenu from '../SideMenu/index.vue'
 import Indicator from './Indicator.vue'
 import Anchor from './Anchor.vue'
 import { AnchorItem } from 'types/website'
@@ -26,7 +26,7 @@ import { AnchorItem } from 'types/website'
 export default defineComponent({
   name: 'ComponentLayout',
   components: {
-    SideNavigation,
+    SideMenu,
     Indicator,
     Anchor
   },

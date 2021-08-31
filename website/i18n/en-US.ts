@@ -3,7 +3,8 @@ export default {
   name: 'English',
   pages: {
     home: {
-      1: 'i am English'
+      1: 'home',
+      2: 'i am English'
     }
   },
   nav: {

@@ -1,17 +1,17 @@
 <template>
   <s-menu
-    class="side-navigation"
+    class="side-menu"
     :active="route.path"
     @change="onChange">
-    <s-menu-group v-for="group in routes" :key="group.path">
+    <s-menu-group v-for="group in menus" :key="group.path">
       <template #title>
-        {{ group.meta && group.meta.title }}
+        {{ group.title }}
       </template>
       <s-menu-item
         v-for="item in group.children"
         :key="item.key"
         :value="item.path">
-        {{ item.meta && item.meta.title }}
+        {{ item.title }}
       </s-menu-item>
     </s-menu-group>
   </s-menu>
@@ -20,7 +20,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { formatRoutes as routes } from '@/router/navRoutes'
+import menus from '@/menus'
 
 export default defineComponent({
   name: 'AppNav',
@@ -31,7 +31,7 @@ export default defineComponent({
       router.push(value)
     }
     return {
-      routes,
+      menus,
       router,
       route,
       onChange
@@ -41,7 +41,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.side-navigation::after {
+.side-menu::after {
   display: none;
 }
 </style>

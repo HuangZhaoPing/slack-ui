@@ -1,16 +1,27 @@
 import ComponentLayout from '@/components/ComponentLayout/index.vue'
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { getLangName } from '../i18n'
-import { flatRoutes as pageRoutes } from './pageRoutes'
-import { flatRoutes as navRoutes } from './navRoutes'
+import menus from '@/menus'
+import { format, flat } from './utils'
 
 const langName = getLangName()
+const glob = import.meta.glob('/docs/**/index.md')
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', redirect: `/${langName}` },
-    { path: `/${langName}`, redirect: `/${langName}/home` },
+    {
+      path: '/',
+      redirect: `/${langName}`
+    },
+    {
+      path: `/${langName}`,
+      redirect: `/${langName}/home`
+    },
+    {
+      path: `/${langName}/home`,
+      component: () => import('@/pages/home/index.vue')
+    },
     {
       path: `/${langName}/component`,
       name: 'component',
@@ -20,30 +31,22 @@ const router = createRouter({
   ]
 })
 
-function registerRoute () {
-  addPagesRoutes()
-  addNavRoutes()
-}
+const flatMenus = flat(format(menus, (menu, parentMenu) => {
+  menu.path = parentMenu ? parentMenu.path + menu.path : `/${langName}/component${menu.path}`
+  if (menu.children) {
+    menu.redirect = menu.path + menu.children[0].path
+  } else {
+    menu.component = glob[`/docs${menu.path.replace('/component', '')}/index.md`]
+  }
+  return menu
+}))
 
-function addPagesRoutes () {
-  pageRoutes.forEach(route => {
-    const { children, ...value } = route
-    router.addRoute(<RouteRecordRaw>value)
-  })
-}
-
-function addNavRoutes () {
-  navRoutes.forEach(route => {
-    const { children, ...value } = route
-    router.addRoute('component', <RouteRecordRaw>value)
-  })
-}
-
-router.afterEach(() => {
-  const main = document.querySelector('.component-layout--main')
-  main && main.scrollTo(0, 0)
+flatMenus.forEach(menu => {
+  const { title, children, ...route } = menu
+  router.addRoute('component', {
+    ...route,
+    meta: { title }
+  } as RouteRecordRaw)
 })
-
-registerRoute()
 
 export default router

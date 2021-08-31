@@ -1,15 +1,15 @@
-import { Route } from 'types/website'
+import { Menu } from 'types/website'
 
-export function format (data: Route[], formatter: (route: Route, parentRoute?: Route) => any, parentRoute?: Route): Route[] {
-  data.forEach(route => {
-    route = formatter(route, parentRoute)
-    if (route.children) format(route.children, formatter, route)
+export function format (data: Menu[], formatter: (menu: Menu, parentMenu?: Menu) => Menu, parentMenu?: Menu) {
+  data.forEach(menu => {
+    menu = formatter(menu, parentMenu)
+    if (menu.children) format(menu.children, formatter, menu)
   })
   return data
 }
 
-export function flat (data: Route[]): Route[] {
-  const result: Route[] = []
+export function flat (data: Menu[]): Menu[] {
+  const result: Menu[] = []
   data.forEach(route => {
     result.push(route)
     if (route.children) result.push(...flat(route.children))
