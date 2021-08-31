@@ -25,7 +25,12 @@ const config = fs.readdirSync(resolve('packages')).filter(name => !exclude.inclu
       typescript(),
       vuePlugin()
     ],
-    external: ['vue']
+    external: [
+      'vue',
+      '@popperjs/core',
+      '../utils',
+      '../popper'
+    ]
   }
 })
 
