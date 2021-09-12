@@ -1,7 +1,7 @@
 <template>
   <select v-model="selected" @change="onChange">
     <option value="zh-CN">中文</option>
-    <option value="en-US">英文</option>
+    <option value="en-US">English</option>
   </select>
 </template>
 
