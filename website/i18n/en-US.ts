@@ -4,7 +4,7 @@ export default {
   pages: {
     home: {
       title: 'home',
-      1: 'i am English'
+      homeText: 'i am English'
     }
   },
   nav: {

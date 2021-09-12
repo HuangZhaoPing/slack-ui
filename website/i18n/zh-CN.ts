@@ -4,7 +4,7 @@ export default {
   pages: {
     home: {
       title: '首页',
-      1: '我是中文'
+      homeText: '我是中文'
     }
   },
   nav: {

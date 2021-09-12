@@ -1,5 +1,5 @@
 <template>
-  <div>{{ lang.showCode }}</div>
+  <div>{{ lang.homeText }}</div>
 </template>
 
 <script lang="ts">
