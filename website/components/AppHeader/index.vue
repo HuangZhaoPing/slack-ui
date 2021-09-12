@@ -44,7 +44,7 @@ export default defineComponent({
     const route = useRoute()
     const langName = getLangName()
     const menus = [
-      { label: lang[5], value: `/${langName}/component` }
+      { label: lang.components, value: `/${langName}/component` }
     ]
     const defaultActive = computed(() => {
       const match = route.path.match(new RegExp(`\\/${langName}\\/[^/]+`))

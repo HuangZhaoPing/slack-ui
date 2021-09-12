@@ -25,10 +25,11 @@ export default {
     navigation: '导航'
   },
   components: {
-    1: '显示代码',
-    2: '隐藏代码',
-    3: '上一篇',
-    4: '下一篇',
-    5: '组件'
+    showCode: '显示代码',
+    hideCode: '隐藏代码',
+    previous: '上一篇',
+    next: '下一篇',
+    components: '组件',
+    copyCode: '复制代码'
   }
 }

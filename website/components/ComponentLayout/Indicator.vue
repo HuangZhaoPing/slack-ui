@@ -6,7 +6,7 @@
         type="text"
         icon="iconfont icon-left"
         @click="pushRoute(prevRoute)">
-        {{ lang[3] }}：{{ prevRoute.title }}
+        {{ lang.previous }}：{{ prevRoute.title }}
       </s-button>
     </div>
 
@@ -17,7 +17,7 @@
         icon="iconfont icon-right"
         icon-position="right"
         @click="pushRoute(nextRoute)">
-        {{ lang[4] }}：{{ nextRoute.title }}
+        {{ lang.next }}：{{ nextRoute.title }}
       </s-button>
     </div>
   </div>

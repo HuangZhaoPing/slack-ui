@@ -25,10 +25,11 @@ export default {
     navigation: 'Navigation'
   },
   components: {
-    1: 'show code',
-    2: 'hide code',
-    3: 'previous',
-    4: 'next',
-    5: 'Components'
+    showCode: 'show code',
+    hideCode: 'hide code',
+    previous: 'previous',
+    next: 'next',
+    components: 'Components',
+    copyCode: 'copy code'
   }
 }

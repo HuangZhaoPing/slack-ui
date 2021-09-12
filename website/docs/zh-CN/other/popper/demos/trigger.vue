@@ -6,5 +6,12 @@
         这是一段文字这是一段文字这是一段文字这是一段文字
       </template>
     </s-popper>
+
+    <s-popper trigger="click">
+      <s-button>click 触发方式</s-button>
+      <template #popper>
+        这是一段文字这是一段文字这是一段文字这是一段文字
+      </template>
+    </s-popper>
   </div>
 </template>

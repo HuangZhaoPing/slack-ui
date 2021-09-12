@@ -1,5 +1,5 @@
 <template>
-  <div>{{ lang[1] }}</div>
+  <div>{{ lang.showCode }}</div>
 </template>
 
 <script lang="ts">

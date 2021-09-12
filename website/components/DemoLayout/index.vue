@@ -8,12 +8,12 @@
     </p>
     <div ref="inner" class="demo-layout--inner" >
       <div ref="code" class="demo-layout--code">
-        <s-button class="demo-layout--copy" type="text" @click="copyCode">复制代码</s-button>
+        <s-button class="demo-layout--copy" type="text" @click="copyCode">{{ lang.copyCode }}</s-button>
         <slot name="code" />
       </div>
     </div>
     <div class="demo-layout--button" @click="toggleCollapse">
-      <span class="demo-layout--text">{{ collapse ? lang[2] : lang[1] }}</span>
+      <span class="demo-layout--text">{{ collapse ? lang.hideCode : lang.showCode }}</span>
     </div>
     <template v-if="false"><slot /></template>
   </div>
