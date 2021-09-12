@@ -1,11 +1,12 @@
 <template>
   <div class="app-header">
     <div style="flex: 1 1 auto;">
-      <router-link :to="`/${langName}`">
+      <router-link :to="`/${langName}/home`">
         <img class="app-header--logo" src="/assets/images/logo.jpg" alt="">
       </router-link>
     </div>
-    <github-icon></github-icon>
+    <lang-select />
+    <github-icon />
     <s-menu
       class="app-header--menu"
       mode="horizontal"
@@ -27,19 +28,23 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { getLangName, getLangMap } from '@/i18n'
+import { getLangName, getLangMap, getLangConfig } from '@/i18n'
 import GithubIcon from './GithubIcon.vue'
+import LangSelect from './LangSelect.vue'
+
+const lang = getLangConfig().components
 
 export default defineComponent({
   components: {
-    GithubIcon
+    GithubIcon,
+    LangSelect
   },
   setup () {
     const router = useRouter()
     const route = useRoute()
     const langName = getLangName()
     const menus = [
-      { label: '组件', value: `/${langName}/component` }
+      { label: lang[5], value: `/${langName}/component` }
     ]
     const defaultActive = computed(() => {
       const match = route.path.match(new RegExp(`\\/${langName}\\/[^/]+`))

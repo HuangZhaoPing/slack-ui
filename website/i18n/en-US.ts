@@ -1,21 +1,34 @@
 export default {
   lang: 'en-US',
-  name: 'English',
+  name: '中文',
   pages: {
     home: {
-      1: 'home',
-      2: 'i am English'
+      title: 'home',
+      1: 'i am English'
     }
   },
   nav: {
-    1: 'Guide',
-    2: 'Installation',
-    3: 'Basic Component',
-    4: 'Button',
-    5: 'Layout'
+    guide: 'Guide',
+    installation: 'Installation',
+    usage: 'Usage',
+    basic: 'Basic',
+    icon: 'Icon',
+    layout: 'Layout',
+    grid: 'Grid',
+    button: 'Button',
+    form: 'Form',
+    input: 'Input',
+    menu: 'Menu',
+    popper: 'Popper',
+    tooltip: 'Tooltip',
+    other: 'Other',
+    navigation: 'Navigation'
   },
   components: {
     1: 'show code',
-    2: 'hide code'
+    2: 'hide code',
+    3: 'previous',
+    4: 'next',
+    5: 'Components'
   }
 }

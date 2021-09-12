@@ -16,7 +16,7 @@ const router = createRouter({
     },
     {
       path: `/${langName}`,
-      redirect: `/${langName}/home`
+      redirect: `/${langName}/component`
     },
     {
       path: `/${langName}/home`,

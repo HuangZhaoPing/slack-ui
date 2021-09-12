@@ -12,7 +12,7 @@ horizontal
 
 ## 垂直菜单
 
-::: demo 垂直菜单
+::: demo 不设置 mode 或者将 mode 设置为 vertical，为垂直模式。
 vertical
 :::
 
@@ -20,6 +20,6 @@ vertical
 
 菜单分组只在垂直模式下生效。
 
-::: demo 菜单分组
+::: demo 通过 s-menu-group 设置分组，通过 name 为 title 的 slot 设置标题。
 group
 :::

@@ -20,12 +20,15 @@ export default {
     input: 'Input 输入框',
     menu: 'Menu 菜单',
     popper: 'Popper',
-    tooltip: 'Tooltip'
+    tooltip: 'Tooltip',
+    other: '其它组件',
+    navigation: '导航'
   },
   components: {
     1: '显示代码',
     2: '隐藏代码',
     3: '上一篇',
-    4: '下一篇'
+    4: '下一篇',
+    5: '组件'
   }
 }

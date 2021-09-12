@@ -17,17 +17,32 @@ const menus: Menu[] = [
     title: lang.basic,
     children: [
       { path: '/icon', title: lang.icon },
-      { path: '/layout', title: lang.layout },
-      { path: '/grid', title: lang.grid },
+      // { path: '/layout', title: lang.layout },
+      // { path: '/grid', title: lang.grid },
       { path: '/button', title: lang.button }
     ]
   },
+  // {
+  //   path: '/form',
+  //   title: lang.form,
+  //   children: [
+  //     { path: '/input', title: lang.input },
+  //     { path: '/menu', title: lang.menu },
+  //     { path: '/popper', title: lang.popper },
+  //     { path: '/tooltip', title: lang.tooltip }
+  //   ]
+  // },
   {
-    path: '/form',
-    title: lang.form,
+    path: '/navigation',
+    title: lang.navigation,
     children: [
-      { path: '/input', title: lang.input },
-      { path: '/menu', title: lang.menu },
+      { path: '/menu', title: lang.menu }
+    ]
+  },
+  {
+    path: '/other',
+    title: lang.other,
+    children: [
       { path: '/popper', title: lang.popper },
       { path: '/tooltip', title: lang.tooltip }
     ]

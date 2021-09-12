@@ -1,21 +1,14 @@
 <template>
   <div>
     <s-popper>
-      <s-button>hover</s-button>
-      <template #popper>
-        hover 方式
-      </template>
-    </s-popper>
-
-    <s-popper :arrow="false" trigger="click">
-      <s-button>click</s-button>
+      <s-button>显示箭头</s-button>
       <template #popper>
         这是一段文字这是一段文字这是一段文字这是一段文字
       </template>
     </s-popper>
 
-    <s-popper :arrow="false" trigger="click">
-      <s-button>click</s-button>
+    <s-popper :arrow="false">
+      <s-button>隐藏箭头</s-button>
       <template #popper>
         这是一段文字这是一段文字这是一段文字这是一段文字
       </template>

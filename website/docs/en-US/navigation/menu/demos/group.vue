@@ -39,8 +39,6 @@
         </s-menu-group>
       </s-menu>
     </div>
-
-    <s-popper>dsadfsaf</s-popper>
   </div>
 </template>
 

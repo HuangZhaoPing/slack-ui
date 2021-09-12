@@ -47,8 +47,11 @@ export default defineComponent({
     })
 
     watch(() => route.path, () => {
-      selected.value = ''
-      generateAnchorData()
+      nextTick(() => {
+        selected.value = ''
+        generateAnchorData()
+        scrollToTop()
+      })
     }, { immediate: true })
 
     function addScrollListener () {
@@ -69,16 +72,18 @@ export default defineComponent({
     }
 
     function generateAnchorData () {
-      nextTick(() => {
-        anchorDoms.value = content.value ? Array.from(content.value.querySelectorAll('[id]')) : []
-        anchorData.value = anchorDoms.value.map(item => {
-          return {
-            title: item.id.replace('-', ' '),
-            id: item.id,
-            level: Number(item.tagName.slice(1)) - 1
-          }
-        })
+      anchorDoms.value = content.value ? Array.from(content.value.querySelectorAll('[id]')) : []
+      anchorData.value = anchorDoms.value.map(item => {
+        return {
+          title: item.id.replace('-', ' '),
+          id: item.id,
+          level: Number(item.tagName.slice(1)) - 1
+        }
       })
+    }
+
+    function scrollToTop () {
+      main.value && (main.value.scrollTop = 0)
     }
 
     return {
