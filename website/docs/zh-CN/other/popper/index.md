@@ -39,6 +39,7 @@ arrow
 | placement | Tooltip 出现位置 | string | auto/auto-start/auto-end/top/top-start/top-end/bottom/bottom-start/bottom-end/right/right-start/right-end/left/left-start/left-end | bottom |
 | arrow | 是否显示箭头 | boolean | - | true |
 | append-to-body | 是否挂载到 body，为 false 时挂载到作用元素所在的父元素中 | boolean | - | true |
+| popperClass | 给 popper 添加 class | string | - | - |
 | show-delay | 显示延迟时间（毫秒） | number | - | 0 |
 | hide-delay | 隐藏延迟时间（毫秒） | number | - | 300 |
 
