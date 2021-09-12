@@ -39,7 +39,7 @@ arrow
 | placement | Where tooltip appears | string | auto/auto-start/auto-end/top/top-start/top-end/bottom/bottom-start/bottom-end/right/right-start/right-end/left/left-start/left-end | bottom |
 | arrow | Show arrows | boolean | - | true |
 | append-to-body | Whether to mount to the body. If false, mount to the parent element where the action element is located | boolean | - | true |
-| popperClass | Add class to Popper | string | - | - |
+| popper-class | Add class to Popper | string | - | - |
 | show-delay | Display delay time (MS) | number | - | 0 |
 | hide-delay | Hide latency (MS) | number | - | 300 |
 
