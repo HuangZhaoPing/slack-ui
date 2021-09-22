@@ -3,7 +3,7 @@
     <div class="demo-layout--component">
       <slot name="component" />
     </div>
-    <p class="demo-layout--desc">
+    <p class="demo-layout--desc" v-if="$slots.desc">
       <slot name="desc" />
     </p>
     <div ref="inner" class="demo-layout--inner" >
@@ -26,7 +26,7 @@ import { copyToClipboard } from '@/utils'
 
 export default defineComponent({
   name: 'DemoLayout',
-  setup () {
+  setup (props, { slots }) {
     const collapse = ref(false)
     const inner: Ref = ref(null)
     const code: Ref = ref(null)

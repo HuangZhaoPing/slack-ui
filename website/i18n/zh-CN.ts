@@ -22,7 +22,8 @@ export default {
     popper: 'Popper',
     tooltip: 'Tooltip',
     other: '其它组件',
-    navigation: '导航'
+    navigation: '导航',
+    link: 'Link 链接'
   },
   components: {
     showCode: '显示代码',

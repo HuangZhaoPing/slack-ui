@@ -1,5 +1,5 @@
 <template>
-  <ul class="anchor">
+  <ul class="anchor" ref="anchorRef">
     <li
       :class="getItemClass(item)"
       v-for="(item, index) in data"

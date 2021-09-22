@@ -98,7 +98,7 @@ group
 
 ### Attributes
 
-| 属性 | 描述 | 类型 | 可选值 | 默认值 |
+| Attribute | Describe | Type | Optional value | Default |
 | ---- | --- | --- | ----- | ----- |
 | type | 按钮类型 | string | default/primary/success/danger/text | default |
 | disabled | 是否为禁用状态 | boolean | - | false |

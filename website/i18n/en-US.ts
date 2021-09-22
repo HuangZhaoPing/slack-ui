@@ -22,7 +22,8 @@ export default {
     popper: 'Popper',
     tooltip: 'Tooltip',
     other: 'Other',
-    navigation: 'Navigation'
+    navigation: 'Navigation',
+    link: 'link'
   },
   components: {
     showCode: 'show code',

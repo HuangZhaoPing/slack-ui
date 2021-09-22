@@ -30,7 +30,7 @@ export default defineComponent({
     Indicator,
     Anchor
   },
-  setup (props) {
+  setup () {
     const route = useRoute()
     const main: Ref = ref('main')
     const content: Ref = ref('content')

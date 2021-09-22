@@ -1,0 +1,100 @@
+@import './var';
+
+.s-link {
+  cursor: pointer;
+  line-height: 1;
+  position: relative;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.s-link--underline::after {
+  background-color: transparent;
+  bottom: 0;
+  content: '';
+  height: 1px;
+  left: 0;
+  position: absolute;
+  transition: width 0.2s, background-color 0.2s;
+  width: 0;
+}
+
+.s-link:hover {
+  text-decoration: none;
+}
+
+.s-link--underline:hover::after {
+  width: 100%;
+}
+
+.s-link.s-link--disabled {
+  cursor: not-allowed;
+}
+
+/* default */
+.s-link--default {
+  color: $slack-text-color-normal;
+}
+
+.s-link--default.s-link--disabled {
+  color: rgb(209, 213, 219);
+}
+
+.s-link--default:not(.s-link--disabled):hover {
+  color: var(--slack-color-primary, $slack-color-primary);
+}
+
+.s-link--default:not(.s-link--disabled):hover::after {
+  background-color: var(--slack-color-primary, $slack-color-primary);
+}
+
+/* primary */
+.s-link--primary {
+  color: var(--slack-color-primary, transparentize($slack-color-primary, 0));
+}
+
+.s-link--primary.s-link--disabled {
+  color: var(--slack-color-primary-hover, transparentize($slack-color-primary, 0.4));
+}
+
+.s-link--primary:not(.s-link--disabled):hover {
+  color: var(--slack-color-primary-hover, transparentize($slack-color-primary, 0.2));
+}
+
+.s-link--primary:not(.s-link--disabled):hover::after {
+  background-color: var(--slack-color-primary, transparentize($slack-color-primary, 0.2));
+}
+
+/* success */
+.s-link--success {
+  color: var(--slack-color-success, transparentize($slack-color-success, 0));
+}
+
+.s-link--success.s-link--disabled {
+  color: var(--slack-color-success-hover, transparentize($slack-color-success, 0.4));
+}
+
+.s-link--success:not(.s-link--disabled):hover {
+  color: var(--slack-color-success-hover, transparentize($slack-color-success, 0.2));
+}
+
+.s-link--success:not(.s-link--disabled):hover::after {
+  background-color: var(--slack-color-success, transparentize($slack-color-success, 0.2));
+}
+
+/* danger */
+.s-link--danger {
+  color: var(--slack-color-danger, transparentize($slack-color-danger, 0));
+}
+
+.s-link--danger.s-link--disabled {
+  color: var(--slack-color-danger-hover, transparentize($slack-color-danger, 0.4));
+}
+
+.s-link--danger:not(.s-link--disabled):hover {
+  color: var(--slack-color-danger-hover, transparentize($slack-color-danger, 0.2));
+}
+
+.s-link--danger:not(.s-link--disabled):hover::after {
+  background-color: var(--slack-color-danger, transparentize($slack-color-danger, 0.2));
+}

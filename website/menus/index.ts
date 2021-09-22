@@ -19,7 +19,8 @@ const menus: Menu[] = [
       { path: '/icon', title: lang.icon },
       // { path: '/layout', title: lang.layout },
       // { path: '/grid', title: lang.grid },
-      { path: '/button', title: lang.button }
+      { path: '/button', title: lang.button },
+      { path: '/link', title: lang.link }
     ]
   },
   // {

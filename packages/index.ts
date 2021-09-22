@@ -8,6 +8,7 @@ import MenuGroup from './menu-group'
 import Popper from './popper'
 import Tooltip from './tooltip'
 import Icon from './icon'
+import Link from './link'
 
 const components = [
   Button,
@@ -18,7 +19,8 @@ const components = [
   MenuGroup,
   Popper,
   Tooltip,
-  Icon
+  Icon,
+  Link
 ]
 
 export default {
@@ -36,5 +38,6 @@ export {
   MenuGroup,
   Popper,
   Tooltip,
-  Icon
+  Icon,
+  Link
 }

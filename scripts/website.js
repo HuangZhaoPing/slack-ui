@@ -48,14 +48,14 @@ export default defineConfig({
         }
 
         md.use(container, 'demo', {
-          validate: params => params.trim().match(/^demo\s+(.*)$/),
+          validate: params => params.trim().match(/^demo(\s+(.*))?/),
           render: (tokens, idx) => {
             if (tokens[idx].nesting === 1) {
-              const m = tokens[idx].info.trim().match(/^demo\s+(.*)$/)
+              const m = tokens[idx].info.trim().match(/^demo(\s+(.*))?/)
               const target = tokens[idx + 2]
               const desc = m && m.length > 1 ? m[1] : ''
               const tagName = target.type === 'inline' ? target.content : ''
-              return `<demo-layout><template #component><${tagName} /></template><template #desc>${desc}</template><template #code><!--$${tagName}$--></template>`
+              return `<demo-layout><template #component><${tagName} /></template><template v-if="${!!desc}" #desc>${desc}</template><template #code><!--$${tagName}$--></template>`
             } else {
               return '</demo-layout>'
             }
