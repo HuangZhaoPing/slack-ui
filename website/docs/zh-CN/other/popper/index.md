@@ -34,7 +34,7 @@ arrow
 
 ### attributes
 
-| 属性 | 描述 | 类型 | 可选值 | 默认值 |
+| Attribute | Description | Type | Optional value | Default |
 | ---- | --- | --- | ----- | ----- |
 | placement | Tooltip 出现位置 | string | auto/auto-start/auto-end/top/top-start/top-end/bottom/bottom-start/bottom-end/right/right-start/right-end/left/left-start/left-end | bottom |
 | arrow | 是否显示箭头 | boolean | - | true |

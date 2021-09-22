@@ -34,7 +34,7 @@ arrow
 
 ### attributes
 
-| Attribute | Describe | Type | Optional value | Default |
+| Attribute | Description | Type | Optional value | Default |
 | ---- | --- | --- | ----- | ----- |
 | placement | Where tooltip appears | string | auto/auto-start/auto-end/top/top-start/top-end/bottom/bottom-start/bottom-end/right/right-start/right-end/left/left-start/left-end | bottom |
 | arrow | Show arrows | boolean | - | true |
@@ -45,7 +45,7 @@ arrow
 
 ### slot
 
-| Name | Describe |
+| Name | Description |
 | ---- | --- |
 | - | The action element must be a component or a DOM |
 | popper | popper content |

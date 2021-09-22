@@ -30,7 +30,7 @@ custom
 
 ### attributes
 
-| Attribute | Describe | Type | Optional value | Default |
+| Attribute | Description | Type | Optional value | Default |
 | ---- | --- | --- | ----- | ----- |
 | content | Tooltip Content | string | - | - |
 | placement | Where tooltip appears | string | auto/auto-start/auto-end/top/top-start/top-end/bottom/bottom-start/bottom-end/right/right-start/right-end/left/left-start/left-end | bottom |
@@ -41,7 +41,7 @@ custom
 
 ### slot
 
-| Name | Describe |
+| Name | Description |
 | ---- | --- |
 | - | The action element must be a component or a DOM |
 | content | Tooltip content |

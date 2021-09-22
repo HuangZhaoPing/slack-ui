@@ -30,7 +30,7 @@ underline
 
 ### Attributes
 
-| Attribute | Describe | Type | Optional value | Default |
+| Attribute | Description | Type | Optional value | Default |
 | ---- | --- | --- | ----- | ----- |
 | type | 链接类型 | string | default/primary/success/danger | default |
 | disabled | 是否为禁用状态 | boolean | - | false |

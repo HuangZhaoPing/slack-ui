@@ -98,7 +98,7 @@ group
 
 ### Attributes
 
-| Attribute | Describe | Type | Optional value | Default |
+| Attribute | Description | Type | Optional value | Default |
 | ---- | --- | --- | ----- | ----- |
 | type | Button type | string | default/primary/success/danger/text | default |
 | disabled | Is it disabled | boolean | - | false |
