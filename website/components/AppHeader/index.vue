@@ -2,7 +2,7 @@
   <div class="app-header">
     <div style="flex: 1 1 auto;">
       <router-link :to="`/${langName}/home`">
-        <img class="app-header--logo" src="/assets/images/logo.jpg" alt="">
+        <h1>Slack</h1>
       </router-link>
     </div>
     <lang-select />
