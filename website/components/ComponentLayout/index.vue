@@ -3,7 +3,10 @@
     <div class="component-layout--nav">
       <side-menu />
     </div>
-    <div ref="main" class="component-layout--main">
+    <div
+      ref="main"
+      class="component-layout--main"
+      @scroll="onScroll">
       <div ref="content" class="component-layout--content">
         <router-view />
         <indicator />
@@ -16,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, watch, nextTick, onMounted, onBeforeUnmount } from 'vue'
+import { defineComponent, ref, Ref, watch, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import SideMenu from '../SideMenu/index.vue'
 import Indicator from './Indicator.vue'
@@ -38,31 +41,22 @@ export default defineComponent({
     const anchorData = ref<AnchorItem[]>([])
     const selected = ref('')
 
-    onMounted(() => {
-      addScrollListener()
-    })
-
-    onBeforeUnmount(() => {
-      removeScrollListener()
-    })
-
     watch(() => route.path, () => {
       nextTick(() => {
         selected.value = ''
-        generateAnchorData()
-        scrollToTop()
+        const hash = decodeURIComponent(location.hash.slice(1))
+        anchorDoms.value = getAnchorDoms()
+        anchorData.value = getAnchorData(anchorDoms.value)
+        if (hash) {
+          const target = anchorDoms.value.find(item => item.id === hash)
+          scrollTo(target ? target.offsetTop : 0)
+        } else {
+          scrollTo(0)
+        }
       })
     }, { immediate: true })
 
-    function addScrollListener () {
-      main.value.addEventListener('scroll', scrollListenerHandler)
-    }
-
-    function removeScrollListener () {
-      main.value.removeEventListener('scroll', scrollListenerHandler)
-    }
-
-    function scrollListenerHandler ({ target }: { target: HTMLElement }) {
+    function onScroll ({ target }: { target: HTMLElement }) {
       const scrollTop = target.scrollTop
       const dom = anchorDoms.value.find((item, index) => {
         const nextDom = anchorDoms.value[index + 1]
@@ -71,9 +65,12 @@ export default defineComponent({
       dom ? (selected.value = dom.id) : (selected.value = '')
     }
 
-    function generateAnchorData () {
-      anchorDoms.value = content.value ? Array.from(content.value.querySelectorAll('[id]')) : []
-      anchorData.value = anchorDoms.value.map(item => {
+    function getAnchorDoms (): HTMLElement[] {
+      return content.value ? Array.from(content.value.querySelectorAll('[id]')) : []
+    }
+
+    function getAnchorData (value: HTMLElement[]) {
+      return value.map(item => {
         return {
           title: item.id.replace('-', ' '),
           id: item.id,
@@ -82,15 +79,16 @@ export default defineComponent({
       })
     }
 
-    function scrollToTop () {
-      main.value && (main.value.scrollTop = 0)
+    function scrollTo (value: number) {
+      main.value && (main.value.scrollTop = value)
     }
 
     return {
       main,
       content,
       anchorData,
-      selected
+      selected,
+      onScroll
     }
   }
 })
