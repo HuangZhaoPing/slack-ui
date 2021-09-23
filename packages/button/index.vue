@@ -11,7 +11,7 @@
       block && 's-button--block'
     ]">
     <i v-if="icon" :class="`s-button--icon ${icon}`"></i>
-    <span v-if="$slots.default" class="s-button--content">
+    <span v-if="$slots.default" class="s-button--inner">
       <slot />
     </span>
   </button>
