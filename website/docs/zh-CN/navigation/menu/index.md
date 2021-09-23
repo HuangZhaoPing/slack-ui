@@ -23,3 +23,9 @@ vertical
 ::: demo 通过 s-menu-group 设置分组，通过 name 为 title 的 slot 设置标题。
 group
 :::
+
+## 多级菜单
+
+:::demo
+subMenu
+:::

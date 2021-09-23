@@ -41,7 +41,7 @@ custom
 
 ### slot
 
-| name | 描述 |
+| name | Description |
 | ---- | --- |
 | - | 作用元素，必须为一个组件或者一个 dom |
 | content | Tooltip 内容 |

@@ -45,7 +45,7 @@ arrow
 
 ### slot
 
-| name | 描述 |
+| name | Description |
 | ---- | --- |
 | - | 作用元素，必须为一个组件或者一个 dom |
 | popper | popper 内容 |
