@@ -40,6 +40,7 @@ export default defineComponent({
     const anchorDoms = ref<HTMLElement[]>([])
     const anchorData = ref<AnchorItem[]>([])
     const selected = ref('')
+    let currentDom: HTMLElement | undefined
 
     watch(() => route.path, () => {
       nextTick(() => {
@@ -62,7 +63,18 @@ export default defineComponent({
         const nextDom = anchorDoms.value[index + 1]
         return (scrollTop >= item.offsetTop) && (nextDom ? scrollTop < nextDom.offsetTop : true)
       })
-      dom ? (selected.value = dom.id) : (selected.value = '')
+      if (dom) {
+        if (currentDom !== dom) {
+          selected.value = dom.id
+          changeHash(`#${dom.id}`)
+        }
+      } else {
+        if (currentDom !== dom) {
+          selected.value = ''
+          changeHash(location.pathname)
+        }
+      }
+      currentDom = dom
     }
 
     function getAnchorDoms (): HTMLElement[] {
@@ -81,6 +93,10 @@ export default defineComponent({
 
     function scrollTo (value: number) {
       main.value && (main.value.scrollTop = value)
+    }
+
+    function changeHash (value: string) {
+      history.replaceState({}, '', value)
     }
 
     return {

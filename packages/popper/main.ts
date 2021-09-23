@@ -52,6 +52,14 @@ export default defineComponent({
     hideDelay: {
       type: Number,
       default: 200
+    },
+    gpuAcceleration: {
+      type: Boolean,
+      default: true
+    },
+    transitionName: {
+      type: String,
+      default: 'fade'
     }
   },
   setup (props) {
@@ -82,7 +90,7 @@ export default defineComponent({
         : null
     }
     const transitionProps = {
-      name: 'fade',
+      name: props.transitionName,
       onBeforeEnter: update
     }
     const popperProps = {
@@ -106,6 +114,12 @@ export default defineComponent({
             name: 'offset',
             options: {
               offset: [0, props.offset || 8]
+            }
+          },
+          {
+            name: 'computeStyles',
+            options: {
+              gpuAcceleration: props.gpuAcceleration
             }
           }
         ]
