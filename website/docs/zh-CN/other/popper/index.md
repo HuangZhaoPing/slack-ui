@@ -43,6 +43,13 @@ arrow
 | show-delay | 显示延迟时间（毫秒） | number | - | 0 |
 | hide-delay | 隐藏延迟时间（毫秒） | number | - | 300 |
 
+### events
+
+| Attribute | Description | Params |
+| ---- | --- | --- |
+| show | popper 显示时触发 | - |
+| hide | popper 隐藏时出发 | - |
+
 ### slot
 
 | name | Description |

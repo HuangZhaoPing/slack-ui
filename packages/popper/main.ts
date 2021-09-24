@@ -9,7 +9,8 @@ import {
   nextTick,
   withDirectives,
   vShow,
-  Transition
+  Transition,
+  watch
 } from 'vue'
 import {
   createPopper,
@@ -18,11 +19,16 @@ import {
 } from '@popperjs/core'
 import { getFirstVNode, getZIndex, incrementZIndex } from '../utils'
 
-let currentHide: (() => void) | null = null
+let hideQueue: Array<() => void> = []
 
 document.body.addEventListener('click', () => {
-  currentHide && currentHide()
+  excuteQueue()
 })
+
+function excuteQueue () {
+  hideQueue.forEach(fn => (fn()))
+  hideQueue = []
+}
 
 export default defineComponent({
   name: 'SPopper',
@@ -62,7 +68,8 @@ export default defineComponent({
       default: 'fade'
     }
   },
-  setup (props) {
+  emits: ['show', 'hide'],
+  setup (props, { emit }) {
     let instance: Instance
     const created = ref(false)
     const visible = ref(false)
@@ -79,9 +86,9 @@ export default defineComponent({
       onClick: !isHover
         ? (event: Event) => {
             if (!visible.value) {
-              currentHide && currentHide()
+              excuteQueue()
               show()
-              currentHide = hide
+              hideQueue.push(hide)
             } else {
               hide()
             }
@@ -104,6 +111,10 @@ export default defineComponent({
       to: 'body',
       disabled: !props.appendToBody
     }
+
+    watch(() => visible.value, value => {
+      emit(value ? 'show' : 'hide')
+    })
 
     async function createInstance () {
       const el = reference.value.$el || reference.value

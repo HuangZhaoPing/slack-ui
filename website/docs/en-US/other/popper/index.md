@@ -43,6 +43,13 @@ arrow
 | show-delay | Display delay time (MS) | number | - | 0 |
 | hide-delay | Hide latency (MS) | number | - | 300 |
 
+### events
+
+| Attribute | Description | Params |
+| ---- | --- | --- |
+| show | Triggered when Popper is displayed | - |
+| hide | Popper starts when hidden | - |
+
 ### slot
 
 | Name | Description |
